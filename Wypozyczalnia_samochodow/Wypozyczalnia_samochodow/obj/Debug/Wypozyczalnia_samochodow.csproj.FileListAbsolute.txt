@@ -1,0 +1,12 @@
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\bin\Debug\Wypozyczalnia_samochodow.exe.config
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\bin\Debug\Wypozyczalnia_samochodow.exe
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\bin\Debug\Wypozyczalnia_samochodow.pdb
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.csprojResolveAssemblyReference.cache
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.Form1.resources
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.Form2.resources
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.Properties.Resources.resources
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.ZmianaHasla.resources
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.csproj.GenerateResource.Cache
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.exe
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.pdb
+C:\Users\Agnieszka\Desktop\Wypozyczalnia_samochodow\Wypozyczalnia_samochodow\obj\Debug\Wypozyczalnia_samochodow.WyszukiwarkaSam.resources
