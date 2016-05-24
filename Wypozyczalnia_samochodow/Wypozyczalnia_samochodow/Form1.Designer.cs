@@ -75,6 +75,7 @@
             this.buttonLog.TabIndex = 4;
             this.buttonLog.Text = "Zaloguj";
             this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Click += new System.EventHandler(this.buttonLog_Click);
             // 
             // Form1
             // 

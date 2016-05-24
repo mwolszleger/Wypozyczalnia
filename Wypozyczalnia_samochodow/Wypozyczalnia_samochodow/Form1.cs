@@ -17,5 +17,11 @@ namespace Wypozyczalnia_samochodow
             InitializeComponent();
         }
 
+        private void buttonLog_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.Show();
+        }
+
     }
 }
