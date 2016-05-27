@@ -16,5 +16,20 @@ namespace Wypozyczalnia_samochodow
         {
             InitializeComponent();
         }
+        public event EventHandler Closing;
+        protected virtual void OnClosing(EventArgs e)
+        {
+            EventHandler handler = Closing;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OnClosing(new EventArgs());
+            Visible = false;
+        }
     }
 }
