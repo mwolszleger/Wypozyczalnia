@@ -25,19 +25,11 @@ namespace Wypozyczalnia_samochodow
             Close();
         }
         private Control[] menuItems;
-        public event EventHandler LoggingOut;
-        protected virtual void OnLoggingOut(EventArgs e)
-        {
-            EventHandler handler = LoggingOut;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-        }
+       
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            OnLoggingOut(new EventArgs());
+           
             wyszukiwarkaSam1.closeWindows();
         }
         private void setMenuVisibility(bool val)

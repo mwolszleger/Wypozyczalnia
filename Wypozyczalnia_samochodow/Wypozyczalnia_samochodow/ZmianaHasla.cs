@@ -37,6 +37,13 @@ namespace Wypozyczalnia_samochodow
         {
             OnClosing(new EventArgs());
             Visible = false;
+            clear();
+        }
+        private void clear()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
         }
     }
 }

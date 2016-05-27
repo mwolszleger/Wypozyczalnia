@@ -17,17 +17,23 @@ namespace Wypozyczalnia_samochodow
         {
             InitializeComponent();
         }
-        void newUser(object sender, EventArgs e)
+        private void newUser(object sender, EventArgs e)
         {
-            Show();          
+            Show();       
             
         }
         private void buttonLog_Click(object sender, EventArgs e)
         {
             f = new Form2();
-            f.LoggingOut += newUser;
+            f.FormClosed += newUser;
             f.Show();
             Hide();
+            clear();
+        }
+        private void clear()
+        {
+            textBoxLogin.Text = "";
+            textBoxPassword.Text = "";
         }
 
     }
