@@ -31,5 +31,31 @@ namespace Wypozyczalnia_samochodow
             OnClosing(new EventArgs());
             Visible = false;
         }
+        private List<Form3> CarWindows = new List<Form3>();
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var temp = new Form3();
+            temp.newCar = true;
+            temp.Show();
+            CarWindows.Add(temp);
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            var temp = new Form3();
+            temp.newCar = false;
+            temp.Show();
+            temp.FormClosing +=ClosedWindow;
+            CarWindows.Add(temp);
+        }
+        public void closeWindows()
+        {
+            for (int i = CarWindows.Count - 1; i >= 0; i--)
+                CarWindows[i].Close();
+        }
+        private void ClosedWindow(object sender, EventArgs e)
+        {
+            CarWindows.Remove((Form3)sender);
+        }
     }
 }

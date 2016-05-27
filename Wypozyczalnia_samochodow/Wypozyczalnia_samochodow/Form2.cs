@@ -38,6 +38,7 @@ namespace Wypozyczalnia_samochodow
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             OnLoggingOut(new EventArgs());
+            wyszukiwarkaSam1.closeWindows();
         }
         private void setMenuVisibility(bool val)
         {
