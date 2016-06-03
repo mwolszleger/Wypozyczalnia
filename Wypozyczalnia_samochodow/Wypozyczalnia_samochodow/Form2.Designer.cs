@@ -100,6 +100,7 @@
             this.wyszukiwarkaSam1.Size = new System.Drawing.Size(641, 341);
             this.wyszukiwarkaSam1.TabIndex = 6;
             this.wyszukiwarkaSam1.Visible = false;
+            this.wyszukiwarkaSam1.Load += new System.EventHandler(this.wyszukiwarkaSam1_Load);
             // 
             // Form2
             // 

@@ -17,6 +17,7 @@ namespace Wypozyczalnia_samochodow
             InitializeComponent();
         }
         public event EventHandler Closing;
+        private List<Car> foundCars;
         protected virtual void OnClosing(EventArgs e)
         {
             EventHandler handler = Closing;
@@ -56,6 +57,18 @@ namespace Wypozyczalnia_samochodow
         private void ClosedWindow(object sender, EventArgs e)
         {
             CarWindows.Remove((Form3)sender);
+        }
+
+      
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            foundCars = Rental.findCars(textBox1.Text, textBox2.Text);
+            foreach (var it in foundCars)
+            {
+                listBox1.Items.Add(it);
+            }
         }
     }
 }
