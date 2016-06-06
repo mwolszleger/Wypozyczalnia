@@ -30,8 +30,8 @@ namespace Wypozyczalnia_samochodow
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
             wyszukiwarkaSam1.closeWindows();
+            
         }
         private void setMenuVisibility(bool val)
         {
@@ -52,6 +52,7 @@ namespace Wypozyczalnia_samochodow
 
         private void button1_Click(object sender, EventArgs e)
         {
+            wyszukiwarkaSam1.searchingCars = true;
             wyszukiwarkaSam1.Visible = true;
             setMenuVisibility(false);
         }
@@ -59,6 +60,13 @@ namespace Wypozyczalnia_samochodow
         private void wyszukiwarkaSam1_Load(object sender, EventArgs e)
         {
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            wyszukiwarkaSam1.searchingCars = false;
+            wyszukiwarkaSam1.Visible = true;
+            setMenuVisibility(false);
         }
     }
 }

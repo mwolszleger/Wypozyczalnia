@@ -15,9 +15,30 @@ namespace Wypozyczalnia_samochodow
         public WyszukiwarkaSam()
         {
             InitializeComponent();
+            
         }
+ 
         public event EventHandler Closing;
         private List<Car> foundCars;
+        private List<Customer> foundCustomer;
+        private bool _searchingCars;
+        public bool searchingCars
+        {
+            set
+            {
+                _searchingCars = value;
+                label1.Visible = value;
+                label2.Visible = value;
+                label3.Visible = !value;
+                label4.Visible = !value;
+            }
+
+            get
+            {
+                return _searchingCars;
+            }
+        }
+       
         protected virtual void OnClosing(EventArgs e)
         {
             EventHandler handler = Closing;
@@ -26,40 +47,67 @@ namespace Wypozyczalnia_samochodow
                 handler(this, e);
             }
         }
-
+       
         private void button4_Click(object sender, EventArgs e)
         {
             OnClosing(new EventArgs());
             Visible = false;
         }
         private List<Form3> CarWindows = new List<Form3>();
+        private List<Form4> CustomerWindows = new List<Form4>();
         private void button2_Click(object sender, EventArgs e)
         {
-            var temp = new Form3();
-            temp.newCar = true;
-            temp.Show();
-            CarWindows.Add(temp);
+            if (_searchingCars == true)
+            {
+                var temp = new Form3();
+                temp.newCar = true;
+                temp.Show();
+                CarWindows.Add(temp);
+            }
+            else
+            {
+                var temp = new Form4();
+                temp.newCustomer = true;
+                temp.Show();
+                CustomerWindows.Add(temp);
+            }
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            var temp = new Form3();
-            temp.newCar = false;
-            temp.Show();
-            temp.FormClosing +=ClosedWindow;
-            CarWindows.Add(temp);
+            if (_searchingCars == true)
+            {
+                var temp = new Form3();
+                temp.newCar = false;
+                temp.Show();
+                temp.FormClosing += ClosedCarWindow;
+                CarWindows.Add(temp);
+            }
+            else
+            {
+                var temp = new Form4();
+                temp.newCustomer = false;
+                temp.Show();
+                temp.FormClosing += ClosedCustomerWindows;
+                CustomerWindows.Add(temp);
+            }
         }
         public void closeWindows()
         {
             for (int i = CarWindows.Count - 1; i >= 0; i--)
                 CarWindows[i].Close();
+            for (int i = CustomerWindows.Count - 1; i >= 0; i--)
+                CustomerWindows[i].Close();
         }
-        private void ClosedWindow(object sender, EventArgs e)
+        private void ClosedCarWindow(object sender, EventArgs e)
         {
             CarWindows.Remove((Form3)sender);
         }
 
-      
+        private void ClosedCustomerWindows(object sender, EventArgs e)
+        {
+            CustomerWindows.Remove((Form4)sender);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -73,7 +121,9 @@ namespace Wypozyczalnia_samochodow
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            listBox1.Items.Clear();
+            textBox1.Text = " ";
+            textBox2.Text = " ";
         }
     }
 }

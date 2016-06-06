@@ -45,21 +45,6 @@ namespace Wypozyczalnia_samochodow
                 DBConnectionMySql.CloseConnection(conn);
             }
         }
-        public static int NewCarId()
-        {
-            int id = 0;
-            foreach (var it in cars)
-            {
-                if (it.id > id)
-                    id = it.id;                
-            }
-            return ++id;
-        }
-        public static void addCar(Car c)
-        {
-            cars.Add(c);
-            DBConnectionMySql.addCar(c);
-        }
 
     }
 

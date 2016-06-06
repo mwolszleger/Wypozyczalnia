@@ -64,6 +64,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Klienci";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -87,7 +88,7 @@
             // 
             // zmianaHasla1
             // 
-            this.zmianaHasla1.Location = new System.Drawing.Point(163, 46);
+            this.zmianaHasla1.Location = new System.Drawing.Point(126, 124);
             this.zmianaHasla1.Name = "zmianaHasla1";
             this.zmianaHasla1.Size = new System.Drawing.Size(413, 161);
             this.zmianaHasla1.TabIndex = 5;
@@ -95,7 +96,7 @@
             // 
             // wyszukiwarkaSam1
             // 
-            this.wyszukiwarkaSam1.Location = new System.Drawing.Point(45, -3);
+            this.wyszukiwarkaSam1.Location = new System.Drawing.Point(32, 12);
             this.wyszukiwarkaSam1.Name = "wyszukiwarkaSam1";
             this.wyszukiwarkaSam1.Size = new System.Drawing.Size(641, 341);
             this.wyszukiwarkaSam1.TabIndex = 6;
