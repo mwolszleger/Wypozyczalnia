@@ -12,7 +12,7 @@ namespace Wypozyczalnia_samochodow
     {
         private static List<Car> cars = new List<Car>();
         private static MySqlConnection conn;
-        public static List<Car> findCars(string brand,string model)
+        public static List<Car> findCars(string brand, string model)
         {
             var list = new List<Car>();
             foreach (var it in cars)
@@ -44,6 +44,21 @@ namespace Wypozyczalnia_samochodow
             {
                 DBConnectionMySql.CloseConnection(conn);
             }
+        }
+        public static int NewCarId()
+        {
+            int id = 0;
+            foreach (var it in cars)
+            {
+                if (it.id > id)
+                    id = it.id;
+            }
+            return ++id;
+        }
+        public static void addCar(Car c)
+        {
+            cars.Add(c);
+            DBConnectionMySql.addCar(c);
         }
 
     }

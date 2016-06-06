@@ -10,15 +10,20 @@ namespace Wypozyczalnia_samochodow
     {
         public int id { get; private set; }
         public string model { get; set; }
+        public Car(int id, Dictionary<string, string> d)
+        {
+            model = d["model"];
+            this.id = id;
+        }
         public Car(Dictionary<string, string> d)
         {
             model = d["model"];
-            id = Convert.ToInt32(d["id"]);
+            this.id = Rental.NewCarId();
         }
         public override string ToString()
         {
             return model;
         }
-       
+
     }
 }

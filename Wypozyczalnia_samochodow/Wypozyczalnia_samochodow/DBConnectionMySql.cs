@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Wypozyczalnia_samochodow
 {
@@ -12,9 +13,8 @@ namespace Wypozyczalnia_samochodow
         public static string Server { get; set; }
         public static string User { get; set; }
         public static string Passwd { private get; set; }
-
-
         public static uint Port { get; set; }
+        public static string FileName { get; set; }
         static DBConnectionMySql()
         {
             Server = "127.0.0.1";
@@ -37,6 +37,7 @@ namespace Wypozyczalnia_samochodow
 
         }
 
+
         public static void OpenConnection(MySqlConnection conn)
         {
             conn.Open();
@@ -58,17 +59,25 @@ namespace Wypozyczalnia_samochodow
 
             while (dr.Read())
             {
-                var attributes = new Dictionary<string,string>();
-                attributes.Add("id", dr[0].ToString());
-                attributes.Add("model",dr[1].ToString());
-                cars.Add(new Car (attributes));
+                var attributes = new Dictionary<string, string>();
+                attributes.Add("model", dr[1].ToString());
+                cars.Add(new Car(Convert.ToInt32(dr[0]), attributes));
 
             }
             dr.Close();
             return cars;
 
         }
+        public static void AddQuerry(string s)
+        {
+            StreamWriter file = new StreamWriter("file.txt", true);
+            file.WriteLine(s);
+            file.Close();
+        }
+        public static void addCar(Car c)
+        {
+            AddQuerry("insert into cars values(" + c.id + "," + c.model + ");");
+        }
 
-        
     }
 }
