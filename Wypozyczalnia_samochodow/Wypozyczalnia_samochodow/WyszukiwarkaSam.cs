@@ -75,9 +75,9 @@ namespace Wypozyczalnia_samochodow
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            if (_searchingCars == true)
+            if (searchingCars == true)
             {
-                var temp = new Form3();
+                var temp = new Form3(foundCars[listBox1.SelectedIndex]);
                 temp.newCar = false;
                 temp.Show();
                 temp.FormClosing += ClosedCarWindow;

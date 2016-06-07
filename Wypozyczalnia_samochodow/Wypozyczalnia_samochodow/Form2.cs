@@ -18,7 +18,26 @@ namespace Wypozyczalnia_samochodow
             menuItems = new Control[] { button1, button2, button3, button4, label1 };
             zmianaHasla1.Closing += backToMenu;
             wyszukiwarkaSam1.Closing += backToMenu;
-            Rental.LoadCars(); 
+
+            Rental.clearEverything();
+            try
+            {
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            try
+            {
+                Rental.LoadCars();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -31,6 +50,7 @@ namespace Wypozyczalnia_samochodow
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             wyszukiwarkaSam1.closeWindows();
+            Rental.SaveToBase();
             
         }
         private void setMenuVisibility(bool val)

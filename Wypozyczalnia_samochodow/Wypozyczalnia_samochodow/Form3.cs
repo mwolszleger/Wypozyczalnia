@@ -14,6 +14,9 @@ namespace Wypozyczalnia_samochodow
     {
         private bool _newCar;
         private bool _readOnly;
+        private bool edition { get; set; }
+        
+        private Car car;
         public bool newCar
         {
             get
@@ -58,7 +61,14 @@ namespace Wypozyczalnia_samochodow
         {
             InitializeComponent();
         }
+        public Form3(Car car)
+        {
+            InitializeComponent();
+            this.car = car;
 
+            textBox2.Text = car.model;
+
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             Close();
@@ -70,17 +80,26 @@ namespace Wypozyczalnia_samochodow
             readOnly = false;
             button1.Visible = false;
             button2.Visible = false;
+            edition = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!newCar)
+            if (!newCar&&edition)
             {
                 readOnly = true;
                 button1.Visible = true;
                 button2.Visible = true;
                 label10.Visible = false;
                 textBox9.Visible = false;
+                edition = false;
+            }
+            if (newCar)
+            {
+                Dictionary<string, string> d=new Dictionary<string, string>();
+                d.Add("model", textBox2.Text);
+                Car car = new Car(d);
+                Rental.addCar(car);
             }
         }
 
@@ -90,5 +109,7 @@ namespace Wypozyczalnia_samochodow
             label10.Visible = true;
             textBox9.Visible = true;
         }
+
+       
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Wypozyczalnia_samochodow
 {
@@ -76,8 +77,40 @@ namespace Wypozyczalnia_samochodow
         }
         public static void addCar(Car c)
         {
-            AddQuerry("insert into cars values(" + c.id + "," + c.model + ");");
+            AddQuerry("insert into auta values(" + c.id + ",\"" + c.model + "\");");
         }
+        public static void updateCar(Car c)
+        {
+            AddQuerry("update auta set model=\""+c.model+"\" where id="+c.id+";");
+        }
+        public static void ExecuteQuerries(MySqlConnection conn)
+        {
+                      
+            string line;
+            if (!File.Exists("file.txt"))
+                return;
+            try
+            {
+                StreamReader file = new System.IO.StreamReader("file.txt");
+                while ((line = file.ReadLine()) != null)
+                {
+                    MySqlCommand command = new MySqlCommand(line, conn);
 
+                    MySqlDataReader dr = command.ExecuteReader();
+                    dr.Close();
+                }
+
+                file.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                File.Delete("file.txt");
+            }
+        }
+      
     }
 }

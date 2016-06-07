@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia_samochodow
 {
-    class Car
+    public class Car
     {
         public int id { get; private set; }
         public string model { get; set; }

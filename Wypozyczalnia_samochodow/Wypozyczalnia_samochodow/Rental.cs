@@ -38,13 +38,31 @@ namespace Wypozyczalnia_samochodow
             }
             catch (MySqlException myexc)
             {
-                MessageBox.Show(myexc.Message);
+                throw myexc;
             }
             finally
             {
                 DBConnectionMySql.CloseConnection(conn);
             }
         }
+        public static void SaveToBase()
+        {
+            var conn = DBConnectionMySql.CreatConnection("wypozyczalnia");
+            try
+            {
+                DBConnectionMySql.OpenConnection(conn);
+                DBConnectionMySql.ExecuteQuerries(conn);
+            }
+            catch (MySqlException myexc)
+            {
+                throw (myexc);
+            }
+            finally
+            {
+                DBConnectionMySql.CloseConnection(conn);
+            }
+        }
+
         public static int NewCarId()
         {
             int id = 0;
@@ -59,6 +77,15 @@ namespace Wypozyczalnia_samochodow
         {
             cars.Add(c);
             DBConnectionMySql.addCar(c);
+        }
+        public static void updateCar(Car c)
+        {
+            
+            DBConnectionMySql.updateCar(c);
+        }
+        public static void clearEverything()
+        {
+            cars.Clear();
         }
 
     }
