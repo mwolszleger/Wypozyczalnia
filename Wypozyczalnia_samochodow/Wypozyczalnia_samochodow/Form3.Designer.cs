@@ -135,6 +135,7 @@
             this.textBoxBrand.Name = "textBoxBrand";
             this.textBoxBrand.Size = new System.Drawing.Size(92, 20);
             this.textBoxBrand.TabIndex = 8;
+            this.textBoxBrand.TextChanged += new System.EventHandler(this.stringValidation);
             this.textBoxBrand.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxModel
@@ -143,6 +144,7 @@
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(129, 20);
             this.textBoxModel.TabIndex = 9;
+            this.textBoxModel.TextChanged += new System.EventHandler(this.stringValidation);
             this.textBoxModel.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxYear
@@ -151,6 +153,7 @@
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(56, 20);
             this.textBoxYear.TabIndex = 10;
+            this.textBoxYear.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxYear.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxPojemnosc
@@ -159,7 +162,7 @@
             this.textBoxPojemnosc.Name = "textBoxPojemnosc";
             this.textBoxPojemnosc.Size = new System.Drawing.Size(70, 20);
             this.textBoxPojemnosc.TabIndex = 12;
-            this.textBoxPojemnosc.TextChanged += new System.EventHandler(this.ValidateNumber);
+            this.textBoxPojemnosc.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxPojemnosc.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxColor
@@ -168,6 +171,7 @@
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.Size = new System.Drawing.Size(134, 20);
             this.textBoxColor.TabIndex = 13;
+            this.textBoxColor.TextChanged += new System.EventHandler(this.stringValidation);
             this.textBoxColor.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxPrice
@@ -176,7 +180,7 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(92, 20);
             this.textBoxPrice.TabIndex = 15;
-            this.textBoxPrice.TextChanged += new System.EventHandler(this.ValidateNumber);
+            this.textBoxPrice.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxPrice.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // buttonLend
@@ -224,9 +228,8 @@
             this.labelMessage.AutoSize = true;
             this.labelMessage.Location = new System.Drawing.Point(12, 223);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(107, 13);
+            this.labelMessage.Size = new System.Drawing.Size(0, 13);
             this.labelMessage.TabIndex = 20;
-            this.labelMessage.Text = "Tutaj jakiś komunikat";
             // 
             // textBoxUserId
             // 
@@ -235,7 +238,7 @@
             this.textBoxUserId.Size = new System.Drawing.Size(89, 20);
             this.textBoxUserId.TabIndex = 22;
             this.textBoxUserId.Visible = false;
-            this.textBoxUserId.TabIndexChanged += new System.EventHandler(this.ValidateNumber);
+            this.textBoxUserId.TabIndexChanged += new System.EventHandler(this.numberValidation);
             this.textBoxUserId.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // labelUseId
@@ -254,6 +257,7 @@
             this.textBoxNumber.Name = "textBoxNumber";
             this.textBoxNumber.Size = new System.Drawing.Size(92, 20);
             this.textBoxNumber.TabIndex = 24;
+            this.textBoxNumber.TextChanged += new System.EventHandler(this.registryNumberValidation);
             // 
             // label11
             // 

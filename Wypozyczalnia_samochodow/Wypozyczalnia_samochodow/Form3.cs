@@ -100,15 +100,15 @@ namespace Wypozyczalnia_samochodow
         private void resetViewAfterEdition()
         {
             ReadOnly = true;
-                buttonLend.Visible = true;
-                buttonEdit.Visible = true;
-                labelUseId.Visible = false;
-                textBoxUserId.Visible = false;
-                edition = false;
-            }
+            buttonLend.Visible = true;
+            buttonEdit.Visible = true;
+            labelUseId.Visible = false;
+            textBoxUserId.Visible = false;
+            edition = false;
+        }
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-           
+
             ReadOnly = false;
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
@@ -117,7 +117,8 @@ namespace Wypozyczalnia_samochodow
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (!newCar&&edition)
+            clearMessage();
+            if (!newCar && edition)
             {
                 //edycja
                 if (!CheckIfNotEmpty())
@@ -134,13 +135,22 @@ namespace Wypozyczalnia_samochodow
             }
             if (newCar)
             {
-                Dictionary<string, string> d=new Dictionary<string, string>();
-                d.Add("model", textBoxModel.Text);
-                Car car = new Car(d);
+                if (!CheckIfNotEmpty())
+                {
+                    labelMessage.Text = "Nie podano wszystkich danych";
+                    return;
+                }
+
+                Car car = new Car(getCarData());
                 Rental.addCar(car);
             }
         }
-
+        private Dictionary<string, string> getCarData()
+        {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("model", textBoxModel.Text);
+            return d;
+        }
         private void buttonLend_Click(object sender, EventArgs e)
         {
             buttonEdit.Visible = false;
@@ -149,19 +159,28 @@ namespace Wypozyczalnia_samochodow
             transaction = true;
         }
 
-        private void ValidateNumber(object sender, EventArgs e)
+        private void numberValidation(object sender, EventArgs e)
         {
-            //do poprawy, jeszcze mogą być ułamki
-            //trzeba rozdzielic walidację liczb i nru użytkownika (w drugim tylko calkowite)
-            string text = ((TextBox)sender).Text;
-            if (ReadOnly||text == "")
+            if (ReadOnly)
                 return;
-            if (text[text.Length - 1] < '0' || text[text.Length - 1] > '9')
-                ((TextBox)sender).Text = ((TextBox)sender).Text.Substring(0, text.Length - 1);
+            for (int i = 0; i < ((TextBox)sender).Text.Length; i++)
+            {
+                ((TextBox)sender).Text = ((TextBox)sender).Text.ToUpper();
+                char z = ((TextBox)sender).Text[i];
+                if (z >= '0' && z <= '9')
+                    continue;
+                else
+                {
+                    ((TextBox)sender).Text = ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--, 1);
+
+                }
+            }
+            //ustawia kursor na koncu
+           ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
         }
         private bool CheckIfNotEmpty()
         {
-            return textBoxBrand.Text != "" && textBoxYear.Text != "" && textBoxModel.Text != "" && textBoxPojemnosc.Text != "" && textBoxNumber.Text != "" && textBoxPrice.Text != "" && textBoxColor.Text != "" &&comboBoxClima.SelectedIndex>=0&&comboBoxFuel.SelectedIndex>=0;
+            return textBoxBrand.Text != "" && textBoxYear.Text != "" && textBoxModel.Text != "" && textBoxPojemnosc.Text != "" && textBoxNumber.Text != "" && textBoxPrice.Text != "" && textBoxColor.Text != "" && comboBoxClima.SelectedIndex >= 0 && comboBoxFuel.SelectedIndex >= 0;
         }
         private void clearMessage()
         {
@@ -172,5 +191,46 @@ namespace Wypozyczalnia_samochodow
         {
             clearMessage();
         }
+
+        private void stringValidation(object sender, EventArgs e)
+        {
+            //na pewno nie moze byc sredników i cudzysłowów, bo popsuje się w bazie, pewnie jakieś jeszcze ograniczenia tez powinny być
+           
+            if (ReadOnly)
+                return;
+            for (int i = 0; i < ((TextBox)sender).Text.Length; i++)
+            {
+                char z = ((TextBox)sender).Text[i];
+                if (z == '\"' || z == ';')
+                    ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--,1);
+            }
+           //ustawia kursor na koncu
+           ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
+
+        }
+
+        private void registryNumberValidation(object sender, EventArgs e)
+        {
+           
+            if (ReadOnly)
+                return;
+            for (int i = 0; i < ((TextBox)sender).Text.Length; i++)
+            {
+                ((TextBox)sender).Text = ((TextBox)sender).Text.ToUpper();
+                char z = ((TextBox)sender).Text[i];
+                if (z >= 'A' && z <= 'Z')
+                    continue;
+                else if (z >= '0' && z <= '9')
+                    continue;
+                else
+                {
+                    ((TextBox)sender).Text = ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--, 1);                    
+                }
+
+                
+            }
+            //ustawia kursor na koncu
+           ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
+        }
     }
-}
+    }

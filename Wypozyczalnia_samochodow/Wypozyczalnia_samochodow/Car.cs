@@ -12,13 +12,22 @@ namespace Wypozyczalnia_samochodow
         public string model { get; set; }
         public Car(int id, Dictionary<string, string> d)
         {
-            model = d["model"];
+            setCarData(d);
             this.id = id;
         }
         public Car(Dictionary<string, string> d)
         {
-            model = d["model"];
+
+            setCarData(d);
             this.id = Rental.NewCarId();
+        }
+        public void updateCar(Dictionary<string, string> d)
+        {
+
+        }
+        private void setCarData(Dictionary<string, string> d)
+        {
+            model = d["model"];
         }
         public override string ToString()
         {
