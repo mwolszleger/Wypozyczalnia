@@ -22,7 +22,7 @@ namespace Wypozyczalnia_samochodow
             Rental.clearEverything();
             try
             {
-                
+                Rental.SaveToBase();
             }
             catch (Exception e)
             {

@@ -36,25 +36,25 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBoxBrand = new System.Windows.Forms.TextBox();
+            this.textBoxModel = new System.Windows.Forms.TextBox();
+            this.textBoxYear = new System.Windows.Forms.TextBox();
+            this.textBoxPojemnosc = new System.Windows.Forms.TextBox();
+            this.textBoxColor = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.buttonLend = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonEnd = new System.Windows.Forms.Button();
+            this.labelMessage = new System.Windows.Forms.Label();
+            this.textBoxUserId = new System.Windows.Forms.TextBox();
+            this.labelUseId = new System.Windows.Forms.Label();
+            this.textBoxNumber = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBoxAvailaible = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxFuel = new System.Windows.Forms.ComboBox();
+            this.comboBoxClima = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -129,121 +129,124 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "Cena za dobę:";
             // 
-            // textBox1
+            // textBoxBrand
             // 
-            this.textBox1.Location = new System.Drawing.Point(58, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(92, 20);
-            this.textBox1.TabIndex = 8;
+            this.textBoxBrand.Location = new System.Drawing.Point(58, 30);
+            this.textBoxBrand.Name = "textBoxBrand";
+            this.textBoxBrand.Size = new System.Drawing.Size(92, 20);
+            this.textBoxBrand.TabIndex = 8;
             // 
-            // textBox2
+            // textBoxModel
             // 
-            this.textBox2.Location = new System.Drawing.Point(229, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(129, 20);
-            this.textBox2.TabIndex = 9;
+            this.textBoxModel.Location = new System.Drawing.Point(229, 30);
+            this.textBoxModel.Name = "textBoxModel";
+            this.textBoxModel.Size = new System.Drawing.Size(129, 20);
+            this.textBoxModel.TabIndex = 9;
             // 
-            // textBox3
+            // textBoxYear
             // 
-            this.textBox3.Location = new System.Drawing.Point(94, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(56, 20);
-            this.textBox3.TabIndex = 10;
+            this.textBoxYear.Location = new System.Drawing.Point(94, 64);
+            this.textBoxYear.Name = "textBoxYear";
+            this.textBoxYear.Size = new System.Drawing.Size(56, 20);
+            this.textBoxYear.TabIndex = 10;
             // 
-            // textBox5
+            // textBoxPojemnosc
             // 
-            this.textBox5.Location = new System.Drawing.Point(80, 97);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(70, 20);
-            this.textBox5.TabIndex = 12;
+            this.textBoxPojemnosc.Location = new System.Drawing.Point(80, 97);
+            this.textBoxPojemnosc.Name = "textBoxPojemnosc";
+            this.textBoxPojemnosc.Size = new System.Drawing.Size(70, 20);
+            this.textBoxPojemnosc.TabIndex = 12;
+            this.textBoxPojemnosc.TextChanged += new System.EventHandler(this.ValidateNumber);
             // 
-            // textBox6
+            // textBoxColor
             // 
-            this.textBox6.Location = new System.Drawing.Point(224, 97);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(134, 20);
-            this.textBox6.TabIndex = 13;
+            this.textBoxColor.Location = new System.Drawing.Point(224, 97);
+            this.textBoxColor.Name = "textBoxColor";
+            this.textBoxColor.Size = new System.Drawing.Size(134, 20);
+            this.textBoxColor.TabIndex = 13;
             // 
-            // textBox8
+            // textBoxPrice
             // 
-            this.textBox8.Location = new System.Drawing.Point(266, 129);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(92, 20);
-            this.textBox8.TabIndex = 15;
+            this.textBoxPrice.Location = new System.Drawing.Point(266, 129);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(92, 20);
+            this.textBoxPrice.TabIndex = 15;
+            this.textBoxPrice.TextChanged += new System.EventHandler(this.ValidateNumber);
             // 
-            // button1
+            // buttonLend
             // 
-            this.button1.Location = new System.Drawing.Point(380, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 24);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Wypożycz";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonLend.Location = new System.Drawing.Point(380, 26);
+            this.buttonLend.Name = "buttonLend";
+            this.buttonLend.Size = new System.Drawing.Size(89, 24);
+            this.buttonLend.TabIndex = 16;
+            this.buttonLend.Text = "Wypożycz";
+            this.buttonLend.UseVisualStyleBackColor = true;
+            this.buttonLend.Click += new System.EventHandler(this.buttonLend_Click);
             // 
-            // button2
+            // buttonEdit
             // 
-            this.button2.Location = new System.Drawing.Point(380, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 24);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Edytuj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonEdit.Location = new System.Drawing.Point(380, 61);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(89, 24);
+            this.buttonEdit.TabIndex = 17;
+            this.buttonEdit.Text = "Edytuj";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // button3
+            // buttonOK
             // 
-            this.button3.Location = new System.Drawing.Point(380, 94);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 24);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Zatwierdź";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonOK.Location = new System.Drawing.Point(380, 94);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(89, 24);
+            this.buttonOK.TabIndex = 18;
+            this.buttonOK.Text = "Zatwierdź";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // button4
+            // buttonEnd
             // 
-            this.button4.Location = new System.Drawing.Point(380, 126);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 24);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "Zakończ";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonEnd.Location = new System.Drawing.Point(380, 126);
+            this.buttonEnd.Name = "buttonEnd";
+            this.buttonEnd.Size = new System.Drawing.Size(89, 24);
+            this.buttonEnd.TabIndex = 19;
+            this.buttonEnd.Text = "Zakończ";
+            this.buttonEnd.UseVisualStyleBackColor = true;
+            this.buttonEnd.Click += new System.EventHandler(this.buttonEnd_Click);
             // 
-            // label9
+            // labelMessage
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 223);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Tutaj jakiś komunikat";
+            this.labelMessage.AutoSize = true;
+            this.labelMessage.Location = new System.Drawing.Point(12, 223);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(107, 13);
+            this.labelMessage.TabIndex = 20;
+            this.labelMessage.Text = "Tutaj jakiś komunikat";
             // 
-            // textBox9
+            // textBoxUserId
             // 
-            this.textBox9.Location = new System.Drawing.Point(118, 192);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(89, 20);
-            this.textBox9.TabIndex = 22;
-            this.textBox9.Visible = false;
+            this.textBoxUserId.Location = new System.Drawing.Point(118, 192);
+            this.textBoxUserId.Name = "textBoxUserId";
+            this.textBoxUserId.Size = new System.Drawing.Size(89, 20);
+            this.textBoxUserId.TabIndex = 22;
+            this.textBoxUserId.Visible = false;
+            this.textBoxUserId.TabIndexChanged += new System.EventHandler(this.ValidateNumber);
             // 
-            // label10
+            // labelUseId
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 195);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Numer użytkownika:";
-            this.label10.Visible = false;
+            this.labelUseId.AutoSize = true;
+            this.labelUseId.Location = new System.Drawing.Point(12, 195);
+            this.labelUseId.Name = "labelUseId";
+            this.labelUseId.Size = new System.Drawing.Size(103, 13);
+            this.labelUseId.TabIndex = 21;
+            this.labelUseId.Text = "Numer użytkownika:";
+            this.labelUseId.Visible = false;
             // 
-            // textBox10
+            // textBoxNumber
             // 
-            this.textBox10.Location = new System.Drawing.Point(266, 163);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(92, 20);
-            this.textBox10.TabIndex = 24;
+            this.textBoxNumber.Location = new System.Drawing.Point(266, 163);
+            this.textBoxNumber.Name = "textBoxNumber";
+            this.textBoxNumber.Size = new System.Drawing.Size(92, 20);
+            this.textBoxNumber.TabIndex = 24;
             // 
             // label11
             // 
@@ -254,13 +257,13 @@
             this.label11.TabIndex = 23;
             this.label11.Text = "Nr rejestracyjny:";
             // 
-            // textBox11
+            // textBoxAvailaible
             // 
-            this.textBox11.Location = new System.Drawing.Point(80, 163);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(70, 20);
-            this.textBox11.TabIndex = 26;
+            this.textBoxAvailaible.Location = new System.Drawing.Point(80, 163);
+            this.textBoxAvailaible.Name = "textBoxAvailaible";
+            this.textBoxAvailaible.ReadOnly = true;
+            this.textBoxAvailaible.Size = new System.Drawing.Size(70, 20);
+            this.textBoxAvailaible.TabIndex = 26;
             // 
             // label12
             // 
@@ -271,53 +274,53 @@
             this.label12.TabIndex = 25;
             this.label12.Text = "Dostępny:";
             // 
-            // comboBox1
+            // comboBoxFuel
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxFuel.FormattingEnabled = true;
+            this.comboBoxFuel.Items.AddRange(new object[] {
             "benzyna",
             "diesel",
             "benzyna+LPG"});
-            this.comboBox1.Location = new System.Drawing.Point(266, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 21);
-            this.comboBox1.TabIndex = 27;
+            this.comboBoxFuel.Location = new System.Drawing.Point(266, 59);
+            this.comboBoxFuel.Name = "comboBoxFuel";
+            this.comboBoxFuel.Size = new System.Drawing.Size(92, 21);
+            this.comboBoxFuel.TabIndex = 27;
             // 
-            // comboBox2
+            // comboBoxClima
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBoxClima.FormattingEnabled = true;
+            this.comboBoxClima.Items.AddRange(new object[] {
             "tak",
             "nie"});
-            this.comboBox2.Location = new System.Drawing.Point(80, 123);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(69, 21);
-            this.comboBox2.TabIndex = 28;
+            this.comboBoxClima.Location = new System.Drawing.Point(80, 123);
+            this.comboBoxClima.Name = "comboBoxClima";
+            this.comboBoxClima.Size = new System.Drawing.Size(69, 21);
+            this.comboBoxClima.TabIndex = 28;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 253);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.comboBoxClima);
+            this.Controls.Add(this.comboBoxFuel);
+            this.Controls.Add(this.textBoxAvailaible);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.textBoxNumber);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxUserId);
+            this.Controls.Add(this.labelUseId);
+            this.Controls.Add(this.labelMessage);
+            this.Controls.Add(this.buttonEnd);
+            this.Controls.Add(this.buttonOK);
+            this.Controls.Add(this.buttonEdit);
+            this.Controls.Add(this.buttonLend);
+            this.Controls.Add(this.textBoxPrice);
+            this.Controls.Add(this.textBoxColor);
+            this.Controls.Add(this.textBoxPojemnosc);
+            this.Controls.Add(this.textBoxYear);
+            this.Controls.Add(this.textBoxModel);
+            this.Controls.Add(this.textBoxBrand);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -343,24 +346,24 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBoxBrand;
+        private System.Windows.Forms.TextBox textBoxModel;
+        private System.Windows.Forms.TextBox textBoxYear;
+        private System.Windows.Forms.TextBox textBoxPojemnosc;
+        private System.Windows.Forms.TextBox textBoxColor;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.Button buttonLend;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonEnd;
+        private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.TextBox textBoxUserId;
+        private System.Windows.Forms.Label labelUseId;
+        private System.Windows.Forms.TextBox textBoxNumber;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBoxAvailaible;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxFuel;
+        private System.Windows.Forms.ComboBox comboBoxClima;
     }
 }
