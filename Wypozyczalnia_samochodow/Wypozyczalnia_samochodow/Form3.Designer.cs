@@ -135,6 +135,7 @@
             this.textBoxBrand.Name = "textBoxBrand";
             this.textBoxBrand.Size = new System.Drawing.Size(92, 20);
             this.textBoxBrand.TabIndex = 8;
+            this.textBoxBrand.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxModel
             // 
@@ -142,6 +143,7 @@
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(129, 20);
             this.textBoxModel.TabIndex = 9;
+            this.textBoxModel.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxYear
             // 
@@ -149,6 +151,7 @@
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(56, 20);
             this.textBoxYear.TabIndex = 10;
+            this.textBoxYear.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxPojemnosc
             // 
@@ -157,6 +160,7 @@
             this.textBoxPojemnosc.Size = new System.Drawing.Size(70, 20);
             this.textBoxPojemnosc.TabIndex = 12;
             this.textBoxPojemnosc.TextChanged += new System.EventHandler(this.ValidateNumber);
+            this.textBoxPojemnosc.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxColor
             // 
@@ -164,6 +168,7 @@
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.Size = new System.Drawing.Size(134, 20);
             this.textBoxColor.TabIndex = 13;
+            this.textBoxColor.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxPrice
             // 
@@ -172,6 +177,7 @@
             this.textBoxPrice.Size = new System.Drawing.Size(92, 20);
             this.textBoxPrice.TabIndex = 15;
             this.textBoxPrice.TextChanged += new System.EventHandler(this.ValidateNumber);
+            this.textBoxPrice.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // buttonLend
             // 
@@ -230,6 +236,7 @@
             this.textBoxUserId.TabIndex = 22;
             this.textBoxUserId.Visible = false;
             this.textBoxUserId.TabIndexChanged += new System.EventHandler(this.ValidateNumber);
+            this.textBoxUserId.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // labelUseId
             // 
@@ -285,6 +292,7 @@
             this.comboBoxFuel.Name = "comboBoxFuel";
             this.comboBoxFuel.Size = new System.Drawing.Size(92, 21);
             this.comboBoxFuel.TabIndex = 27;
+            this.comboBoxFuel.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // comboBoxClima
             // 
@@ -296,6 +304,7 @@
             this.comboBoxClima.Name = "comboBoxClima";
             this.comboBoxClima.Size = new System.Drawing.Size(69, 21);
             this.comboBoxClima.TabIndex = 28;
+            this.comboBoxClima.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // Form3
             // 

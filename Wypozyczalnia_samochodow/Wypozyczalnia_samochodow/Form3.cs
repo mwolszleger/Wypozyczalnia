@@ -76,6 +76,7 @@ namespace Wypozyczalnia_samochodow
         }
         private void buttonEnd_Click(object sender, EventArgs e)
         {
+            clearMessage();
             if (!newCar && edition)
             {
                 resetViewAfterEdition();
@@ -118,6 +119,13 @@ namespace Wypozyczalnia_samochodow
         {
             if (!newCar&&edition)
             {
+                //edycja
+                if (!CheckIfNotEmpty())
+                {
+                    labelMessage.Text = "Nie podano wszystkich danych";
+                    return;
+                }
+
                 resetViewAfterEdition();
             }
             if (!newCar && transaction)
@@ -153,7 +161,16 @@ namespace Wypozyczalnia_samochodow
         }
         private bool CheckIfNotEmpty()
         {
-            return textBoxBrand.Text != "" && textBoxYear.Text != "" && textBoxModel.Text != "" && textBoxPojemnosc.Text != "" && textBoxNumber.Text != "" && textBoxPrice.Text != "" && textBoxColor.Text != "" ;
+            return textBoxBrand.Text != "" && textBoxYear.Text != "" && textBoxModel.Text != "" && textBoxPojemnosc.Text != "" && textBoxNumber.Text != "" && textBoxPrice.Text != "" && textBoxColor.Text != "" &&comboBoxClima.SelectedIndex>=0&&comboBoxFuel.SelectedIndex>=0;
+        }
+        private void clearMessage()
+        {
+            labelMessage.Text = "";
+        }
+
+        private void textBoxBrand_Enter(object sender, EventArgs e)
+        {
+            clearMessage();
         }
     }
 }
