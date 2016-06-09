@@ -80,6 +80,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rental.cs" />
+    <Compile Include="Transaction.cs" />
     <Compile Include="WyszukiwarkaSam.cs">
       <SubType>UserControl</SubType>
     </Compile>

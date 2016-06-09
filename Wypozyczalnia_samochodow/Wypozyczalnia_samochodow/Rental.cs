@@ -11,7 +11,9 @@ namespace Wypozyczalnia_samochodow
     static class Rental
     {
         private static List<Car> cars = new List<Car>();
+        private static List<Transaction> transactions = new List<Transaction>();
         private static MySqlConnection conn;
+
         public static List<Car> findCars(string brand, string model)
         {
             var list = new List<Car>();
@@ -86,7 +88,20 @@ namespace Wypozyczalnia_samochodow
         public static void clearEverything()
         {
             cars.Clear();
+            transactions.Clear();
         }
+        public static bool isCarAvailaible(Car c)
+        {
+            for (int i = transactions.Count - 1; i >= 0; i--)
+            {
+                if (transactions[i].car == c)
+                {
+                    return transactions[i].isFinished();
+                }
+            }
+            return true;
+        }
+
 
     }
 

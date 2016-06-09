@@ -27,10 +27,12 @@ namespace Wypozyczalnia_samochodow
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                
             }
             try
             {
                 Rental.LoadCars();
+                
             }
             catch (Exception e)
             {
