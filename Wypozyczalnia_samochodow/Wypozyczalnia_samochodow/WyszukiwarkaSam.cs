@@ -111,13 +111,22 @@ namespace Wypozyczalnia_samochodow
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (searchingCars)
+            if (searchingCars==true)
             {
                 listBox1.Items.Clear();
                 foundCars = Rental.findCars(textBox1.Text, textBox2.Text);
                 foreach (var it in foundCars)
                 {
                     listBox1.Items.Add(it.ToString());
+                }
+            }
+            else
+            {
+                listBox1.Items.Clear();
+                foundCustomer = Rental.findCustomers(textBox1.Text, textBox2.Text);
+                foreach (var it in foundCustomer)
+                {
+                    listBox1.Items.Add(it);
                 }
             }
         }
