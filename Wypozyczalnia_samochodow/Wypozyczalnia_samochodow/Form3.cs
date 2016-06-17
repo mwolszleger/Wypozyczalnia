@@ -73,6 +73,27 @@ namespace Wypozyczalnia_samochodow
         private void setCarData()
         {
             textBoxModel.Text = car.model;
+            textBoxBrand.Text = car.brand;
+            textBoxPrice.Text = car.price.ToString();
+            textBoxYear.Text = car.year.ToString();
+            if(car.climatisation)
+                comboBoxClima.SelectedIndex = 0;
+            else
+                comboBoxClima.SelectedIndex = 1;
+            textBoxColor.Text = car.color;
+            textBoxPojemnosc.Text = car.engine.ToString();
+            textBoxNumber.Text = car.registration;
+            if (Rental.isCarAvailaible(car))
+                textBoxAvailaible.Text = "tak";
+            else
+                textBoxAvailaible.Text = "nie";
+            if(car.fuel==Fuels.Petrol)
+                comboBoxFuel.SelectedIndex = 0;
+            if (car.fuel == Fuels.Diesel)
+                comboBoxFuel.SelectedIndex = 1;
+            if (car.fuel == Fuels.Lpg)
+                comboBoxFuel.SelectedIndex = 2;
+
         }
         private void buttonEnd_Click(object sender, EventArgs e)
         {

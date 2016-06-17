@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections;
+using System.Globalization;
 
 namespace Wypozyczalnia_samochodow
 {
@@ -24,6 +26,21 @@ namespace Wypozyczalnia_samochodow
             Port = 3306;
 
         }
+        //nazwa tabeli z autami
+        private static readonly string CarsTableName = "cars";
+        //nazwy kolumn w tabeli z autami
+        private static readonly string CarIdColumnName = "id";
+        private static readonly string BrandColumnName = "brand";
+        private static readonly string ModelColumnName = "model";
+        private static readonly string YearColumnName = "year_of_construction";
+        private static readonly string EngineColumnName = "engine_displacement";
+        private static readonly string ClimatisationColumnName = "climatisation";
+        private static readonly string FuelColumnName = "fuel";
+        private static readonly string ColorColumnName = "color";
+        private static readonly string RegistrationColumnName = "registration_number";
+        private static readonly string PriceColumnName = "price";
+        private static readonly string CarAvailabilityColumnName = "availability";
+
 
         public static MySqlConnection CreatConnection(string DataBaseName)
         {
@@ -49,10 +66,12 @@ namespace Wypozyczalnia_samochodow
             conn.Close();
         }
 
+        //zwraca listę wszystkich aut, załadowanych z bazy danych
         public static List<Car> SelectAllCars(MySqlConnection conn)
         {
             List<Car> cars = new List<Car>();
-            string queryText = "SELECT id,model FROM auta";
+            string[] tableNames = new string[] { CarIdColumnName , BrandColumnName ,ModelColumnName, YearColumnName, EngineColumnName, ClimatisationColumnName, FuelColumnName, ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
+            string queryText = CreateSelectQuerry(tableNames,CarsTableName);
 
             MySqlCommand command = new MySqlCommand(queryText, conn);
 
@@ -61,7 +80,16 @@ namespace Wypozyczalnia_samochodow
             while (dr.Read())
             {
                 var attributes = new Dictionary<string, string>();
-                attributes.Add("model", dr[1].ToString());
+                attributes.Add("brand", dr[1].ToString());
+                attributes.Add("model", dr[2].ToString());
+                attributes.Add("year", dr[3].ToString());
+                attributes.Add("engine", dr[4].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+                attributes.Add("climatisation", dr[5].ToString());
+                attributes.Add("fuel", dr[6].ToString());
+                attributes.Add("color", dr[7].ToString());
+                attributes.Add("registration", dr[8].ToString());
+                attributes.Add("price", dr[9].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+                attributes.Add("availability", dr[10].ToString());
                 cars.Add(new Car(Convert.ToInt32(dr[0]), attributes));
 
             }
@@ -69,6 +97,7 @@ namespace Wypozyczalnia_samochodow
             return cars;
 
         }
+        //dodaje do pliku zapytanie (dodanie do bazy lub zmiana), któe wykona się przy wylogowaniu
         public static void AddQuerry(string s)
         {
             StreamWriter file = new StreamWriter("file.txt", true);
@@ -110,6 +139,21 @@ namespace Wypozyczalnia_samochodow
             {
                 File.Delete("file.txt");
             }
+        }
+
+        private static string CreateSelectQuerry(IEnumerable<String> Columns,string TableName)
+        {
+            string querry = "select ";
+            foreach (var it in Columns)
+            {
+                querry += it;
+                querry += ",";
+            }
+            //usunięcie ostatniego przecinka
+            querry=querry.Remove(querry.Length-1,1);
+            querry += " from ";
+            querry += TableName;
+            return querry;
         }
       
     }

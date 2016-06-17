@@ -1,0 +1,20 @@
+create table cars(
+id int unsigned not null auto_increment,
+brand char(30) not null,
+model char(30) not null,
+year_of_construction int unsigned not null,
+engine_displacement double not null,
+climatisation enum("true","false") not null,
+fuel enum("petrol", "diesel","lpg"),
+color char(30) not null,
+registration_number char(10) not null,
+price double not null,
+availability enum("true","false") not null,
+primary key(id))
+engine = innodb
+default character set utf8 collate utf8_unicode_ci;
+
+
+
+
+insert into cars values (1,"Renault","Kangoo",2014,20.5,"true","lpg","bialy","sy23361",20,"true");

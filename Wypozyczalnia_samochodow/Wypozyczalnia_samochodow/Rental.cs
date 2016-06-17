@@ -14,12 +14,15 @@ namespace Wypozyczalnia_samochodow
         private static List<Transaction> transactions = new List<Transaction>();
         private static MySqlConnection conn;
 
+       
+
+        //zwraca listę referencji do aut spełniających kryteria wyszukiwania
         public static List<Car> findCars(string brand, string model)
         {
             var list = new List<Car>();
             foreach (var it in cars)
             {
-                if (it.model.Contains(model))
+                if (it.availability&&it.model.ToUpper().Contains(model.ToUpper())&& it.brand.ToUpper().Contains(brand.ToUpper()))
                 {
                     list.Add(it);
                 }

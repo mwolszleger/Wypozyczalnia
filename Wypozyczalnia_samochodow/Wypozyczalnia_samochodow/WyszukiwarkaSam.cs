@@ -57,7 +57,7 @@ namespace Wypozyczalnia_samochodow
         private List<Form4> CustomerWindows = new List<Form4>();
         private void button2_Click(object sender, EventArgs e)
         {
-            if (_searchingCars == true)
+            if (searchingCars == true)
             {
                 var temp = new Form3();
                 temp.newCar = true;
@@ -111,11 +111,14 @@ namespace Wypozyczalnia_samochodow
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            foundCars = Rental.findCars(textBox1.Text, textBox2.Text);
-            foreach (var it in foundCars)
+            if (searchingCars)
             {
-                listBox1.Items.Add(it);
+                listBox1.Items.Clear();
+                foundCars = Rental.findCars(textBox1.Text, textBox2.Text);
+                foreach (var it in foundCars)
+                {
+                    listBox1.Items.Add(it.ToString());
+                }
             }
         }
 
