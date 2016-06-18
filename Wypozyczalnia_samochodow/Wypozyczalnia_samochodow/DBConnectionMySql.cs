@@ -70,8 +70,8 @@ namespace Wypozyczalnia_samochodow
         public static List<Car> SelectAllCars(MySqlConnection conn)
         {
             List<Car> cars = new List<Car>();
-            string[] tableNames = new string[] { CarIdColumnName , BrandColumnName ,ModelColumnName, YearColumnName, EngineColumnName, ClimatisationColumnName, FuelColumnName, ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
-            string queryText = CreateSelectQuerry(tableNames,CarsTableName);
+            string[] tableNames = new string[] { CarIdColumnName, BrandColumnName, ModelColumnName, YearColumnName, EngineColumnName, ClimatisationColumnName, FuelColumnName, ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
+            string queryText = CreateSelectQuerry(tableNames, CarsTableName);
 
             MySqlCommand command = new MySqlCommand(queryText, conn);
 
@@ -107,7 +107,7 @@ namespace Wypozyczalnia_samochodow
         public static void addCar(Car c)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(BrandColumnName,c.brand);
+            attributes.Add(BrandColumnName, c.brand);
             attributes.Add(ModelColumnName, c.model);
             attributes.Add(YearColumnName, c.year.ToString());
             attributes.Add(EngineColumnName, c.engine.ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
@@ -115,10 +115,10 @@ namespace Wypozyczalnia_samochodow
             attributes.Add(FuelColumnName, c.fuel.ToString());
             attributes.Add(ColorColumnName, c.color);
             attributes.Add(RegistrationColumnName, c.registration);
-            attributes.Add(PriceColumnName, c.price.ToString().Replace( CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(PriceColumnName, c.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
             attributes.Add(CarAvailabilityColumnName, c.availability.ToString());
-           
-            AddQuerry(CreateInsertQuerry(attributes,CarsTableName));
+
+            AddQuerry(CreateInsertQuerry(attributes, CarsTableName));
         }
         public static void updateCar(Car c)
         {
@@ -138,7 +138,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void ExecuteQuerries(MySqlConnection conn)
         {
-                      
+
             string line;
             if (!File.Exists("file.txt"))
                 return;
@@ -165,7 +165,7 @@ namespace Wypozyczalnia_samochodow
             }
         }
 
-        private static string CreateSelectQuerry(IEnumerable<String> Columns,string TableName)
+        private static string CreateSelectQuerry(IEnumerable<String> Columns, string TableName)
         {
             string querry = "select ";
             foreach (var it in Columns)
@@ -174,12 +174,12 @@ namespace Wypozyczalnia_samochodow
                 querry += ",";
             }
             //usunięcie ostatniego przecinka
-            querry=querry.Remove(querry.Length-1,1);
+            querry = querry.Remove(querry.Length - 1, 1);
             querry += " from ";
             querry += TableName;
             return querry;
         }
-      
+
         public static List<Customer> SelectAllCustomers(MySqlConnection conn)
         {
             List<Customer> customer = new List<Customer>();
@@ -208,8 +208,8 @@ namespace Wypozyczalnia_samochodow
         {
             AddQuerry("update customers set imie=\"" + cs.imie + "\" where id=" + cs.id + ";");
         }
-    }
-	 private static string CreateInsertQuerry(Dictionary<string, string> d, string TableName)
+
+        private static string CreateInsertQuerry(Dictionary<string, string> d, string TableName)
         {
             string querry = "insert into ";
             querry += TableName;
@@ -258,8 +258,7 @@ namespace Wypozyczalnia_samochodow
             querry += ")";
             return querry;
         }
-
     }
-}
-}
+    }
+
 
