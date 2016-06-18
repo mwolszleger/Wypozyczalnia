@@ -19,8 +19,8 @@ namespace Wypozyczalnia_samochodow
         }
  
         public event EventHandler Closing;
-        private List<Car> foundCars;
-        private List<Customer> foundCustomer;
+        private List<Car> foundCars=new List<Car>();
+        private List<Customer> foundCustomer=new List<Customer>();
         private bool _searchingCars;
         public bool searchingCars
         {
@@ -51,7 +51,16 @@ namespace Wypozyczalnia_samochodow
         private void button4_Click(object sender, EventArgs e)
         {
             OnClosing(new EventArgs());
+            clear();
             Visible = false;
+        }
+        private void clear()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            listBox1.Items.Clear();
+            foundCars.Clear();
+            foundCustomer.Clear();
         }
         private List<Form3> CarWindows = new List<Form3>();
         private List<Form4> CustomerWindows = new List<Form4>();
@@ -75,8 +84,11 @@ namespace Wypozyczalnia_samochodow
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
+            if (listBox1.SelectedIndex < 0)
+                return;
             if (searchingCars == true)
             {
+                
                 var temp = new Form3(foundCars[listBox1.SelectedIndex]);
                 temp.newCar = false;
                 temp.Show();
