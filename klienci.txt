@@ -1,0 +1,12 @@
+create table customers(
+id int unsigned not null auto_increment,
+name char(30) not null,
+last_name char(30) not null,
+street char(30) not null,
+house_number int not null,
+flat_number int,
+code_town int not null,
+place char(30) not null,
+phone_number int not null,
+primary key(id))
+default character set utf8 collate utf8_unicode_ci;

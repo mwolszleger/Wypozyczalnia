@@ -95,6 +95,29 @@ namespace Wypozyczalnia_samochodow
                 comboBoxFuel.SelectedIndex = 2;
 
         }
+        private Dictionary<string, string> getCarData()
+        {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("model", textBoxModel.Text);
+            d.Add("brand", textBoxBrand.Text);
+            d.Add("color", textBoxColor.Text);
+            d.Add("registration", textBoxNumber.Text);
+            d.Add("price",textBoxPrice.Text);
+            d.Add("year", textBoxYear.Text);
+            if(comboBoxClima.SelectedIndex == 0)
+                d.Add("climatisation","true");
+            if (comboBoxClima.SelectedIndex == 1)
+                d.Add("climatisation", "false");
+            d.Add("engine", textBoxPojemnosc.Text);
+            if (comboBoxClima.SelectedIndex == 0)
+                d.Add("fuel","petrol");
+            if (comboBoxClima.SelectedIndex == 1)
+                d.Add("fuel","diesel");
+            if (comboBoxClima.SelectedIndex == 2)
+                d.Add("fuel","lpg");
+            //d.Add("availability","true");
+            return d;
+        }
         private void buttonEnd_Click(object sender, EventArgs e)
         {
             clearMessage();
@@ -147,7 +170,8 @@ namespace Wypozyczalnia_samochodow
                     labelMessage.Text = "Nie podano wszystkich danych";
                     return;
                 }
-
+                car.setCarData(getCarData());
+                Rental.updateCar(car);
                 resetViewAfterEdition();
             }
             if (!newCar && transaction)
@@ -166,12 +190,7 @@ namespace Wypozyczalnia_samochodow
                 Rental.addCar(car);
             }
         }
-        private Dictionary<string, string> getCarData()
-        {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("model", textBoxModel.Text);
-            return d;
-        }
+       
         private void buttonLend_Click(object sender, EventArgs e)
         {
             buttonEdit.Visible = false;
@@ -182,17 +201,17 @@ namespace Wypozyczalnia_samochodow
 
         private void numberValidation(object sender, EventArgs e)
         {
-            if (ReadOnly)
+            if (ReadOnly|| ((TextBox)sender).Text=="")
                 return;
             for (int i = 0; i < ((TextBox)sender).Text.Length; i++)
             {
-                ((TextBox)sender).Text = ((TextBox)sender).Text.ToUpper();
+                
                 char z = ((TextBox)sender).Text[i];
                 if (z >= '0' && z <= '9')
                     continue;
                 else
                 {
-                    ((TextBox)sender).Text = ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--, 1);
+                    ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--, 1);
 
                 }
             }

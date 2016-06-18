@@ -12,7 +12,7 @@ namespace Wypozyczalnia_samochodow
          // ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
 
 
-        public int id { get; private set; }
+        public uint id { get; private set; }
         public string brand { get; set; }
         public string model { get; set; }
         public uint year { get; set; }
@@ -25,7 +25,7 @@ namespace Wypozyczalnia_samochodow
         public bool availability { get; set; }
 
 
-        public Car(int id, Dictionary<string, string> d)
+        public Car(uint id, Dictionary<string, string> d)
         {
             setCarData(d);
             this.id = id;
@@ -36,11 +36,8 @@ namespace Wypozyczalnia_samochodow
             setCarData(d);
             this.id = Rental.NewCarId();
         }
-        public void updateCar(Dictionary<string, string> d)
-        {
-
-        }
-        private void setCarData(Dictionary<string, string> d)
+        
+        public void setCarData(Dictionary<string, string> d)
         {
             model = d["model"];
             brand = d["brand"];
@@ -53,7 +50,10 @@ namespace Wypozyczalnia_samochodow
             else if (d["fuel"] == "lpg") fuel = Fuels.Lpg;
             else if (d["fuel"] == "diesel") fuel = Fuels.Diesel;
             price = Convert.ToDouble(d["price"]);
-            availability = Convert.ToBoolean(d["availability"]);
+            if(d.Keys.Contains("availability"))
+                availability = Convert.ToBoolean(d["availability"]);
+            else
+                availability =true;
         }
         public override string ToString()
         {
