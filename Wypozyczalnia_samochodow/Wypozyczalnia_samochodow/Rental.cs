@@ -113,9 +113,9 @@ namespace Wypozyczalnia_samochodow
             {
                 DBConnectionMySql.OpenConnection(conn);
                 var customer = DBConnectionMySql.SelectAllCustomers(conn);
-                foreach (var i in customer)
+                foreach (var it in customer)
                 {
-                    Rental.customer.Add(i);
+                    Rental.customer.Add(it);
                 }
             }
             catch (MySqlException myexc)
@@ -127,15 +127,16 @@ namespace Wypozyczalnia_samochodow
                 DBConnectionMySql.CloseConnection(conn);
             }
         }
-        public static List<Customer> findCustomers(string nazwisko, string imie)
+        public static List<Customer> findCustomers(string name, string last_name)
         {
             var list = new List<Customer>();
-            foreach (var i in customer)
+            foreach (var it in customer)
             {
-                if (i.imie.Contains(imie))
+                if (it.name.Contains(name)&&it.last_name.Contains(last_name))
                 {
-                    list.Add(i);
+                    list.Add(it);
                 }
+              
             }
             return list;
         }

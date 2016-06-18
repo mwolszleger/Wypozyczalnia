@@ -129,9 +129,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Imię:";
+            this.label3.Text = "Name:";
             this.label3.Visible = false;
             // 
             // label4
@@ -139,9 +139,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(172, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Nazwisko:";
+            this.label4.Text = "Last name:";
             this.label4.Visible = false;
             // 
             // WyszukiwarkaSam

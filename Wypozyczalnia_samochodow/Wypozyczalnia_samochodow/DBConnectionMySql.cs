@@ -41,6 +41,18 @@ namespace Wypozyczalnia_samochodow
         private static readonly string PriceColumnName = "price";
         private static readonly string CarAvailabilityColumnName = "availability";
 
+        //nazwa tabeli z klientami
+        private static readonly string CustomersTableName = "customers";
+        //nazwy kolum w tabeli z autami
+        private static readonly string CustomersIdColumnName = "id";
+        private static readonly string NameColumnName = "name";
+        private static readonly string LastNameColumnName = "last_name";
+        private static readonly string StreetColumnName = "street";
+        private static readonly string HouseNumberColumnName = "house_number";
+        private static readonly string FlatNumberColumnName = "flat_number";
+        private static readonly string CodeTownColumnName = "code_town";
+        private static readonly string PlaceColumnName = "place";
+        private static readonly string PhoneNumberColumnName = "phone_number";
 
         public static MySqlConnection CreatConnection(string DataBaseName)
         {
@@ -72,7 +84,6 @@ namespace Wypozyczalnia_samochodow
             List<Car> cars = new List<Car>();
             string[] tableNames = new string[] { CarIdColumnName , BrandColumnName ,ModelColumnName, YearColumnName, EngineColumnName, ClimatisationColumnName, FuelColumnName, ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
             string queryText = CreateSelectQuerry(tableNames,CarsTableName);
-
             MySqlCommand command = new MySqlCommand(queryText, conn);
 
             MySqlDataReader dr = command.ExecuteReader();
@@ -158,8 +169,8 @@ namespace Wypozyczalnia_samochodow
         public static List<Customer> SelectAllCustomers(MySqlConnection conn)
         {
             List<Customer> customer = new List<Customer>();
-            string queryText = "SELECT id,imie FROM customer";
-
+            string[] tableNames = new string[] { CustomersIdColumnName, NameColumnName, LastNameColumnName, StreetColumnName, HouseNumberColumnName, FlatNumberColumnName, CodeTownColumnName, PlaceColumnName, PhoneNumberColumnName };
+            string queryText = CreateSelectQuerry(tableNames, CustomersTableName);
             MySqlCommand command = new MySqlCommand(queryText, conn);
 
             MySqlDataReader dr = command.ExecuteReader();
@@ -168,6 +179,13 @@ namespace Wypozyczalnia_samochodow
             {
                 var attributes = new Dictionary<string, string>();
                 attributes.Add("imie", dr[1].ToString());
+                attributes.Add("last_name", dr[2].ToString());
+                attributes.Add("street", dr[3].ToString());
+                attributes.Add("house_number", dr[4].ToString());
+                attributes.Add("flat_number", dr[5].ToString());
+                attributes.Add("code_town", dr[6].ToString());
+                attributes.Add("place", dr[7].ToString());
+                attributes.Add("phone_number", dr[8].ToString());
                 customer.Add(new Customer(Convert.ToInt32(dr[0]), attributes));
 
             }
@@ -177,11 +195,11 @@ namespace Wypozyczalnia_samochodow
         }
         public static void addCustomer(Customer cs)
         {
-            AddQuerry("insert into customers values(" + cs.id + ",\"" + cs.imie + "\");");
+            AddQuerry("insert into customers values(" + cs.id + ",\"" + cs.name + "\");");
         }
         public static void updateCustomer(Customer cs)
         {
-            AddQuerry("update customers set imie=\"" + cs.imie + "\" where id=" + cs.id + ";");
+            AddQuerry("update customers set imie=\"" + cs.name + "\" where id=" + cs.id + ";");
         }
     }
 }
