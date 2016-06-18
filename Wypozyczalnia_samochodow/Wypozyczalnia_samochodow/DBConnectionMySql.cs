@@ -118,6 +118,7 @@ namespace Wypozyczalnia_samochodow
         public static void addCar(Car c)
         {
             var attributes = new Dictionary<string, string>();
+            attributes.Add(CarIdColumnName, c.brand);
             attributes.Add(BrandColumnName, c.brand);
             attributes.Add(ModelColumnName, c.model);
             attributes.Add(YearColumnName, c.year.ToString());
@@ -180,20 +181,14 @@ namespace Wypozyczalnia_samochodow
             foreach (var it in d)
             {
                 querry += it.Key;
-                querry += ",";
-            }
-            querry = querry.Remove(querry.Length - 1, 1);
-            querry += ") values (";
-            foreach (var it in d)
-            {
-                querry += "\"";
+                querry += " = \"";
                 querry += it.Value;
-                querry += "\"";
-                querry += ",";
-
+                querry += "\",";
             }
             querry = querry.Remove(querry.Length - 1, 1);
-            querry += ")";
+            querry += " where id = ";
+            querry += id;
+            querry +=";";
             return querry;
         }
         public static void ExecuteQuerries(MySqlConnection conn)
