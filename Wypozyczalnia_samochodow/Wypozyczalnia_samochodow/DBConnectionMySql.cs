@@ -90,7 +90,7 @@ namespace Wypozyczalnia_samochodow
                 attributes.Add("registration", dr[8].ToString());
                 attributes.Add("price", dr[9].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
                 attributes.Add("availability", dr[10].ToString());
-                cars.Add(new Car(Convert.ToInt32(dr[0]), attributes));
+                cars.Add(new Car(Convert.ToUInt32(dr[0]), attributes));
 
             }
             dr.Close();
@@ -106,11 +106,35 @@ namespace Wypozyczalnia_samochodow
         }
         public static void addCar(Car c)
         {
-            AddQuerry("insert into auta values(" + c.id + ",\"" + c.model + "\");");
+            var attributes = new Dictionary<string, string>();
+            attributes.Add(BrandColumnName,c.brand);
+            attributes.Add(ModelColumnName, c.model);
+            attributes.Add(YearColumnName, c.year.ToString());
+            attributes.Add(EngineColumnName, c.engine.ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+            attributes.Add(ClimatisationColumnName, c.climatisation.ToString());
+            attributes.Add(FuelColumnName, c.fuel.ToString());
+            attributes.Add(ColorColumnName, c.color);
+            attributes.Add(RegistrationColumnName, c.registration);
+            attributes.Add(PriceColumnName, c.price.ToString().Replace( CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(CarAvailabilityColumnName, c.availability.ToString());
+           
+            AddQuerry(CreateInsertQuerry(attributes,CarsTableName));
         }
         public static void updateCar(Car c)
         {
-            AddQuerry("update auta set model=\""+c.model+"\" where id="+c.id+";");
+            var attributes = new Dictionary<string, string>();
+            attributes.Add(BrandColumnName, c.brand);
+            attributes.Add(ModelColumnName, c.model);
+            attributes.Add(YearColumnName, c.year.ToString());
+            attributes.Add(EngineColumnName, c.engine.ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+            attributes.Add(ClimatisationColumnName, c.climatisation.ToString());
+            attributes.Add(FuelColumnName, c.fuel.ToString());
+            attributes.Add(ColorColumnName, c.color);
+            attributes.Add(RegistrationColumnName, c.registration);
+            attributes.Add(PriceColumnName, c.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(CarAvailabilityColumnName, c.availability.ToString());
+
+            AddQuerry(CreateUpdateQuerry(attributes, CarsTableName, c.id));
         }
         public static void ExecuteQuerries(MySqlConnection conn)
         {
@@ -155,6 +179,55 @@ namespace Wypozyczalnia_samochodow
             querry += TableName;
             return querry;
         }
-      
+        private static string CreateInsertQuerry(Dictionary<string, string> d, string TableName)
+        {
+            string querry = "insert into ";
+            querry += TableName;
+            querry += " (";
+            foreach (var it in d)
+            {
+                querry += it.Key;
+                querry += ",";
+            }
+            querry = querry.Remove(querry.Length - 1, 1);
+            querry += ") values (";
+            foreach (var it in d)
+            {
+                querry += "\"";
+                querry += it.Value;
+                querry += "\"";
+                querry += ",";
+
+            }
+            querry = querry.Remove(querry.Length - 1, 1);
+            querry += ")";
+            return querry;
+        }
+
+        private static string CreateUpdateQuerry(Dictionary<string, string> d, string TableName, uint id)
+        {
+            string querry = "update ";
+            querry += TableName;
+            querry += " set ";
+            foreach (var it in d)
+            {
+                querry += it.Key;
+                querry += ",";
+            }
+            querry = querry.Remove(querry.Length - 1, 1);
+            querry += ") values (";
+            foreach (var it in d)
+            {
+                querry += "\"";
+                querry += it.Value;
+                querry += "\"";
+                querry += ",";
+
+            }
+            querry = querry.Remove(querry.Length - 1, 1);
+            querry += ")";
+            return querry;
+        }
+
     }
 }

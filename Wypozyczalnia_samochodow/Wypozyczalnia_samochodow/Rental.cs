@@ -68,9 +68,9 @@ namespace Wypozyczalnia_samochodow
             }
         }
 
-        public static int NewCarId()
+        public static uint NewCarId()
         {
-            int id = 0;
+            uint id = 0;
             foreach (var it in cars)
             {
                 if (it.id > id)
