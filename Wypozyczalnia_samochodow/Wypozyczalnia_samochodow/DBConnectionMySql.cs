@@ -179,7 +179,37 @@ namespace Wypozyczalnia_samochodow
             querry += TableName;
             return querry;
         }
-        private static string CreateInsertQuerry(Dictionary<string, string> d, string TableName)
+      
+        public static List<Customer> SelectAllCustomers(MySqlConnection conn)
+        {
+            List<Customer> customer = new List<Customer>();
+            string queryText = "SELECT id,imie FROM customer";
+
+            MySqlCommand command = new MySqlCommand(queryText, conn);
+
+            MySqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                var attributes = new Dictionary<string, string>();
+                attributes.Add("imie", dr[1].ToString());
+                customer.Add(new Customer(Convert.ToInt32(dr[0]), attributes));
+
+            }
+            dr.Close();
+            return customer;
+
+        }
+        public static void addCustomer(Customer cs)
+        {
+            AddQuerry("insert into customers values(" + cs.id + ",\"" + cs.imie + "\");");
+        }
+        public static void updateCustomer(Customer cs)
+        {
+            AddQuerry("update customers set imie=\"" + cs.imie + "\" where id=" + cs.id + ";");
+        }
+    }
+	 private static string CreateInsertQuerry(Dictionary<string, string> d, string TableName)
         {
             string querry = "insert into ";
             querry += TableName;
@@ -231,3 +261,5 @@ namespace Wypozyczalnia_samochodow
 
     }
 }
+}
+

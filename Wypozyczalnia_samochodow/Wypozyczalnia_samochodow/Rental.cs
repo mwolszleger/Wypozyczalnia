@@ -11,6 +11,7 @@ namespace Wypozyczalnia_samochodow
     static class Rental
     {
         private static List<Car> cars = new List<Car>();
+        private static List<Customer> customer = new List<Customer>();
         private static List<Transaction> transactions = new List<Transaction>();
         private static MySqlConnection conn;
 
@@ -105,7 +106,58 @@ namespace Wypozyczalnia_samochodow
             return true;
         }
 
-
+        public static void LoadCustomer()
+        {
+            conn = DBConnectionMySql.CreatConnection("wypozyczalnia");
+            try
+            {
+                DBConnectionMySql.OpenConnection(conn);
+                var customer = DBConnectionMySql.SelectAllCustomers(conn);
+                foreach (var i in customer)
+                {
+                    Rental.customer.Add(i);
+                }
+            }
+            catch (MySqlException myexc)
+            {
+                throw myexc;
+            }
+            finally
+            {
+                DBConnectionMySql.CloseConnection(conn);
+            }
+        }
+        public static List<Customer> findCustomers(string nazwisko, string imie)
+        {
+            var list = new List<Customer>();
+            foreach (var i in customer)
+            {
+                if (i.imie.Contains(imie))
+                {
+                    list.Add(i);
+                }
+            }
+            return list;
+        }
+        public static int NewCustomerId()
+        {
+            int id = 0;
+            foreach (var it in customer)
+            {
+                if (it.id > id)
+                    id = it.id;
+            }
+            return ++id;
+        }
+        public static void addCustomer(Customer cs)
+        {
+            customer.Add(cs);
+            DBConnectionMySql.addCustomer(cs);
+        }
+        public static void updateCustomer(Customer cs)
+        {
+            DBConnectionMySql.updateCustomer(cs);
+        }
     }
 
 }

@@ -32,6 +32,7 @@ namespace Wypozyczalnia_samochodow
             try
             {
                 Rental.LoadCars();
+                Rental.LoadCustomer();
                 
             }
             catch (Exception e)
