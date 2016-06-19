@@ -43,7 +43,7 @@ namespace Wypozyczalnia_samochodow
             flat_number =Convert.ToInt32(d["flat_number"]);
             code_town =Convert.ToInt32(d["code_town"]);
             place = d["place"];
-            phone_number =Convert.ToInt32(d["photo_number"]);
+            phone_number =Convert.ToInt32(d["phone_number"]);
 
         }
         public override string ToString()
