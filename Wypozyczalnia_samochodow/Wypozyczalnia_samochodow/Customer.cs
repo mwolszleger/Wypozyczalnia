@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia_samochodow
 {
-    class Customer
+    public class Customer
     {
         public int id { get; private set; }
         public string name { get; set; }

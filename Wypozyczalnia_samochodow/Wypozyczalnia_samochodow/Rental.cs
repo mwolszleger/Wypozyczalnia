@@ -13,9 +13,10 @@ namespace Wypozyczalnia_samochodow
         private static List<Car> cars = new List<Car>();
         private static List<Customer> customer = new List<Customer>();
         private static List<Transaction> transactions = new List<Transaction>();
+        private static List<Employee> employees = new List<Employee>();
         private static MySqlConnection conn;
-
-       
+        
+        public static Employee LoggedEmplyee { get;private set; }    
 
         //zwraca listę referencji do aut spełniających kryteria wyszukiwania
         public static List<Car> findCars(string brand, string model)
@@ -158,6 +159,66 @@ namespace Wypozyczalnia_samochodow
         public static void updateCustomer(Customer cs)
         {
             DBConnectionMySql.updateCustomer(cs);
+        }
+        public static uint NewTransactionrId()
+        {
+            uint id = 0;
+            foreach (var it in transactions)
+            {
+                if (it.id > id)
+                    id = it.id;
+            }
+            return ++id;
+        }
+        public static Car findCar(uint id)
+        {
+            foreach (var it in cars)
+            {
+                if (it.id == id)
+                    return it;
+            }
+            return null;              
+        }
+        public static Customer findCustomer(uint id)
+        {
+            foreach (var it in customer)
+            {
+                if (it.id == id)
+                    return it;
+            }
+            return null;
+        }
+        public static Car findCar(string number)
+        {
+            foreach (var it in cars)
+            {
+                if (it.registration.ToLower() == number.ToLower())
+                    return it;
+            }
+            return null;
+        }
+        public static Transaction findTransaction(Car car)
+        {
+            for (int i = transactions.Count - 1; i >= 0; i--)
+            {
+                if (transactions[i].car == car)
+                {
+                    if (!transactions[i].isFinished())
+                        return transactions[i];
+                    else
+                        return null;
+                }
+            }
+            return null;
+        }
+        public static Employee findEmployee(string login)
+        {
+            foreach (var it in employees)
+            {
+                if (it.login==login)
+                    return it;
+            }
+            return null;
         }
     }
 
