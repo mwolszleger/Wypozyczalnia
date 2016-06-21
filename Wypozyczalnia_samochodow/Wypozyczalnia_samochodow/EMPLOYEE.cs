@@ -8,6 +8,17 @@ namespace Wypozyczalnia_samochodow
 {
     public class Employee
     {
-       public string login{get;private set;}
+
+        public string login { get; private set; }
+        public string name { get; private set; }
+        public string lastName { get; private set; }
+        Employee(string login, string name, string lastName)
+        {
+            this.login = login;
+            this.name = name;
+            this.lastName = lastName;
+           
+        }
     }
+    
 }

@@ -54,6 +54,17 @@ namespace Wypozyczalnia_samochodow
         private static readonly string PlaceColumnName = "place";
         private static readonly string PhoneNumberColumnName = "phone_number";
 
+        //nazwa tabeli z klientami
+        private static readonly string TransactionsTableName = "transactions";
+        //nazwy kolum w tabeli z autami
+        //uzupelnić
+        private static readonly string TransactionIdTableName="id";
+        private static readonly string TranscationCarIdTableName="id_car";
+        private static readonly string TransactionCustomerIdTableName="id_transaction";
+        private static readonly string BeginningDateTableName="beginning_date";
+        private static readonly string EndDateTableName="end_date";
+        private static readonly string EmployeeBeginningTableName="employee_beginning";
+        private static readonly string EmployeeEndTableName="employee_end";
         public static MySqlConnection CreatConnection(string DataBaseName)
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
