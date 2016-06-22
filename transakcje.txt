@@ -1,0 +1,17 @@
+create table transactions(
+id int unsigned not null auto_increment,
+id_car int unsigned not null,
+id_customer int unsigned not null,
+beginning_date date not null,
+end_date date,
+employee_beginning char(30) not null,
+employee_end char(30),
+price decimal,
+primary key(id),
+foreign key(id_car) references cars(id),
+foreign key(id_customer) references customers(id),
+foreign key(employee_beginning) references employees(login),
+foreign key(employee_end) references employees(login)
+)
+engine = innodb
+default character set utf8 collate utf8_unicode_ci;

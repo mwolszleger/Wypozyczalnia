@@ -54,17 +54,23 @@ namespace Wypozyczalnia_samochodow
         private static readonly string PlaceColumnName = "place";
         private static readonly string PhoneNumberColumnName = "phone_number";
 
-        //nazwa tabeli z klientami
+        //nazwa tabeli z transakcjanmi
         private static readonly string TransactionsTableName = "transactions";
-        //nazwy kolum w tabeli z autami
-        //uzupelnić
-        private static readonly string TransactionIdTableName="id";
-        private static readonly string TranscationCarIdTableName="id_car";
-        private static readonly string TransactionCustomerIdTableName="id_transaction";
-        private static readonly string BeginningDateTableName="beginning_date";
-        private static readonly string EndDateTableName="end_date";
-        private static readonly string EmployeeBeginningTableName="employee_beginning";
-        private static readonly string EmployeeEndTableName="employee_end";
+        //nazwy kolum w tabeli z transakcjami
+        private static readonly string TransactionIdColumnName = "id";
+        private static readonly string TranscationCarIdColumnName = "id_car";
+        private static readonly string TransactionCustomerIdColumnName = "id_customer";
+        private static readonly string BeginningDateColumnName = "beginning_date";
+        private static readonly string EndDateColumnName = "end_date";
+        private static readonly string EmployeeBeginningColumnName = "employee_beginning";
+        private static readonly string EmployeeEndTableName = "employee_end";
+        private static readonly string EmployeePriceColumnName = "employee_end";
+
+
+        private static readonly string EmployeesTableName = "employees";
+        private static readonly string LoginColumnName = "login";
+        private static readonly string NameEmployeeColumnName = "name";
+        private static readonly string LastNameEmployeeColumnName = "last_name";
         public static MySqlConnection CreatConnection(string DataBaseName)
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -93,8 +99,8 @@ namespace Wypozyczalnia_samochodow
         public static List<Car> SelectAllCars(MySqlConnection conn)
         {
             List<Car> cars = new List<Car>();
-            string[] tableNames = new string[] { CarIdColumnName , BrandColumnName ,ModelColumnName, YearColumnName, EngineColumnName, ClimatisationColumnName, FuelColumnName, ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
-            string queryText = CreateSelectQuerry(tableNames,CarsTableName);
+            string[] tableNames = new string[] { CarIdColumnName, BrandColumnName, ModelColumnName, YearColumnName, EngineColumnName, ClimatisationColumnName, FuelColumnName, ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
+            string queryText = CreateSelectQuerry(tableNames, CarsTableName);
             MySqlCommand command = new MySqlCommand(queryText, conn);
 
             MySqlDataReader dr = command.ExecuteReader();
@@ -120,7 +126,7 @@ namespace Wypozyczalnia_samochodow
 
         }
         //dodaje do pliku zapytanie (dodanie do bazy lub zmiana), któe wykona się przy wylogowaniu
-        public static void AddQuerry(string s)
+        private static void AddQuerry(string s)
         {
             StreamWriter file = new StreamWriter("file.txt", true);
             file.WriteLine(s);
@@ -133,7 +139,7 @@ namespace Wypozyczalnia_samochodow
             attributes.Add(BrandColumnName, c.brand);
             attributes.Add(ModelColumnName, c.model);
             attributes.Add(YearColumnName, c.year.ToString());
-            attributes.Add(EngineColumnName, c.engine.ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+            attributes.Add(EngineColumnName, c.engine.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
             attributes.Add(ClimatisationColumnName, c.climatisation.ToString());
             attributes.Add(FuelColumnName, c.fuel.ToString());
             attributes.Add(ColorColumnName, c.color);
@@ -149,7 +155,7 @@ namespace Wypozyczalnia_samochodow
             attributes.Add(BrandColumnName, c.brand);
             attributes.Add(ModelColumnName, c.model);
             attributes.Add(YearColumnName, c.year.ToString());
-            attributes.Add(EngineColumnName, c.engine.ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+            attributes.Add(EngineColumnName, c.engine.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
             attributes.Add(ClimatisationColumnName, c.climatisation.ToString());
             attributes.Add(FuelColumnName, c.fuel.ToString());
             attributes.Add(ColorColumnName, c.color);
@@ -184,7 +190,7 @@ namespace Wypozyczalnia_samochodow
             return querry;
         }
 
-        private static string CreateUpdateQuerry(Dictionary<string, string> d, string TableName, uint id)
+        private static string CreateUpdateQuerry(Dictionary<string, string> d, string TableName, object key, string keyName = "id")
         {
             string querry = "update ";
             querry += TableName;
@@ -197,14 +203,16 @@ namespace Wypozyczalnia_samochodow
                 querry += "\",";
             }
             querry = querry.Remove(querry.Length - 1, 1);
-            querry += " where id = ";
-            querry += id;
-            querry +=";";
+            querry += " where ";
+            querry += keyName;
+            querry += " = ";
+            querry += key;
+            querry += ";";
             return querry;
         }
         public static void ExecuteQuerries(MySqlConnection conn)
         {
-                      
+
             string line;
             if (!File.Exists("file.txt"))
                 return;
@@ -231,7 +239,7 @@ namespace Wypozyczalnia_samochodow
             }
         }
 
-        private static string CreateSelectQuerry(IEnumerable<String> Columns,string TableName)
+        private static string CreateSelectQuerry(IEnumerable<String> Columns, string TableName)
         {
             string querry = "select ";
             foreach (var it in Columns)
@@ -240,7 +248,7 @@ namespace Wypozyczalnia_samochodow
                 querry += ",";
             }
             //usunięcie ostatniego przecinka
-            querry=querry.Remove(querry.Length-1,1);
+            querry = querry.Remove(querry.Length - 1, 1);
             querry += " from ";
             querry += TableName;
             return querry;
@@ -279,6 +287,72 @@ namespace Wypozyczalnia_samochodow
         public static void updateCustomer(Customer cs)
         {
             AddQuerry("update customers set imie=\"" + cs.name + "\" where id=" + cs.id + ";");
+        }
+
+        public static List<Employee> SelectAllEmployees(MySqlConnection conn)
+        {
+            List<Employee> emp = new List<Employee>();
+            string[] tableNames = new string[] { LoginColumnName, NameEmployeeColumnName, LastNameEmployeeColumnName };
+            string queryText = CreateSelectQuerry(tableNames, EmployeesTableName);
+            MySqlCommand command = new MySqlCommand(queryText, conn);
+
+            MySqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+
+                emp.Add(new Employee(dr[0].ToString(), dr[1].ToString(), dr[2].ToString()));
+
+            }
+            dr.Close();
+            return emp;
+        }
+        public static void addTransaction(Transaction t)
+        {
+            var attributes = new Dictionary<string, string>();
+            attributes.Add(TransactionIdColumnName, t.id.ToString());
+            attributes.Add(TranscationCarIdColumnName, t.car.id.ToString());
+            attributes.Add(TransactionCustomerIdColumnName, t.customer.id.ToString());
+            attributes.Add(EmployeeBeginningColumnName, t.employee_beginning.login);
+            attributes.Add(BeginningDateColumnName, t.beginning.ToString("yyyy-MM-dd"));
+            AddQuerry(CreateInsertQuerry(attributes, TransactionsTableName));
+        }
+
+        public static List<Transaction> SelectAllTransactions(MySqlConnection conn)
+        {
+            var transactions = new List<Transaction>();
+            string[] tableNames = new string[] { TransactionIdColumnName, TranscationCarIdColumnName, TransactionCustomerIdColumnName, BeginningDateColumnName, EndDateColumnName, EmployeeBeginningColumnName, EmployeeEndTableName, EmployeePriceColumnName };
+            string queryText = CreateSelectQuerry(tableNames, CarsTableName);
+            MySqlCommand command = new MySqlCommand(queryText, conn);
+
+            MySqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                var attributes = new Dictionary<string, string>();
+                attributes.Add("id", dr[0].ToString());
+                attributes.Add("car", dr[1].ToString());
+                attributes.Add("customer", dr[2].ToString());
+                attributes.Add("beginning", dr[3].ToString());
+                attributes.Add("end", dr[4].ToString());
+                attributes.Add("employee_beginning", dr[5].ToString());
+                attributes.Add("employee_end", dr[6].ToString());
+
+                attributes.Add("price", dr[7].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
+
+                transactions.Add(new Transaction(attributes));
+
+            }
+            dr.Close();
+            return transactions;
+        }
+        public static void updateTransaction(Transaction t)
+        {
+            var attributes = new Dictionary<string, string>();
+            attributes.Add(EmployeeEndTableName, t.employee_end.login);
+            attributes.Add(EndDateColumnName, t.end.ToString("dd-MM-yyyy"));
+            attributes.Add(EmployeePriceColumnName, t.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            AddQuerry(CreateUpdateQuerry(attributes, CarsTableName,t.id));
         }
     }
 }

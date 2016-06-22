@@ -31,7 +31,7 @@ namespace Wypozyczalnia_samochodow
             }
             return list;
         }
-        public static void LoadCars()
+        public static void LoadFromDataBase()
         {
             conn = DBConnectionMySql.CreatConnection("wypozyczalnia");
             try
@@ -42,6 +42,13 @@ namespace Wypozyczalnia_samochodow
                 {
                     Rental.cars.Add(it);
                 }
+                var emp = DBConnectionMySql.SelectAllEmployees(conn);
+                foreach (var it in emp)
+                {
+                    Rental.employees.Add(it);
+                    
+                }
+                
             }
             catch (MySqlException myexc)
             {
@@ -220,6 +227,7 @@ namespace Wypozyczalnia_samochodow
             }
             return null;
         }
+        
     }
 
 }

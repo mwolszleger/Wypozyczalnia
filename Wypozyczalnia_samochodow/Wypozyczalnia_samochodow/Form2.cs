@@ -31,8 +31,9 @@ namespace Wypozyczalnia_samochodow
             }
             try
             {
-                Rental.LoadCars();
                 Rental.LoadCustomer();
+                Rental.LoadFromDataBase();
+                
                 
             }
             catch (Exception e)
