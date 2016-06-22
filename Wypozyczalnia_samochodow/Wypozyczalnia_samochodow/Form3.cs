@@ -173,6 +173,7 @@ namespace Wypozyczalnia_samochodow
                 car.setCarData(getCarData());
                 Rental.updateCar(car);
                 resetViewAfterEdition();
+                
             }
             if (!newCar && transaction)
             {
@@ -188,6 +189,12 @@ namespace Wypozyczalnia_samochodow
 
                 Car car = new Car(getCarData());
                 Rental.addCar(car);
+                ReadOnly = true;
+                labelMessage.Text = "Dodano";
+                label12.Visible = false;
+                textBoxAvailaible.Visible = false;
+                textBoxNumber.ReadOnly = true;
+                buttonOK.Visible = false;
             }
         }
        

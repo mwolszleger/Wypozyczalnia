@@ -31,7 +31,7 @@ namespace Wypozyczalnia_samochodow
         {
             employee_end = Rental.LoggedEmplyee;
             end = DateTime.Now.Date;
-            price =Convert.ToDecimal( ((end - beginning).TotalDays + 1) * car.price);
+            price =Convert.ToDecimal( ((end - beginning).TotalDays + 1) *Convert.ToDouble( car.price));
         }
         public Transaction(Dictionary<string, string> d)
         {
