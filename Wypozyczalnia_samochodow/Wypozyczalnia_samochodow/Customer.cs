@@ -8,7 +8,7 @@ namespace Wypozyczalnia_samochodow
 {
     public class Customer
     {
-        public int id { get; private set; }
+        public uint id { get; private set; }
         public string name { get; set; }
         public string last_name { get; set; }
         public string street { get; set; }
@@ -19,7 +19,7 @@ namespace Wypozyczalnia_samochodow
         public int phone_number { get; set; }
 
 
-        public Customer(int id, Dictionary<string, string> d)
+        public Customer(uint id, Dictionary<string, string> d)
         {
             setCustomerData(d);
             this.id = id;

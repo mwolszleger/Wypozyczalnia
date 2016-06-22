@@ -141,9 +141,9 @@ namespace Wypozyczalnia_samochodow
             }
             return list;
         }
-        public static int NewCustomerId()
+        public static uint NewCustomerId()
         {
-            int id = 0;
+            uint id = 0;
             foreach (var it in customer)
             {
                 if (it.id > id)
@@ -197,6 +197,7 @@ namespace Wypozyczalnia_samochodow
             }
             return null;
         }
+
         public static Transaction findTransaction(Car car)
         {
             for (int i = transactions.Count - 1; i >= 0; i--)

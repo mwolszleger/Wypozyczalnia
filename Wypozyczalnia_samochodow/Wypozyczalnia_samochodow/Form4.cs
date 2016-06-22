@@ -100,6 +100,21 @@ namespace Wypozyczalnia_samochodow
             return textName.Text != "" && textLastName.Text != "" && textHouseNumber.Text != "" && textFlatNumber.Text != "" && textCodeCity.Text != "" && textPhoneNumber.Text != "" && textStreet.Text != "" && textPlace.Text != "";
         }
 
+        private void resetViewAfterEdition()
+        {
+            readOnly = true;
+            button1.Visible = true;
+            button2.Visible = true;
+            edition = false;
+        }
+
+        private void resetViewAfterTransaction()
+        {
+            button1.Visible = true;
+            button2.Visible = true;
+            transaction = false;
+        }
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
             clearMessage();
@@ -112,7 +127,14 @@ namespace Wypozyczalnia_samochodow
                     return;
                 }
                 Rental.updateCustomer(customer);
+                //customer.setCustomerData(getCustomerData());
+                resetViewAfterEdition();
             }
+            if (!newCustomer && transaction)
+            {
+                resetViewAfterTransaction();
+            }
+            
            
             if (newCustomer)
             {

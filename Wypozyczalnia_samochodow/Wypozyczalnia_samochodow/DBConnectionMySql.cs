@@ -265,20 +265,42 @@ namespace Wypozyczalnia_samochodow
                 attributes.Add("code_town", dr[6].ToString());
                 attributes.Add("place", dr[7].ToString());
                 attributes.Add("phone_number", dr[8].ToString());
-                customer.Add(new Customer(Convert.ToInt32(dr[0]), attributes));
+                customer.Add(new Customer(Convert.ToUInt32(dr[0]), attributes));
 
             }
             dr.Close();
             return customer;
 
         }
-        public static void addCustomer(Customer cs)
+        public static void addCustomer(Customer c)
         {
-            AddQuerry("insert into customers values(" + cs.id + ",\"" + cs.name + "\");");
+            var attributes = new Dictionary<string, string>();
+            attributes.Add(CustomersIdColumnName, c.name);
+            attributes.Add(NameColumnName, c.name);
+            attributes.Add(LastNameColumnName, c.last_name);
+            attributes.Add(StreetColumnName, c.street);
+            attributes.Add(HouseNumberColumnName, c.house_number.ToString());
+            attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+            attributes.Add(CodeTownColumnName, c.code_town.ToString());
+            attributes.Add(PlaceColumnName, c.place);
+            attributes.Add(PhoneNumberColumnName, c.phone_number.ToString());
+
+            AddQuerry(CreateInsertQuerry(attributes, CustomersTableName));
         }
-        public static void updateCustomer(Customer cs)
+        public static void updateCustomer(Customer c)
         {
-            AddQuerry("update customers set imie=\"" + cs.name + "\" where id=" + cs.id + ";");
+            var attributes = new Dictionary<string, string>();
+            attributes.Add(CustomersIdColumnName, c.id.ToString());
+            attributes.Add(NameColumnName, c.name);
+            attributes.Add(LastNameColumnName, c.last_name);
+            attributes.Add(StreetColumnName, c.street);
+            attributes.Add(HouseNumberColumnName, c.house_number.ToString());
+            attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+            attributes.Add(CodeTownColumnName, c.code_town.ToString());
+            attributes.Add(PlaceColumnName, c.place);
+            attributes.Add(PhoneNumberColumnName, c.phone_number.ToString());
+
+            AddQuerry(CreateUpdateQuerry(attributes, CustomersTableName, c.id));
         }
     }
 }
