@@ -145,9 +145,7 @@ namespace Wypozyczalnia_samochodow
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            textBox1.Text = " ";
-            textBox2.Text = " ";
+            clear();
         }
     }
 }

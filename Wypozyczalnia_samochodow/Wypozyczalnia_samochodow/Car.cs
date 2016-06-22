@@ -16,12 +16,12 @@ namespace Wypozyczalnia_samochodow
         public string brand { get; set; }
         public string model { get; set; }
         public uint year { get; set; }
-        public double engine { get; set; }
+        public decimal engine { get; set; }
         public bool climatisation { get; set; }
         public Fuels fuel { get; set; }
         public string color { get; set; }
         public string registration { get; set; }
-        public double price { get; set; }
+        public decimal price { get; set; }
         public bool availability { get; set; }
 
 
@@ -44,12 +44,12 @@ namespace Wypozyczalnia_samochodow
             color = d["color"];
             registration = d["registration"];
             year = Convert.ToUInt32(d["year"]);
-            engine = Convert.ToDouble(d["engine"]);
+            engine = Convert.ToDecimal(d["engine"]);
             climatisation = Convert.ToBoolean(d["climatisation"]);
             if (d["fuel"] == "petrol") fuel = Fuels.Petrol;
             else if (d["fuel"] == "lpg") fuel = Fuels.Lpg;
             else if (d["fuel"] == "diesel") fuel = Fuels.Diesel;
-            price = Convert.ToDouble(d["price"]);
+            price = Convert.ToDecimal(d["price"]);
             if(d.Keys.Contains("availability"))
                 availability = Convert.ToBoolean(d["availability"]);
             else
