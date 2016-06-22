@@ -135,7 +135,7 @@ namespace Wypozyczalnia_samochodow
             else
             {
                 listBox1.Items.Clear();
-                foundCustomer = Rental.findCustomers(textBox1.Text, textBox2.Text);
+                foundCustomer = Rental.findCustomer(textBox1.Text, textBox2.Text);
                 foreach (var it in foundCustomer)
                 {
                     listBox1.Items.Add(it.ToString());

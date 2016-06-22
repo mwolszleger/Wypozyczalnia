@@ -128,7 +128,7 @@ namespace Wypozyczalnia_samochodow
                 DBConnectionMySql.CloseConnection(conn);
             }
         }
-        public static List<Customer> findCustomers(string name, string last_name)
+        public static List<Customer> findCustomer(string name, string last_name)
         {
             var list = new List<Customer>();
             foreach (var it in customer)
