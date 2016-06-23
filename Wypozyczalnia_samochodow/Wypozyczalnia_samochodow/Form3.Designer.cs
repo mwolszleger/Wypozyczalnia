@@ -55,6 +55,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxFuel = new System.Windows.Forms.ComboBox();
             this.comboBoxClima = new System.Windows.Forms.ComboBox();
+            this.buttonReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -215,7 +216,7 @@
             // 
             // buttonEnd
             // 
-            this.buttonEnd.Location = new System.Drawing.Point(380, 126);
+            this.buttonEnd.Location = new System.Drawing.Point(380, 159);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(89, 24);
             this.buttonEnd.TabIndex = 19;
@@ -239,6 +240,7 @@
             this.textBoxUserId.TabIndex = 22;
             this.textBoxUserId.Visible = false;
             this.textBoxUserId.TabIndexChanged += new System.EventHandler(this.numberValidation);
+            this.textBoxUserId.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxUserId.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // labelUseId
@@ -310,11 +312,22 @@
             this.comboBoxClima.TabIndex = 28;
             this.comboBoxClima.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
+            // buttonReturn
+            // 
+            this.buttonReturn.Location = new System.Drawing.Point(380, 125);
+            this.buttonReturn.Name = "buttonReturn";
+            this.buttonReturn.Size = new System.Drawing.Size(89, 24);
+            this.buttonReturn.TabIndex = 29;
+            this.buttonReturn.Text = "Zwróć";
+            this.buttonReturn.UseVisualStyleBackColor = true;
+            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 253);
+            this.Controls.Add(this.buttonReturn);
             this.Controls.Add(this.comboBoxClima);
             this.Controls.Add(this.comboBoxFuel);
             this.Controls.Add(this.textBoxAvailaible);
@@ -378,5 +391,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBoxFuel;
         private System.Windows.Forms.ComboBox comboBoxClima;
+        private System.Windows.Forms.Button buttonReturn;
     }
 }

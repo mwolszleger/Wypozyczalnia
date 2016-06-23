@@ -16,22 +16,21 @@ namespace Wypozyczalnia_samochodow
         public Employee employee_beginning { get; private set; }
         public Employee employee_end { get; private set; }
         public decimal price { get; private set; }
-        public bool isFinished()
-        {
-            return end!=null;
-        }
+        public bool finished{get;private set;}
         public Transaction(Car car, Customer customer)
         {
             this.car = car;
             this.customer = customer;
             employee_beginning = Rental.LoggedEmplyee;
             beginning = DateTime.Now.Date;
+            finished = false;
         }
         public void finish()
         {
             employee_end = Rental.LoggedEmplyee;
             end = DateTime.Now.Date;
             price =Convert.ToDecimal( ((end - beginning).TotalDays + 1) *Convert.ToDouble( car.price));
+            finished = true;
         }
         public Transaction(Dictionary<string, string> d)
         {
@@ -43,7 +42,11 @@ namespace Wypozyczalnia_samochodow
             if (d["price"] != "")
                 price = Convert.ToDecimal(d["price"]);
             if (d["end"] != "")
+            {
                 end = Convert.ToDateTime(d["end"]);
+                finished = true;
+            }
+            else finished = false;
             if (d["employee_end"] != "")
                 end = Convert.ToDateTime(d["employee_end"]);
 

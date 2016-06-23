@@ -129,6 +129,7 @@ namespace Wypozyczalnia_samochodow
             else if (!newCar && transaction)
             {
                 resetViewAfterTransaction();
+                setCarData();
             }
             else
                 Close();
@@ -153,6 +154,11 @@ namespace Wypozyczalnia_samochodow
         private void buttonEdit_Click(object sender, EventArgs e)
         {
 
+            if(!Rental.isCarAvailaible(car))
+            {
+                labelMessage.Text = "Nie można edytować samochodu wypożyczonego";
+                return;
+            }
             ReadOnly = false;
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
@@ -177,6 +183,24 @@ namespace Wypozyczalnia_samochodow
             }
             if (!newCar && transaction)
             {
+                Customer customer;
+                try
+                {
+                    customer = Rental.findCustomer(Convert.ToUInt32(textBoxUserId.Text));
+                }
+                catch (Exception ee)
+                {
+                    labelMessage.Text = "Brak użytkownika o podanym identyfikatorze";
+                    return;
+                }
+                if (customer == null)
+                {
+                    labelMessage.Text = "Brak użytkownika o podanym identyfikatorze";
+                    return;
+                }
+                var transaction = new Transaction(car, customer);
+                Rental.addTransaction(transaction);
+                
                 resetViewAfterTransaction();
             }
             if (newCar)
@@ -200,7 +224,10 @@ namespace Wypozyczalnia_samochodow
        
         private void buttonLend_Click(object sender, EventArgs e)
         {
+            if (!Rental.isCarAvailaible(car))
+                return;
             buttonEdit.Visible = false;
+            buttonLend.Visible = false;
             labelUseId.Visible = true;
             textBoxUserId.Visible = true;
             transaction = true;
@@ -278,6 +305,22 @@ namespace Wypozyczalnia_samochodow
             }
             //ustawia kursor na koncu
            ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
+        }
+
+        private void buttonReturn_Click(object sender, EventArgs e)
+        {
+            if (Rental.isCarAvailaible(car))
+            {
+                labelMessage.Text="Auto nie jest wypożyczone";
+
+            }
+            else
+            {
+                var tr = Rental.findTransaction(car);
+                tr.finish();
+                Rental.updateTransaction(tr);
+                labelMessage.Text = "Do zapłaty "+tr.price;
+            }
         }
     }
     }

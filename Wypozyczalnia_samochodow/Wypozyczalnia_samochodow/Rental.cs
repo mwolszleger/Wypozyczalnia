@@ -15,9 +15,10 @@ namespace Wypozyczalnia_samochodow
         private static List<Transaction> transactions = new List<Transaction>();
         private static List<Employee> employees = new List<Employee>();
         private static MySqlConnection conn;
-        
-        public static Employee LoggedEmplyee { get;private set; }    
 
+        // public static Employee LoggedEmplyee { get;private set; } 
+        //do testow   
+        public static Employee LoggedEmplyee = new Employee("mw", "michal", "wolszleger");
         //zwraca listę referencji do aut spełniających kryteria wyszukiwania
         public static List<Car> findCars(string brand, string model)
         {
@@ -53,7 +54,14 @@ namespace Wypozyczalnia_samochodow
                     Rental.employees.Add(it);
                     
                 }
-                
+                var tr = DBConnectionMySql.SelectAllTransactions(conn);
+                foreach (var it in tr)
+                {
+                    Rental.transactions.Add(it);
+                    Console.WriteLine(transactions[0].end==null);
+
+                }
+
             }
             catch (MySqlException myexc)
             {
@@ -113,7 +121,7 @@ namespace Wypozyczalnia_samochodow
             {
                 if (transactions[i].car == c)
                 {
-                    return transactions[i].isFinished();
+                    return transactions[i].finished;
                 }
             }
             return true;
@@ -195,7 +203,7 @@ namespace Wypozyczalnia_samochodow
             {
                 if (transactions[i].car == car)
                 {
-                    if (!transactions[i].isFinished())
+                    if (!transactions[i].finished)
                         return transactions[i];
                     else
                         return null;
@@ -212,7 +220,16 @@ namespace Wypozyczalnia_samochodow
             }
             return null;
         }
-        
+        public static void addTransaction(Transaction t)
+        {
+            transactions.Add(t);
+            DBConnectionMySql.addTransaction(t);
+        }
+        public static void updateTransaction(Transaction t)
+        {
+            
+            DBConnectionMySql.updateTransaction(t);
+        }
     }
 
 }

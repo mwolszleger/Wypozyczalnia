@@ -64,7 +64,7 @@ namespace Wypozyczalnia_samochodow
         private static readonly string EndDateColumnName = "end_date";
         private static readonly string EmployeeBeginningColumnName = "employee_beginning";
         private static readonly string EmployeeEndTableName = "employee_end";
-        private static readonly string EmployeePriceColumnName = "employee_end";
+        private static readonly string EmployeePriceColumnName = "price";
 
 
         private static readonly string EmployeesTableName = "employees";
@@ -344,9 +344,8 @@ namespace Wypozyczalnia_samochodow
         {
             var transactions = new List<Transaction>();
             string[] tableNames = new string[] { TransactionIdColumnName, TranscationCarIdColumnName, TransactionCustomerIdColumnName, BeginningDateColumnName, EndDateColumnName, EmployeeBeginningColumnName, EmployeeEndTableName, EmployeePriceColumnName };
-            string queryText = CreateSelectQuerry(tableNames, CarsTableName);
+            string queryText = CreateSelectQuerry(tableNames, TransactionsTableName);
             MySqlCommand command = new MySqlCommand(queryText, conn);
-
             MySqlDataReader dr = command.ExecuteReader();
 
             while (dr.Read())
@@ -359,7 +358,7 @@ namespace Wypozyczalnia_samochodow
                 attributes.Add("end", dr[4].ToString());
                 attributes.Add("employee_beginning", dr[5].ToString());
                 attributes.Add("employee_end", dr[6].ToString());
-
+                
                 attributes.Add("price", dr[7].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
 
                 transactions.Add(new Transaction(attributes));
@@ -373,8 +372,9 @@ namespace Wypozyczalnia_samochodow
             var attributes = new Dictionary<string, string>();
             attributes.Add(EmployeeEndTableName, t.employee_end.login);
             attributes.Add(EndDateColumnName, t.end.ToString("dd-MM-yyyy"));
-            attributes.Add(EmployeePriceColumnName, t.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            AddQuerry(CreateUpdateQuerry(attributes, CarsTableName,t.id));
+    
+            attributes.Add(EmployeePriceColumnName, t.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            AddQuerry(CreateUpdateQuerry(attributes, TransactionsTableName,t.id));
         }
     }
 }
