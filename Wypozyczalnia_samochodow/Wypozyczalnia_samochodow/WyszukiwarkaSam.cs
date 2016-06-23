@@ -97,7 +97,7 @@ namespace Wypozyczalnia_samochodow
             }
             else
             {
-                var temp = new Form4();
+                var temp = new Form4(foundCustomer[listBox1.SelectedIndex]);
                 temp.newCustomer = false;
                 temp.Show();
                 temp.FormClosing += ClosedCustomerWindows;
@@ -147,5 +147,6 @@ namespace Wypozyczalnia_samochodow
         {
             clear();
         }
+
     }
 }

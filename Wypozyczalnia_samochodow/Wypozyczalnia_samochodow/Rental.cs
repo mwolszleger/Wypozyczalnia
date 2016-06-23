@@ -11,7 +11,7 @@ namespace Wypozyczalnia_samochodow
     static class Rental
     {
         private static List<Car> cars = new List<Car>();
-        private static List<Customer> customer = new List<Customer>();
+        private static List<Customer> customers = new List<Customer>();
         private static List<Transaction> transactions = new List<Transaction>();
         private static List<Employee> employees = new List<Employee>();
         private static MySqlConnection conn;
@@ -45,7 +45,7 @@ namespace Wypozyczalnia_samochodow
                 var customer = DBConnectionMySql.SelectAllCustomers(conn);
                 foreach (var it in customer)
                 {
-                    Rental.customer.Add(it);
+                    Rental.customers.Add(it);
                 }
                 var emp = DBConnectionMySql.SelectAllEmployees(conn);
                 foreach (var it in emp)
@@ -122,7 +122,7 @@ namespace Wypozyczalnia_samochodow
         public static List<Customer> findCustomer(string name, string last_name)
         {
             var list = new List<Customer>();
-            foreach (var it in customer)
+            foreach (var it in customers)
             {
                 if (it.name.ToUpper().Contains(name.ToUpper()) && it.last_name.ToUpper().Contains(last_name.ToUpper()))
                 {
@@ -135,7 +135,7 @@ namespace Wypozyczalnia_samochodow
         public static uint NewCustomerId()
         {
             uint id = 0;
-            foreach (var it in customer)
+            foreach (var it in customers)
             {
                 if (it.id > id)
                     id = it.id;
@@ -144,7 +144,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void addCustomer(Customer cs)
         {
-            customer.Add(cs);
+            customers.Add(cs);
             DBConnectionMySql.addCustomer(cs);
         }
         public static void updateCustomer(Customer cs)
@@ -172,7 +172,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static Customer findCustomer(uint id)
         {
-            foreach (var it in customer)
+            foreach (var it in customers)
             {
                 if (it.id == id)
                     return it;

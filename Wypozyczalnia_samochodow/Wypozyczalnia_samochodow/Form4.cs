@@ -27,7 +27,7 @@ namespace Wypozyczalnia_samochodow
             {
                 _newCustomer = value;
                 readOnly = !value;
-                button1.Visible = !value;
+                button.Visible = !value;
                 button2.Visible = !value;
 
             }
@@ -57,6 +57,13 @@ namespace Wypozyczalnia_samochodow
             InitializeComponent();
         }
 
+        public Form4(Customer customer)
+        {
+            InitializeComponent();
+            readOnly = true;
+            this.customer = customer;
+            setCustomerData();
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -114,14 +121,14 @@ namespace Wypozyczalnia_samochodow
         private void resetViewAfterEdition()
         {
             readOnly = true;
-            button1.Visible = true;
+            button.Visible = true;
             button2.Visible = true;
             edition = false;
         }
 
         private void resetViewAfterTransaction()
         {
-            button1.Visible = true;
+            button.Visible = true;
             button2.Visible = true;
             transaction = false;
         }
@@ -138,15 +145,16 @@ namespace Wypozyczalnia_samochodow
                     return;
                 }
                 Rental.updateCustomer(customer);
-                //customer.setCustomerData(getCustomerData());
+                customer.setCustomerData(getCustomerData());
+                
                 resetViewAfterEdition();
             }
             if (!newCustomer && transaction)
             {
                 resetViewAfterTransaction();
             }
-            
-           
+
+
             if (newCustomer)
             {
                 if (!CheckIfNotEmpty())
@@ -157,7 +165,11 @@ namespace Wypozyczalnia_samochodow
 
                 Customer customer = new Customer(getCustomerData());
                 Rental.addCustomer(customer);
+                readOnly = true;
+                label_text.Text = "Dodano";
+                buttonOK.Visible = false;
             }
+
         }
         private void stringValidation(object sender, EventArgs e)
         {
@@ -180,7 +192,7 @@ namespace Wypozyczalnia_samochodow
         {
             edition = true;
             readOnly = false;
-            button1.Visible = false;
+            button.Visible = false;
             button2.Visible = false;
         }
     }

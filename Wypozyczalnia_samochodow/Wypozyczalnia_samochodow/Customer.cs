@@ -34,8 +34,9 @@ namespace Wypozyczalnia_samochodow
         {
 
         }
-        private void setCustomerData(Dictionary<string, string> d)
+        public void setCustomerData(Dictionary<string, string> d)
         {
+            
             name = d["name"];
             last_name = d["last_name"];
             street = d["street"];
