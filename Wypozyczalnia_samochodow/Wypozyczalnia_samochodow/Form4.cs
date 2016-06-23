@@ -18,7 +18,6 @@ namespace Wypozyczalnia_samochodow
         private bool edition;
         private bool transaction;
         private Customer customer;
-        Regex regZipCode = new Regex("^[0-9]{2}-[0-9]{2}[0-9]$");
 
         public bool newCustomer
         {
