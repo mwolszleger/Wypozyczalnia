@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Wypozyczalnia_samochodow
 {
@@ -17,6 +18,8 @@ namespace Wypozyczalnia_samochodow
         private bool edition;
         private bool transaction;
         private Customer customer;
+        Regex regZipCode = new Regex("^[0-9]{2}-[0-9]{2}[0-9]$");
+
         public bool newCustomer
         {
             get
@@ -136,38 +139,44 @@ namespace Wypozyczalnia_samochodow
         private void buttonOK_Click(object sender, EventArgs e)
         {
             clearMessage();
-            if (!newCustomer && edition)
+            if (code_city()&& phone_number())
             {
-                //edycja
-                if (!CheckIfNotEmpty())
+                if (!newCustomer && edition)
                 {
-                    label_text.Text = "Nie podano wszystkich danych";
-                    return;
+                    //edycja
+                    if (!CheckIfNotEmpty())
+                    {
+                        label_text.Text = "Nie podano wszystkich danych";
+                        return;
+                    }
+                    Rental.updateCustomer(customer);
+                    customer.setCustomerData(getCustomerData());
+
+                    resetViewAfterEdition();
                 }
-                Rental.updateCustomer(customer);
-                customer.setCustomerData(getCustomerData());
-                
-                resetViewAfterEdition();
-            }
-            if (!newCustomer && transaction)
-            {
-                resetViewAfterTransaction();
-            }
-
-
-            if (newCustomer)
-            {
-                if (!CheckIfNotEmpty())
+                if (!newCustomer && transaction)
                 {
-                    label_text.Text = "Nie podano wszystkich danych";
-                    return;
+                    resetViewAfterTransaction();
                 }
+            }
+         
+                if (newCustomer)
+                {
+                    if (code_city()&& phone_number())
+                    {
+                    buttonOK.Visible = true;
+                    if (!CheckIfNotEmpty())
+                    {
+                        label_text.Text = "Nie podano wszystkich danych";
+                        return;
+                    }
 
-                Customer customer = new Customer(getCustomerData());
-                Rental.addCustomer(customer);
-                readOnly = true;
-                label_text.Text = "Dodano";
-                buttonOK.Visible = false;
+                    Customer customer = new Customer(getCustomerData());
+                    Rental.addCustomer(customer);
+                    readOnly = true;
+                    label_text.Text = "Dodano";
+                    buttonOK.Visible = false;
+                }
             }
 
         }
@@ -195,5 +204,40 @@ namespace Wypozyczalnia_samochodow
             button.Visible = false;
             button2.Visible = false;
         }
+
+        private void textName_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private bool phone_number()
+        {
+            try
+            {
+                int value = int.Parse(this.textPhoneNumber.Text);
+            }
+            catch (Exception)
+            {
+                if (this.textPhoneNumber.Text.Length != 0)
+                    MessageBox.Show("Nieprawidłowy numer telefonu", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+                
+            }
+            return true;
+        }
+
+        private bool code_city()
+        {
+            string text = "^[0-9]{2}-[0-9]{3}$";
+            string input = textCodeCity.Text;
+           if(! Regex.IsMatch(input, text))
+           {
+                MessageBox.Show("Nieprawidłowy kod miasta", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+           }
+           return true;
+
+        }
+
     }
 }

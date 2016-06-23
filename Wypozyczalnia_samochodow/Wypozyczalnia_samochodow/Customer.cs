@@ -14,9 +14,9 @@ namespace Wypozyczalnia_samochodow
         public string street { get; set; }
         public int house_number { get; set; }
         public int flat_number { get; set; }
-        public int code_town { get; set; }
+        public string code_town { get; set; }
         public string place { get; set; }
-        public int phone_number { get; set; }
+        public string phone_number { get; set; }
 
 
         public Customer(uint id, Dictionary<string, string> d)
@@ -42,9 +42,9 @@ namespace Wypozyczalnia_samochodow
             street = d["street"];
             house_number =Convert.ToInt32(d["house_number"]);
             flat_number =Convert.ToInt32(d["flat_number"]);
-            code_town =Convert.ToInt32(d["code_town"]);
+            code_town =d["code_town"];
             place = d["place"];
-            phone_number =Convert.ToInt32(d["phone_number"]);
+            phone_number =d["phone_number"];
 
         }
         public override string ToString()

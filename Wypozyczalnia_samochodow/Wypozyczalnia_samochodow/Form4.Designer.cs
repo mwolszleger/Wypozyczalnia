@@ -75,6 +75,7 @@
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(112, 20);
             this.textName.TabIndex = 9;
+            this.textName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textName_KeyUp);
             // 
             // textLastName
             // 

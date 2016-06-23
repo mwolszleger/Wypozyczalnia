@@ -265,7 +265,7 @@ namespace Wypozyczalnia_samochodow
             while (dr.Read())
             {
                 var attributes = new Dictionary<string, string>();
-                attributes.Add("imie", dr[1].ToString());
+                attributes.Add("name", dr[1].ToString());
                 attributes.Add("last_name", dr[2].ToString());
                 attributes.Add("street", dr[3].ToString());
                 attributes.Add("house_number", dr[4].ToString());
