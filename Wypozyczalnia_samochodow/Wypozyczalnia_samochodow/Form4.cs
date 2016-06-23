@@ -60,7 +60,18 @@ namespace Wypozyczalnia_samochodow
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Close();
+            clearMessage();
+            if (!newCustomer && edition)
+            {
+                resetViewAfterEdition();
+                setCustomerData();
+            }
+            else if (!newCustomer && transaction)
+            {
+                resetViewAfterTransaction();
+            }
+            else
+                Close();
         }
 
         private void clearMessage()

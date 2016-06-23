@@ -42,6 +42,11 @@ namespace Wypozyczalnia_samochodow
                 {
                     Rental.cars.Add(it);
                 }
+                var customer = DBConnectionMySql.SelectAllCustomers(conn);
+                foreach (var it in customer)
+                {
+                    Rental.customer.Add(it);
+                }
                 var emp = DBConnectionMySql.SelectAllEmployees(conn);
                 foreach (var it in emp)
                 {
@@ -114,33 +119,12 @@ namespace Wypozyczalnia_samochodow
             return true;
         }
 
-        public static void LoadCustomer()
-        {
-            conn = DBConnectionMySql.CreatConnection("wypozyczalnia");
-            try
-            {
-                DBConnectionMySql.OpenConnection(conn);
-                var customer = DBConnectionMySql.SelectAllCustomers(conn);
-                foreach (var it in customer)
-                {
-                    Rental.customer.Add(it);
-                }
-            }
-            catch (MySqlException myexc)
-            {
-                throw myexc;
-            }
-            finally
-            {
-                DBConnectionMySql.CloseConnection(conn);
-            }
-        }
         public static List<Customer> findCustomer(string name, string last_name)
         {
             var list = new List<Customer>();
             foreach (var it in customer)
             {
-                if (it.name.Contains(name)&&it.last_name.Contains(last_name))
+                if (it.name.ToUpper().Contains(name.ToUpper()) && it.last_name.ToUpper().Contains(last_name.ToUpper()))
                 {
                     list.Add(it);
                 }

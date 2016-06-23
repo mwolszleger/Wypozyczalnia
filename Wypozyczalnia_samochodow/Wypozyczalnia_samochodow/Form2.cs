@@ -31,7 +31,6 @@ namespace Wypozyczalnia_samochodow
             }
             try
             {
-                Rental.LoadCustomer();
                 Rental.LoadFromDataBase();
                 
                 
