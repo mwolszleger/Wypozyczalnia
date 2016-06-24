@@ -159,14 +159,32 @@ namespace Wypozyczalnia_samochodow
                     }
                     Rental.updateCustomer(customer);
                     customer.setCustomerData(getCustomerData());
-
                     resetViewAfterEdition();
+                    }
                 }
-                if (!newCustomer && transaction)
-                {
-                    resetViewAfterTransaction();
-                }
-            }
+                    if (!newCustomer && transaction)
+                    {
+                        Car car;
+                        try
+                        {
+                            car = Rental.findCar(Convert.ToString(textBox_nr.Text));
+                        }
+                        catch (Exception ee)
+                        {
+                            label_text.Text = "Brak auta o podanym numerze rejestracyjnym";
+                            return;
+                        }
+                        if (car == null)
+                        {
+                            label_text.Text = "Brak auta o podanym numerze rejestracyjnym";
+                            return;
+                        }
+                        var Transaction = new Transaction(car, customer);
+                        Rental.addTransaction(Transaction);
+                        textBox_nr.ReadOnly = true;
+                        resetViewAfterTransaction();
+                    }
+                    
          
                 if (newCustomer)
                 {
@@ -286,6 +304,15 @@ namespace Wypozyczalnia_samochodow
            }
            return true;
 
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+            button2.Visible = false;
+            button.Visible = false;
+            transaction = true;
+            label10.Visible = true;
+            textBox_nr.Visible = true;
         }
 
     }

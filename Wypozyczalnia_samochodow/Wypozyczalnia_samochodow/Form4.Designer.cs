@@ -51,6 +51,8 @@
             this.label_text = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox_ID = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_nr = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -123,6 +125,7 @@
             this.button.TabIndex = 20;
             this.button.Text = "Wypożycz";
             this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.button_Click);
             // 
             // label3
             // 
@@ -245,11 +248,31 @@
             this.textBox_ID.Size = new System.Drawing.Size(114, 20);
             this.textBox_ID.TabIndex = 38;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(184, 163);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 13);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Numer rejestracyjny:";
+            this.label10.Visible = false;
+            // 
+            // textBox_nr
+            // 
+            this.textBox_nr.Location = new System.Drawing.Point(292, 160);
+            this.textBox_nr.Name = "textBox_nr";
+            this.textBox_nr.Size = new System.Drawing.Size(61, 20);
+            this.textBox_nr.TabIndex = 40;
+            this.textBox_nr.Visible = false;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 253);
+            this.Controls.Add(this.textBox_nr);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox_ID);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label_text);
@@ -305,5 +328,7 @@
         private System.Windows.Forms.Label label_text;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox_ID;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox_nr;
     }
 }
