@@ -14,15 +14,14 @@ namespace Wypozyczalnia_samochodow
     static class DBConnectionMySql
     {
         public static string Server { get; set; }
-        public static string User { get; set; }
-        public static string Passwd { private get; set; }
+        
         public static uint Port { get; set; }
         public static string FileName { get; set; }
         static DBConnectionMySql()
         {
             Server = "127.0.0.1";
-            User = "root";
-            Passwd = "";
+           // User = "root";
+           // Passwd = "";
             Port = 3306;
 
         }
@@ -71,7 +70,7 @@ namespace Wypozyczalnia_samochodow
         private static readonly string LoginColumnName = "login";
         private static readonly string NameEmployeeColumnName = "name";
         private static readonly string LastNameEmployeeColumnName = "last_name";
-        public static MySqlConnection CreatConnection(string DataBaseName)
+        public static MySqlConnection CreatConnection(string DataBaseName, string User, string Passwd)
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = Server;

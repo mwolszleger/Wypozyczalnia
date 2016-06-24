@@ -20,6 +20,22 @@ namespace Wypozyczalnia_samochodow
         //do testow   
         public static Employee LoggedEmplyee = new Employee("mw", "michal", "wolszleger");
         //zwraca listę referencji do aut spełniających kryteria wyszukiwania
+        public static bool tryToLogIn(string login, string pass)
+        {
+            bool success = true;
+            try
+            {
+                conn = DBConnectionMySql.CreatConnection("wypozyczalnia", login, pass);
+                DBConnectionMySql.OpenConnection(conn);
+                DBConnectionMySql.CloseConnection(conn);
+            }
+            catch (Exception e)
+            {
+                success = false;
+            }
+           
+            return success;
+        }
         public static List<Car> findCars(string brand, string model)
         {
             var list = new List<Car>();
@@ -34,7 +50,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void LoadFromDataBase()
         {
-            conn = DBConnectionMySql.CreatConnection("wypozyczalnia");
+           
             try
             {
                 DBConnectionMySql.OpenConnection(conn);
@@ -74,7 +90,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void SaveToBase()
         {
-            var conn = DBConnectionMySql.CreatConnection("wypozyczalnia");
+           // var conn = DBConnectionMySql.CreatConnection("wypozyczalnia","root","");
             try
             {
                 DBConnectionMySql.OpenConnection(conn);
