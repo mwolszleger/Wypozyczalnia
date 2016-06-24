@@ -31,7 +31,8 @@ namespace Wypozyczalnia_samochodow
                 readOnly = !value;
                 button.Visible = !value;
                 button2.Visible = !value;
-
+                label9.Visible = !value;
+                textBox_ID.Visible = !value;
             }
         }
         public bool readOnly
@@ -65,6 +66,7 @@ namespace Wypozyczalnia_samochodow
             readOnly = true;
             this.customer = customer;
             setCustomerData();
+            textBox_ID.Text = customer.id.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -209,6 +211,8 @@ namespace Wypozyczalnia_samochodow
             readOnly = false;
             button.Visible = false;
             button2.Visible = false;
+            textBox_ID.Visible = false;
+            label9.Visible = false;
         }
 
         private bool protect_phone_number()
@@ -275,7 +279,7 @@ namespace Wypozyczalnia_samochodow
         {
           string text = "^[0-9]$";
             string input = textFlatNumber.Text;
-           if(! Regex.IsMatch(input, text))
+           if(! Regex.IsMatch(input, text) && input!="")
            {
                 MessageBox.Show("Nieprawidłowy numer mieszkania", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

@@ -49,6 +49,8 @@
             this.textPhoneNumber = new System.Windows.Forms.TextBox();
             this.textCodeCity = new System.Windows.Forms.TextBox();
             this.label_text = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox_ID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -226,11 +228,30 @@
             this.label_text.Size = new System.Drawing.Size(0, 13);
             this.label_text.TabIndex = 36;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 163);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "ID";
+            // 
+            // textBox_ID
+            // 
+            this.textBox_ID.Location = new System.Drawing.Point(45, 160);
+            this.textBox_ID.Name = "textBox_ID";
+            this.textBox_ID.ReadOnly = true;
+            this.textBox_ID.Size = new System.Drawing.Size(114, 20);
+            this.textBox_ID.TabIndex = 38;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 253);
+            this.Controls.Add(this.textBox_ID);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label_text);
             this.Controls.Add(this.textCodeCity);
             this.Controls.Add(this.textPhoneNumber);
@@ -282,5 +303,7 @@
         private System.Windows.Forms.TextBox textPhoneNumber;
         private System.Windows.Forms.TextBox textCodeCity;
         private System.Windows.Forms.Label label_text;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox_ID;
     }
 }
