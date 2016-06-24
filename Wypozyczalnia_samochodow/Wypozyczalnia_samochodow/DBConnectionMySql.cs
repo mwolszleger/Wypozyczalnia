@@ -269,7 +269,10 @@ namespace Wypozyczalnia_samochodow
                 attributes.Add("last_name", dr[2].ToString());
                 attributes.Add("street", dr[3].ToString());
                 attributes.Add("house_number", dr[4].ToString());
-                attributes.Add("flat_number", dr[5].ToString());
+                if (FlatNumberColumnName != "")
+                {
+                    attributes.Add("flat_number", dr[5].ToString());
+                }
                 attributes.Add("code_town", dr[6].ToString());
                 attributes.Add("place", dr[7].ToString());
                 attributes.Add("phone_number", dr[8].ToString());
@@ -288,7 +291,10 @@ namespace Wypozyczalnia_samochodow
             attributes.Add(LastNameColumnName, c.last_name);
             attributes.Add(StreetColumnName, c.street);
             attributes.Add(HouseNumberColumnName, c.house_number.ToString());
-            attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+            if (FlatNumberColumnName != "")
+            {
+                attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+            }
             attributes.Add(CodeTownColumnName, c.code_town.ToString());
             attributes.Add(PlaceColumnName, c.place);
             attributes.Add(PhoneNumberColumnName, c.phone_number.ToString());
@@ -303,7 +309,10 @@ namespace Wypozyczalnia_samochodow
             attributes.Add(LastNameColumnName, c.last_name);
             attributes.Add(StreetColumnName, c.street);
             attributes.Add(HouseNumberColumnName, c.house_number.ToString());
-            attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+            if (FlatNumberColumnName != "")
+            {
+                attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+            }
             attributes.Add(CodeTownColumnName, c.code_town.ToString());
             attributes.Add(PlaceColumnName, c.place);
             attributes.Add(PhoneNumberColumnName, c.phone_number.ToString());

@@ -12,7 +12,7 @@ namespace Wypozyczalnia_samochodow
         public string name { get; set; }
         public string last_name { get; set; }
         public string street { get; set; }
-        public int house_number { get; set; }
+        public string house_number { get; set; }
         public int flat_number { get; set; }
         public string code_town { get; set; }
         public string place { get; set; }
@@ -40,8 +40,11 @@ namespace Wypozyczalnia_samochodow
             name = d["name"];
             last_name = d["last_name"];
             street = d["street"];
-            house_number =Convert.ToInt32(d["house_number"]);
-            flat_number =Convert.ToInt32(d["flat_number"]);
+            house_number =(d["house_number"]);
+            if (flat_number != 0)
+            {
+                flat_number = Convert.ToInt32(d["flat_number"]);
+            }
             code_town =d["code_town"];
             place = d["place"];
             phone_number =d["phone_number"];

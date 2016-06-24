@@ -198,8 +198,8 @@ namespace Wypozyczalnia_samochodow
                     labelMessage.Text = "Brak użytkownika o podanym identyfikatorze";
                     return;
                 }
-                var transaction = new Transaction(car, customer);
-                Rental.addTransaction(transaction);
+                var Transaction = new Transaction(car, customer);
+                Rental.addTransaction(Transaction);
                 
                 resetViewAfterTransaction();
             }
