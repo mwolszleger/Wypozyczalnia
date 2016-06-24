@@ -24,6 +24,7 @@ namespace Wypozyczalnia_samochodow
             employee_beginning = Rental.LoggedEmplyee;
             beginning = DateTime.Now.Date;
             finished = false;
+            id = Rental.NewTransactionrId();
         }
         public void finish()
         {

@@ -25,10 +25,10 @@ namespace Wypozyczalnia_samochodow
         private void buttonLog_Click(object sender, EventArgs e)
         {
             bool d = Rental.tryToLogIn(textBoxLogin.Text, textBoxPassword.Text);
-            Console.WriteLine(d);
+            
             if (d)
             {
-                f = new Form2();
+                f = new Form2(textBoxLogin.Text);
                 f.FormClosed += newUser;
                 f.Show();
                 Hide();

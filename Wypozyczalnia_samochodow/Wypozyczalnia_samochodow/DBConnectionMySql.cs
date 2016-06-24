@@ -365,7 +365,7 @@ namespace Wypozyczalnia_samochodow
                 attributes.Add("beginning", dr[3].ToString());
                 attributes.Add("end", dr[4].ToString());
                 attributes.Add("employee_beginning", dr[5].ToString());
-                attributes.Add("employee_end", dr[6].ToString());
+               attributes.Add("employee_end", dr[6].ToString());
                 
                 attributes.Add("price", dr[7].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
 
@@ -379,7 +379,7 @@ namespace Wypozyczalnia_samochodow
         {
             var attributes = new Dictionary<string, string>();
             attributes.Add(EmployeeEndTableName, t.employee_end.login);
-            attributes.Add(EndDateColumnName, t.end.ToString("dd-MM-yyyy"));
+            attributes.Add(EndDateColumnName, t.end.ToString("yyyy-MM-dd"));
     
             attributes.Add(EmployeePriceColumnName, t.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
             AddQuerry(CreateUpdateQuerry(attributes, TransactionsTableName,t.id));

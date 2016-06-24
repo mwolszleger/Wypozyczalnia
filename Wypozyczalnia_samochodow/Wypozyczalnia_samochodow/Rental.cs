@@ -16,10 +16,8 @@ namespace Wypozyczalnia_samochodow
         private static List<Employee> employees = new List<Employee>();
         private static MySqlConnection conn;
 
-        // public static Employee LoggedEmplyee { get;private set; } 
-        //do testow   
-        public static Employee LoggedEmplyee = new Employee("mw", "michal", "wolszleger");
-        //zwraca listę referencji do aut spełniających kryteria wyszukiwania
+        public static Employee LoggedEmplyee;
+  
         public static bool tryToLogIn(string login, string pass)
         {
             bool success = true;
@@ -33,7 +31,7 @@ namespace Wypozyczalnia_samochodow
             {
                 success = false;
             }
-           
+
             return success;
         }
         public static List<Car> findCars(string brand, string model)
@@ -41,7 +39,7 @@ namespace Wypozyczalnia_samochodow
             var list = new List<Car>();
             foreach (var it in cars)
             {
-                if (it.availability&&it.model.ToUpper().Contains(model.ToUpper())&& it.brand.ToUpper().Contains(brand.ToUpper()))
+                if (it.availability && it.model.ToUpper().Contains(model.ToUpper()) && it.brand.ToUpper().Contains(brand.ToUpper()))
                 {
                     list.Add(it);
                 }
@@ -50,7 +48,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void LoadFromDataBase()
         {
-           
+
             try
             {
                 DBConnectionMySql.OpenConnection(conn);
@@ -68,13 +66,13 @@ namespace Wypozyczalnia_samochodow
                 foreach (var it in emp)
                 {
                     Rental.employees.Add(it);
-                    
+
                 }
                 var tr = DBConnectionMySql.SelectAllTransactions(conn);
                 foreach (var it in tr)
                 {
                     Rental.transactions.Add(it);
-                    Console.WriteLine(transactions[0].end==null);
+                    
 
                 }
 
@@ -90,7 +88,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void SaveToBase()
         {
-           // var conn = DBConnectionMySql.CreatConnection("wypozyczalnia","root","");
+            // var conn = DBConnectionMySql.CreatConnection("wypozyczalnia","root","");
             try
             {
                 DBConnectionMySql.OpenConnection(conn);
@@ -123,7 +121,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void updateCar(Car c)
         {
-            
+
             DBConnectionMySql.updateCar(c);
         }
         public static void clearEverything()
@@ -152,7 +150,7 @@ namespace Wypozyczalnia_samochodow
                 {
                     list.Add(it);
                 }
-              
+
             }
             return list;
         }
@@ -192,7 +190,7 @@ namespace Wypozyczalnia_samochodow
                 if (it.id == id)
                     return it;
             }
-            return null;              
+            return null;
         }
         public static Customer findCustomer(uint id)
         {
@@ -231,7 +229,7 @@ namespace Wypozyczalnia_samochodow
         {
             foreach (var it in employees)
             {
-                if (it.login==login)
+                if (it.login == login)
                     return it;
             }
             return null;
@@ -243,9 +241,10 @@ namespace Wypozyczalnia_samochodow
         }
         public static void updateTransaction(Transaction t)
         {
-            
+
             DBConnectionMySql.updateTransaction(t);
         }
+
     }
 
 }

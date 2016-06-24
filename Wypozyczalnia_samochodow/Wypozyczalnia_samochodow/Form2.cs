@@ -12,13 +12,13 @@ namespace Wypozyczalnia_samochodow
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        public Form2(string login)
         {
             InitializeComponent();
             menuItems = new Control[] { button1, button2, button3, button4, label1 };
             zmianaHasla1.Closing += backToMenu;
             wyszukiwarkaSam1.Closing += backToMenu;
-
+          
             Rental.clearEverything();
             try
             {
@@ -31,16 +31,18 @@ namespace Wypozyczalnia_samochodow
             }
             try
             {
-                Rental.LoadFromDataBase();
-                
+                Rental.LoadFromDataBase();         
                 
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-            
-            
+            Rental.LoggedEmplyee = Rental.findEmployee(login);
+            if (Rental.LoggedEmplyee != null)
+                label1.Text = Rental.LoggedEmplyee.ToString();
+            else
+                label1.Text = "";
         }
 
         private void button4_Click(object sender, EventArgs e)

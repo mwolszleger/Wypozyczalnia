@@ -19,6 +19,10 @@ namespace Wypozyczalnia_samochodow
             this.lastName = lastName;
            
         }
+        public override string ToString()
+        {
+            return name + " " + lastName;
+        }
     }
     
 }

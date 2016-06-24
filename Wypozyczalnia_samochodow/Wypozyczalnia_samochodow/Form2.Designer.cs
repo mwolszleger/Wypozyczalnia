@@ -98,6 +98,7 @@
             // 
             this.wyszukiwarkaSam1.Location = new System.Drawing.Point(32, 12);
             this.wyszukiwarkaSam1.Name = "wyszukiwarkaSam1";
+            this.wyszukiwarkaSam1.searchingCars = false;
             this.wyszukiwarkaSam1.Size = new System.Drawing.Size(641, 341);
             this.wyszukiwarkaSam1.TabIndex = 6;
             this.wyszukiwarkaSam1.Visible = false;
