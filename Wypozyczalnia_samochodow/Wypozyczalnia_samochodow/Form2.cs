@@ -15,8 +15,7 @@ namespace Wypozyczalnia_samochodow
         public Form2(string login)
         {
             InitializeComponent();
-            menuItems = new Control[] { button1, button2, button3, button4, label1 };
-            zmianaHasla1.Closing += backToMenu;
+            menuItems = new Control[] { button1, button2, button4, label1 };
             wyszukiwarkaSam1.Closing += backToMenu;
           
             Rental.clearEverything();
@@ -71,7 +70,6 @@ namespace Wypozyczalnia_samochodow
 
         private void button3_Click(object sender, EventArgs e)
         {
-            zmianaHasla1.Visible = true;
             setMenuVisibility(false);
         }
 
@@ -80,11 +78,6 @@ namespace Wypozyczalnia_samochodow
             wyszukiwarkaSam1.searchingCars = true;
             wyszukiwarkaSam1.Visible = true;
             setMenuVisibility(false);
-        }
-
-        private void wyszukiwarkaSam1_Load(object sender, EventArgs e)
-        {
-           
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -88,6 +88,8 @@
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
+            this.MaximumSize = new System.Drawing.Size(294, 149);
+            this.MinimumSize = new System.Drawing.Size(294, 149);
             this.Name = "Form1";
             this.Text = "Logowanie";
             this.ResumeLayout(false);

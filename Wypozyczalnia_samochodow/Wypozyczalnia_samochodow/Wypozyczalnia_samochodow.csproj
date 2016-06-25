@@ -88,12 +88,6 @@
     <Compile Include="WyszukiwarkaSam.Designer.cs">
       <DependentUpon>WyszukiwarkaSam.cs</DependentUpon>
     </Compile>
-    <Compile Include="ZmianaHasla.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ZmianaHasla.Designer.cs">
-      <DependentUpon>ZmianaHasla.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,9 +112,6 @@
     </Compile>
     <EmbeddedResource Include="WyszukiwarkaSam.resx">
       <DependentUpon>WyszukiwarkaSam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ZmianaHasla.resx">
-      <DependentUpon>ZmianaHasla.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -158,6 +158,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.MaximumSize = new System.Drawing.Size(641, 341);
+            this.MinimumSize = new System.Drawing.Size(641, 341);
             this.Name = "WyszukiwarkaSam";
             this.Size = new System.Drawing.Size(641, 341);
             this.ResumeLayout(false);
