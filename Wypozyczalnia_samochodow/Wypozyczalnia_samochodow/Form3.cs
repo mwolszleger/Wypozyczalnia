@@ -26,11 +26,13 @@ namespace Wypozyczalnia_samochodow
             set
             {
                 _newCar = value;
+                buttonOK.Visible = value;
                 ReadOnly = !value;
                 buttonLend.Visible = !value;
                 buttonEdit.Visible = !value;
                 textBoxNumber.ReadOnly = !value;
-
+                buttonReturn.Visible = !value;
+                button1.Visible = !value;
             }
         }
         public bool ReadOnly
@@ -136,18 +138,16 @@ namespace Wypozyczalnia_samochodow
         }
         private void resetViewAfterTransaction()
         {
-            buttonLend.Visible = true;
-            buttonEdit.Visible = true;
+            newCar = false;
+            transaction = false;
             labelUseId.Visible = false;
             textBoxUserId.Visible = false;
-            transaction = false;
         }
         private void resetViewAfterEdition()
         {
             ReadOnly = true;
-            buttonLend.Visible = true;
-            buttonEdit.Visible = true;
-            labelUseId.Visible = false;
+            newCar = false;
+
             textBoxUserId.Visible = false;
             edition = false;
         }
@@ -162,6 +162,7 @@ namespace Wypozyczalnia_samochodow
             ReadOnly = false;
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
+            buttonReturn.Visible = false;
             edition = true;
         }
 
@@ -229,8 +230,11 @@ namespace Wypozyczalnia_samochodow
             buttonEdit.Visible = false;
             buttonLend.Visible = false;
             labelUseId.Visible = true;
+            button1.Visible = false;
+            buttonReturn.Visible = false;
             textBoxUserId.Visible = true;
             transaction = true;
+            buttonOK.Visible = true;
         }
 
         private void numberValidation(object sender, EventArgs e)
@@ -321,6 +325,22 @@ namespace Wypozyczalnia_samochodow
                 Rental.updateTransaction(tr);
                 labelMessage.Text = "Do zapłaty "+tr.price;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Rental.isCarAvailaible(car))
+            {
+                labelMessage.Text = "Nie można usunąć samochodu wypożyczonego";
+                return;
+            }
+
+            car.availability = false;
+            Rental.updateCar(car);
+            buttonLend.Visible = false;
+            buttonEdit.Visible = false;
+            buttonReturn.Visible = false;
+            button1.Visible = false;
         }
     }
     }

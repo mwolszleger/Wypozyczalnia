@@ -48,8 +48,10 @@ namespace Wypozyczalnia_samochodow
                 finished = true;
             }
             else finished = false;
+            Console.WriteLine(d["employee_end"] + "aaa");
             if (d["employee_end"] != "")
-                end = Convert.ToDateTime(d["employee_end"]);
+                employee_end = Rental.findEmployee(d["employee_end"]);
+           
 
         }
     }

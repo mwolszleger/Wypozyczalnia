@@ -84,7 +84,7 @@ namespace Wypozyczalnia_samochodow
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex < 0)
+            if (listBox1.SelectedIndex < 0||!foundCars[listBox1.SelectedIndex].availability)
                 return;
             if (searchingCars == true)
             {
@@ -148,5 +148,9 @@ namespace Wypozyczalnia_samochodow
             clear();
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
