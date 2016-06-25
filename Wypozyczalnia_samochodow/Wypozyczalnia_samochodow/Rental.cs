@@ -88,7 +88,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void SaveToBase()
         {
-            // var conn = DBConnectionMySql.CreatConnection("wypozyczalnia","root","");
+            
             try
             {
                 DBConnectionMySql.OpenConnection(conn);

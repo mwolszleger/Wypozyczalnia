@@ -52,9 +52,9 @@ namespace Wypozyczalnia_samochodow
         }
         public override string ToString()
         {
-            return name;
+            return name+" "+last_name;
         }
-
+        
     
     }
 }

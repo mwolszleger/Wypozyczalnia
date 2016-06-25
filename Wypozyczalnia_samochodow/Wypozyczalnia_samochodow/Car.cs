@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Wypozyczalnia_samochodow
 {
-    public enum Fuels { Petrol,Diesel,Lpg}
+    public enum Fuels { Petrol, Diesel, Lpg }
     public class Car
     {
-         // ColorColumnName, RegistrationColumnName, PriceColumnName, CarAvailabilityColumnName };
+
 
 
         public uint id { get; private set; }
@@ -36,7 +36,7 @@ namespace Wypozyczalnia_samochodow
             setCarData(d);
             this.id = Rental.NewCarId();
         }
-        
+
         public void setCarData(Dictionary<string, string> d)
         {
             model = d["model"];
@@ -50,19 +50,19 @@ namespace Wypozyczalnia_samochodow
             else if (d["fuel"] == "lpg") fuel = Fuels.Lpg;
             else if (d["fuel"] == "diesel") fuel = Fuels.Diesel;
             price = Convert.ToDecimal(d["price"]);
-            if(d.Keys.Contains("availability"))
+            if (d.Keys.Contains("availability"))
                 availability = Convert.ToBoolean(d["availability"]);
             else
-                availability =true;
+                availability = true;
         }
         public override string ToString()
         {
             string availaible;
             if (Rental.isCarAvailaible(this))
-                availaible ="dostępny";
+                availaible = "dostępny";
             else
                 availaible = "niedostępny";
-            return brand+" "+model+" - "+availaible;
+            return brand + " " + model + " - " + availaible;
         }
 
     }
