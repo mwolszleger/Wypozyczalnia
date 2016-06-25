@@ -1,0 +1,6 @@
+grant usage on *.* to 'jakasnazwa'@'localhost' identified by 'jakieshaslo';
+grant all privileges on wypozyczalnia.* to 'jakasnazwa'@'localhost';
+use wypozyczalnia
+insert into employees values ("jakasnazwa", "jakiesimie","jakiesnazwisko");
+
+//na razie nada³em wszytskie uprawnienia, docelowo to zmieniê
