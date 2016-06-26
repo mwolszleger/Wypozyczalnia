@@ -65,48 +65,48 @@ namespace Wypozyczalnia_samochodow
             InitializeComponent();
             readOnly = true;
             this.customer = customer;
-            setCustomerData();
-            textBox_ID.Text = customer.id.ToString();
+            SetCustomerData();
+            textBox_ID.Text = customer.Id.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            clearMessage();
+            ClearMessage();
             if (!newCustomer && edition)
             {
-                resetViewAfterEdition();
-                setCustomerData();
+                ResetViewAfterEdition();
+                SetCustomerData();
             }
             else if (!newCustomer && transaction)
             {
-                resetViewAfterTransaction();
+                ResetViewAfterTransaction();
             }
             else
                 Close();
         }
 
-        private void clearMessage()
+        private void ClearMessage()
         {
             label_text.Text = "";
         }
 
-        private void setCustomerData()
+        private void SetCustomerData()
         {
-            textName.Text = customer.name;
-            textLastName.Text = customer.last_name;
-            textStreet.Text = customer.street;
-            textHouseNumber.Text = customer.house_number.ToString();
+            textName.Text = customer.Name;
+            textLastName.Text = customer.Last_name;
+            textStreet.Text = customer.Street;
+            textHouseNumber.Text = customer.House_number.ToString();
             if (textFlatNumber.Text != "")
             {
-                textFlatNumber.Text = customer.flat_number.ToString();
+                textFlatNumber.Text = customer.Flat_number.ToString();
             }
-            textCodeCity.Text = customer.code_town.ToString();
-            textPlace.Text = customer.place;
-            textPhoneNumber.Text = customer.phone_number.ToString();
+            textCodeCity.Text = customer.Code_town.ToString();
+            textPlace.Text = customer.Place;
+            textPhoneNumber.Text = customer.Phone_number.ToString();
 
         }
 
-        private Dictionary<string, string> getCustomerData()
+        private Dictionary<string, string> GetCustomerData()
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("name", textName.Text);
@@ -128,7 +128,7 @@ namespace Wypozyczalnia_samochodow
             return textName.Text != "" && textLastName.Text != "" && textHouseNumber.Text != "" && textCodeCity.Text != "" && textPhoneNumber.Text != "" && textStreet.Text != "" && textPlace.Text != "";
         }
 
-        private void resetViewAfterEdition()
+        private void ResetViewAfterEdition()
         {
             readOnly = true;
             button.Visible = true;
@@ -136,7 +136,7 @@ namespace Wypozyczalnia_samochodow
             edition = false;
         }
 
-        private void resetViewAfterTransaction()
+        private void ResetViewAfterTransaction()
         {
             button.Visible = true;
             button2.Visible = true;
@@ -145,11 +145,11 @@ namespace Wypozyczalnia_samochodow
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            clearMessage();
+            ClearMessage();
 
             if (!newCustomer && edition)
             {
-                if (protect_code_city() && protect_phone_number() && protect_name() && protect_last_name() && protect_place() && protect_flat_number())
+                if (protect_code_city() && protect_phone_number() && Protect_name() && Protect_last_name() && Protect_place() && Protect_flat_number())
                 {
                   
                     if (!CheckIfNotEmpty())
@@ -157,9 +157,9 @@ namespace Wypozyczalnia_samochodow
                         label_text.Text = "Nie podano wszystkich danych";
                         return;
                     }
-                    Rental.updateCustomer(customer);
-                    customer.setCustomerData(getCustomerData());
-                    resetViewAfterEdition();
+                    Rental.UpdateCustomer(customer);
+                    customer.SetCustomerData(GetCustomerData());
+                    ResetViewAfterEdition();
                 }
             }
             if (!newCustomer && transaction)
@@ -167,33 +167,33 @@ namespace Wypozyczalnia_samochodow
                 Car car;
                 try
                 {
-                    car = Rental.findCar(Convert.ToString(textBox_nr.Text));
+                    car = Rental.FindCar(Convert.ToString(textBox_nr.Text));
                 }
                 catch (Exception ee)
                 {
                     label_text.Text = "Brak auta o podanym numerze rejestracyjnym";
                     return;
                 }
-                if (car == null || !car.availability)
+                if (car == null || !car.Availability)
                 {
                     label_text.Text = "Brak auta o podanym numerze rejestracyjnym";
                     return;
                 }
-                if (!Rental.isCarAvailaible(car))
+                if (!Rental.IsCarAvailaible(car))
                 {
                     label_text.Text = "Auto jest już wypożyczone";
                     return;
                 }
                 var Transaction = new Transaction(car, customer);
-                Rental.addTransaction(Transaction);
+                Rental.AddTransaction(Transaction);
                 textBox_nr.ReadOnly = true;
-                resetViewAfterTransaction();
+                ResetViewAfterTransaction();
             }
 
 
             if (newCustomer)
             {
-                if (protect_code_city() && protect_phone_number() && protect_name() && protect_last_name() && protect_place() && protect_flat_number())
+                if (protect_code_city() && protect_phone_number() && Protect_name() && Protect_last_name() && Protect_place() && Protect_flat_number())
                 {
                     buttonOK.Visible = true;
                     if (!CheckIfNotEmpty())
@@ -202,8 +202,8 @@ namespace Wypozyczalnia_samochodow
                         return;
                     }
 
-                    Customer customer = new Customer(getCustomerData());
-                    Rental.addCustomer(customer);
+                    Customer customer = new Customer(GetCustomerData());
+                    Rental.AddCustomer(customer);
                     readOnly = true;
                     label_text.Text = "Dodano";
                     buttonOK.Visible = false;
@@ -247,7 +247,7 @@ namespace Wypozyczalnia_samochodow
             return true;
 
         }
-        private bool protect_name()
+        private bool Protect_name()
         {
             string text = @"^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
             string input = textName.Text;
@@ -258,7 +258,7 @@ namespace Wypozyczalnia_samochodow
             }
             return true;
         }
-        private bool protect_last_name()
+        private bool Protect_last_name()
         {
             string text = @"^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
             string input = textLastName.Text;
@@ -269,7 +269,7 @@ namespace Wypozyczalnia_samochodow
             }
             return true;
         }
-        private bool protect_place()
+        private bool Protect_place()
         {
             string text = @"^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
             string input = textPlace.Text;
@@ -281,7 +281,7 @@ namespace Wypozyczalnia_samochodow
             return true;
         }
 
-        private bool protect_flat_number()
+        private bool Protect_flat_number()
         {
             string text = "^[0-9]$";
             string input = textFlatNumber.Text;
@@ -293,7 +293,7 @@ namespace Wypozyczalnia_samochodow
             return true;
 
         }
-        private bool protect_number()
+        private bool Protect_number()
         {
             string text = "^[0-9]$";
             string input = textBox_nr.Text;

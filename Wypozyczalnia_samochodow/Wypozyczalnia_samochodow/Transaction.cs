@@ -8,49 +8,49 @@ namespace Wypozyczalnia_samochodow
 {
     class Transaction
     {
-        public uint id { get; private set; }
-        public Car car { get; private set; }
-        public Customer customer { get; private set; }
-        public DateTime beginning { get; private set; }
-        public DateTime end { get; private set; }
-        public Employee employee_beginning { get; private set; }
-        public Employee employee_end { get; private set; }
-        public decimal price { get; private set; }
-        public bool finished { get; private set; }
+        public uint Id { get; private set; }
+        public Car Car { get; private set; }
+        public Customer Customer { get; private set; }
+        public DateTime Beginning { get; private set; }
+        public DateTime End { get; private set; }
+        public Employee Employee_beginning { get; private set; }
+        public Employee Employee_end { get; private set; }
+        public decimal Price { get; private set; }
+        public bool Finished { get; private set; }
         public Transaction(Car car, Customer customer)
         {
-            this.car = car;
-            this.customer = customer;
-            employee_beginning = Rental.LoggedEmplyee;
-            beginning = DateTime.Now.Date;
-            finished = false;
-            id = Rental.NewTransactionrId();
+            this.Car = car;
+            this.Customer = customer;
+            Employee_beginning = Rental.LoggedEmplyee;
+            Beginning = DateTime.Now.Date;
+            Finished = false;
+            Id = Rental.NewTransactionrId();
         }
-        public void finish()
+        public void Finish()
         {
-            employee_end = Rental.LoggedEmplyee;
-            end = DateTime.Now.Date;
-            price = Convert.ToDecimal(((end - beginning).TotalDays + 1) * Convert.ToDouble(car.price));
-            finished = true;
+            Employee_end = Rental.LoggedEmplyee;
+            End = DateTime.Now.Date;
+            Price = Convert.ToDecimal(((End - Beginning).TotalDays + 1) * Convert.ToDouble(Car.Price));
+            Finished = true;
         }
         public Transaction(Dictionary<string, string> d)
         {
-            id = Convert.ToUInt32(d["id"]);
-            car = Rental.findCar(Convert.ToUInt32(d["car"]));
-            customer = Rental.findCustomer(Convert.ToUInt32(d["customer"]));
-            employee_beginning = Rental.findEmployee(d["employee_beginning"]);
-            beginning = Convert.ToDateTime(d["beginning"]);
+            Id = Convert.ToUInt32(d["id"]);
+            Car = Rental.FindCar(Convert.ToUInt32(d["car"]));
+            Customer = Rental.FindCustomer(Convert.ToUInt32(d["customer"]));
+            Employee_beginning = Rental.FindEmployee(d["employee_beginning"]);
+            Beginning = Convert.ToDateTime(d["beginning"]);
             if (d["price"] != "")
-                price = Convert.ToDecimal(d["price"]);
+                Price = Convert.ToDecimal(d["price"]);
             if (d["end"] != "")
             {
-                end = Convert.ToDateTime(d["end"]);
-                finished = true;
+                End = Convert.ToDateTime(d["end"]);
+                Finished = true;
             }
-            else finished = false;
+            else Finished = false;
             Console.WriteLine(d["employee_end"] + "aaa");
             if (d["employee_end"] != "")
-                employee_end = Rental.findEmployee(d["employee_end"]);
+                Employee_end = Rental.FindEmployee(d["employee_end"]);
 
 
         }

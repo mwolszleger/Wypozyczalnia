@@ -260,7 +260,7 @@
             this.textBoxNumber.Name = "textBoxNumber";
             this.textBoxNumber.Size = new System.Drawing.Size(92, 20);
             this.textBoxNumber.TabIndex = 24;
-            this.textBoxNumber.TextChanged += new System.EventHandler(this.registryNumberValidation);
+            this.textBoxNumber.TextChanged += new System.EventHandler(this.RegistryNumberValidation);
             // 
             // label11
             // 

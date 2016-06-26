@@ -20,9 +20,9 @@ namespace Wypozyczalnia_samochodow
  
         public event EventHandler Closing;
         private List<Car> foundCars=new List<Car>();
-        private List<Customer> foundCustomer=new List<Customer>();
+        private List<Customer> foundCustomers=new List<Customer>();
         private bool _searchingCars;
-        public bool searchingCars
+        public bool SearchingCars
         {
             set
             {
@@ -51,22 +51,22 @@ namespace Wypozyczalnia_samochodow
         private void button4_Click(object sender, EventArgs e)
         {
             OnClosing(new EventArgs());
-            clear();
+            Clear();
             Visible = false;
         }
-        private void clear()
+        private void Clear()
         {
             textBox1.Text = "";
             textBox2.Text = "";
             listBox1.Items.Clear();
             foundCars.Clear();
-            foundCustomer.Clear();
+            foundCustomers.Clear();
         }
         private List<CarView> CarWindows = new List<CarView>();
         private List<CustomerView> CustomerWindows = new List<CustomerView>();
         private void button2_Click(object sender, EventArgs e)
         {
-            if (searchingCars == true)
+            if (SearchingCars == true)
             {
                 var temp = new CarView();
                 temp.newCar = true;
@@ -84,9 +84,9 @@ namespace Wypozyczalnia_samochodow
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex < 0||(searchingCars&&!foundCars[listBox1.SelectedIndex].availability))
+            if (listBox1.SelectedIndex < 0||(SearchingCars&&!foundCars[listBox1.SelectedIndex].Availability))
                 return;
-            if (searchingCars == true)
+            if (SearchingCars == true)
             {
                 
                 var temp = new CarView(foundCars[listBox1.SelectedIndex]);
@@ -97,14 +97,14 @@ namespace Wypozyczalnia_samochodow
             }
             else
             {
-                var temp = new CustomerView(foundCustomer[listBox1.SelectedIndex]);
+                var temp = new CustomerView(foundCustomers[listBox1.SelectedIndex]);
                 temp.newCustomer = false;
                 temp.Show();
                 temp.FormClosing += ClosedCustomerWindows;
                 CustomerWindows.Add(temp);
             }
         }
-        public void closeWindows()
+        public void CloseWindows()
         {
             for (int i = CarWindows.Count - 1; i >= 0; i--)
                 CarWindows[i].Close();
@@ -123,10 +123,10 @@ namespace Wypozyczalnia_samochodow
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (searchingCars==true)
+            if (SearchingCars==true)
             {
                 listBox1.Items.Clear();
-                foundCars = Rental.findCars(textBox1.Text, textBox2.Text);
+                foundCars = Rental.FindCars(textBox1.Text, textBox2.Text);
                 foreach (var it in foundCars)
                 {
                     listBox1.Items.Add(it.ToString());
@@ -135,8 +135,8 @@ namespace Wypozyczalnia_samochodow
             else
             {
                 listBox1.Items.Clear();
-                foundCustomer = Rental.findCustomer(textBox1.Text, textBox2.Text);
-                foreach (var it in foundCustomer)
+                foundCustomers = Rental.FindCustomer(textBox1.Text, textBox2.Text);
+                foreach (var it in foundCustomers)
                 {
                     listBox1.Items.Add(it.ToString());
                 }
@@ -145,7 +145,7 @@ namespace Wypozyczalnia_samochodow
 
         private void button3_Click(object sender, EventArgs e)
         {
-            clear();
+            Clear();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

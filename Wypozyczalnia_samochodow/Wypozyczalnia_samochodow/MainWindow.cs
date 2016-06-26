@@ -16,9 +16,9 @@ namespace Wypozyczalnia_samochodow
         {
             InitializeComponent();
             menuItems = new Control[] { button1, button2, button4, label1 };
-            wyszukiwarkaSam1.Closing += backToMenu;
+            search.Closing += BackToMenu;
           
-            Rental.clearEverything();
+            Rental.ClearEverything();
             try
             {
                 Rental.SaveToBase();
@@ -37,7 +37,7 @@ namespace Wypozyczalnia_samochodow
             {
                 MessageBox.Show(e.Message);
             }
-            Rental.LoggedEmplyee = Rental.findEmployee(login);
+            Rental.LoggedEmplyee = Rental.FindEmployee(login);
             if (Rental.LoggedEmplyee != null)
                 label1.Text = Rental.LoggedEmplyee.ToString();
             else
@@ -53,38 +53,38 @@ namespace Wypozyczalnia_samochodow
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            wyszukiwarkaSam1.closeWindows();
+            search.CloseWindows();
             Rental.SaveToBase();
             
         }
-        private void setMenuVisibility(bool val)
+        private void SetMenuVisibility(bool val)
         {
             foreach (var it in menuItems)
                 it.Visible = val;
         }
-        void backToMenu(object sender, EventArgs e)
+        void BackToMenu(object sender, EventArgs e)
         {
-            setMenuVisibility(true);
+            SetMenuVisibility(true);
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            setMenuVisibility(false);
+            SetMenuVisibility(false);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            wyszukiwarkaSam1.searchingCars = true;
-            wyszukiwarkaSam1.Visible = true;
-            setMenuVisibility(false);
+            search.SearchingCars = true;
+            search.Visible = true;
+            SetMenuVisibility(false);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            wyszukiwarkaSam1.searchingCars = false;
-            wyszukiwarkaSam1.Visible = true;
-            setMenuVisibility(false);
+            search.SearchingCars = false;
+            search.Visible = true;
+            SetMenuVisibility(false);
         }
     }
 }

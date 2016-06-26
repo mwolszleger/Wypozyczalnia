@@ -131,38 +131,38 @@ namespace Wypozyczalnia_samochodow
             file.WriteLine(s);
             file.Close();
         }
-        public static void addCar(Car c)
+        public static void AddCar(Car c)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(CarIdColumnName, c.brand);
-            attributes.Add(BrandColumnName, c.brand);
-            attributes.Add(ModelColumnName, c.model);
-            attributes.Add(YearColumnName, c.year.ToString());
-            attributes.Add(EngineColumnName, c.engine.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            attributes.Add(ClimatisationColumnName, c.climatisation.ToString());
-            attributes.Add(FuelColumnName, c.fuel.ToString());
-            attributes.Add(ColorColumnName, c.color);
-            attributes.Add(RegistrationColumnName, c.registration);
-            attributes.Add(PriceColumnName, c.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            attributes.Add(CarAvailabilityColumnName, c.availability.ToString());
+            attributes.Add(CarIdColumnName, c.Brand);
+            attributes.Add(BrandColumnName, c.Brand);
+            attributes.Add(ModelColumnName, c.Model);
+            attributes.Add(YearColumnName, c.Year.ToString());
+            attributes.Add(EngineColumnName, c.Engine.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(ClimatisationColumnName, c.Climatisation.ToString());
+            attributes.Add(FuelColumnName, c.Fuel.ToString());
+            attributes.Add(ColorColumnName, c.Color);
+            attributes.Add(RegistrationColumnName, c.Registration);
+            attributes.Add(PriceColumnName, c.Price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(CarAvailabilityColumnName, c.Availability.ToString());
 
             AddQuerry(CreateInsertQuerry(attributes, CarsTableName));
         }
-        public static void updateCar(Car c)
+        public static void UpdateCar(Car c)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(BrandColumnName, c.brand);
-            attributes.Add(ModelColumnName, c.model);
-            attributes.Add(YearColumnName, c.year.ToString());
-            attributes.Add(EngineColumnName, c.engine.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            attributes.Add(ClimatisationColumnName, c.climatisation.ToString());
-            attributes.Add(FuelColumnName, c.fuel.ToString());
-            attributes.Add(ColorColumnName, c.color);
-            attributes.Add(RegistrationColumnName, c.registration);
-            attributes.Add(PriceColumnName, c.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            attributes.Add(CarAvailabilityColumnName, c.availability.ToString());
+            attributes.Add(BrandColumnName, c.Brand);
+            attributes.Add(ModelColumnName, c.Model);
+            attributes.Add(YearColumnName, c.Year.ToString());
+            attributes.Add(EngineColumnName, c.Engine.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(ClimatisationColumnName, c.Climatisation.ToString());
+            attributes.Add(FuelColumnName, c.Fuel.ToString());
+            attributes.Add(ColorColumnName, c.Color);
+            attributes.Add(RegistrationColumnName, c.Registration);
+            attributes.Add(PriceColumnName, c.Price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            attributes.Add(CarAvailabilityColumnName, c.Availability.ToString());
 
-            AddQuerry(CreateUpdateQuerry(attributes, CarsTableName, c.id));
+            AddQuerry(CreateUpdateQuerry(attributes, CarsTableName, c.Id));
         }
         private static string CreateInsertQuerry(Dictionary<string, string> d, string TableName)
         {
@@ -285,38 +285,38 @@ namespace Wypozyczalnia_samochodow
         public static void addCustomer(Customer c)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(CustomersIdColumnName, c.name);
-            attributes.Add(NameColumnName, c.name);
-            attributes.Add(LastNameColumnName, c.last_name);
-            attributes.Add(StreetColumnName, c.street);
-            attributes.Add(HouseNumberColumnName, c.house_number.ToString());
+            attributes.Add(CustomersIdColumnName, c.Name);
+            attributes.Add(NameColumnName, c.Name);
+            attributes.Add(LastNameColumnName, c.Last_name);
+            attributes.Add(StreetColumnName, c.Street);
+            attributes.Add(HouseNumberColumnName, c.House_number.ToString());
             if (FlatNumberColumnName != "")
             {
-                attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+                attributes.Add(FlatNumberColumnName, c.Flat_number.ToString());
             }
-            attributes.Add(CodeTownColumnName, c.code_town.ToString());
-            attributes.Add(PlaceColumnName, c.place);
-            attributes.Add(PhoneNumberColumnName, c.phone_number.ToString());
+            attributes.Add(CodeTownColumnName, c.Code_town.ToString());
+            attributes.Add(PlaceColumnName, c.Place);
+            attributes.Add(PhoneNumberColumnName, c.Phone_number.ToString());
 
             AddQuerry(CreateInsertQuerry(attributes, CustomersTableName));
         }
         public static void updateCustomer(Customer c)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(CustomersIdColumnName, c.id.ToString());
-            attributes.Add(NameColumnName, c.name);
-            attributes.Add(LastNameColumnName, c.last_name);
-            attributes.Add(StreetColumnName, c.street);
-            attributes.Add(HouseNumberColumnName, c.house_number.ToString());
+            attributes.Add(CustomersIdColumnName, c.Id.ToString());
+            attributes.Add(NameColumnName, c.Name);
+            attributes.Add(LastNameColumnName, c.Last_name);
+            attributes.Add(StreetColumnName, c.Street);
+            attributes.Add(HouseNumberColumnName, c.House_number.ToString());
             if (FlatNumberColumnName != "")
             {
-                attributes.Add(FlatNumberColumnName, c.flat_number.ToString());
+                attributes.Add(FlatNumberColumnName, c.Flat_number.ToString());
             }
-            attributes.Add(CodeTownColumnName, c.code_town.ToString());
-            attributes.Add(PlaceColumnName, c.place);
-            attributes.Add(PhoneNumberColumnName, c.phone_number.ToString());
+            attributes.Add(CodeTownColumnName, c.Code_town.ToString());
+            attributes.Add(PlaceColumnName, c.Place);
+            attributes.Add(PhoneNumberColumnName, c.Phone_number.ToString());
 
-            AddQuerry(CreateUpdateQuerry(attributes, CustomersTableName, c.id));
+            AddQuerry(CreateUpdateQuerry(attributes, CustomersTableName, c.Id));
         }
 
         public static List<Employee> SelectAllEmployees(MySqlConnection conn)
@@ -340,11 +340,11 @@ namespace Wypozyczalnia_samochodow
         public static void addTransaction(Transaction t)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(TransactionIdColumnName, t.id.ToString());
-            attributes.Add(TranscationCarIdColumnName, t.car.id.ToString());
-            attributes.Add(TransactionCustomerIdColumnName, t.customer.id.ToString());
-            attributes.Add(EmployeeBeginningColumnName, t.employee_beginning.login);
-            attributes.Add(BeginningDateColumnName, t.beginning.ToString("yyyy-MM-dd"));
+            attributes.Add(TransactionIdColumnName, t.Id.ToString());
+            attributes.Add(TranscationCarIdColumnName, t.Car.Id.ToString());
+            attributes.Add(TransactionCustomerIdColumnName, t.Customer.Id.ToString());
+            attributes.Add(EmployeeBeginningColumnName, t.Employee_beginning.Login);
+            attributes.Add(BeginningDateColumnName, t.Beginning.ToString("yyyy-MM-dd"));
             AddQuerry(CreateInsertQuerry(attributes, TransactionsTableName));
         }
 
@@ -378,11 +378,11 @@ namespace Wypozyczalnia_samochodow
         public static void updateTransaction(Transaction t)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(EmployeeEndTableName, t.employee_end.login);
-            attributes.Add(EndDateColumnName, t.end.ToString("yyyy-MM-dd"));
+            attributes.Add(EmployeeEndTableName, t.Employee_end.Login);
+            attributes.Add(EndDateColumnName, t.End.ToString("yyyy-MM-dd"));
     
-            attributes.Add(EmployeePriceColumnName, t.price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            AddQuerry(CreateUpdateQuerry(attributes, TransactionsTableName,t.id));
+            attributes.Add(EmployeePriceColumnName, t.Price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
+            AddQuerry(CreateUpdateQuerry(attributes, TransactionsTableName,t.Id));
         }
     }
 }

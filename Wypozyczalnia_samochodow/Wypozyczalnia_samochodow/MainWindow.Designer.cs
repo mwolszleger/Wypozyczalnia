@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.wyszukiwarkaSam1 = new Wypozyczalnia_samochodow.WyszukiwarkaSam();
+            this.search = new Wypozyczalnia_samochodow.WyszukiwarkaSam();
             this.SuspendLayout();
             // 
             // label1
@@ -77,15 +77,15 @@
             // 
             // wyszukiwarkaSam1
             // 
-            this.wyszukiwarkaSam1.AutoScroll = true;
-            this.wyszukiwarkaSam1.Location = new System.Drawing.Point(22, 12);
-            this.wyszukiwarkaSam1.MaximumSize = new System.Drawing.Size(641, 341);
-            this.wyszukiwarkaSam1.MinimumSize = new System.Drawing.Size(641, 341);
-            this.wyszukiwarkaSam1.Name = "wyszukiwarkaSam1";
-            this.wyszukiwarkaSam1.searchingCars = false;
-            this.wyszukiwarkaSam1.Size = new System.Drawing.Size(641, 341);
-            this.wyszukiwarkaSam1.TabIndex = 6;
-            this.wyszukiwarkaSam1.Visible = false;
+            this.search.AutoScroll = true;
+            this.search.Location = new System.Drawing.Point(22, 12);
+            this.search.MaximumSize = new System.Drawing.Size(641, 341);
+            this.search.MinimumSize = new System.Drawing.Size(641, 341);
+            this.search.Name = "wyszukiwarkaSam1";
+            this.search.SearchingCars = false;
+            this.search.Size = new System.Drawing.Size(641, 341);
+            this.search.TabIndex = 6;
+            this.search.Visible = false;
             // 
             // MainWindow
             // 
@@ -96,7 +96,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.wyszukiwarkaSam1);
+            Controls.Add(this.search);
             this.MaximumSize = new System.Drawing.Size(704, 406);
             this.MinimumSize = new System.Drawing.Size(704, 406);
             this.Name = "MainWindow";
@@ -113,6 +113,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
-        private WyszukiwarkaSam wyszukiwarkaSam1;
+        private WyszukiwarkaSam search;
     }
 }

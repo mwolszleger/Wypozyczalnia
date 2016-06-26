@@ -70,35 +70,35 @@ namespace Wypozyczalnia_samochodow
             ReadOnly = true;
             this.car = car;
 
-            setCarData();
+            SetCarData();
 
         }
-        private void setCarData()
+        private void SetCarData()
         {
-            textBoxModel.Text = car.model;
-            textBoxBrand.Text = car.brand;
-            textBoxPrice.Text = car.price.ToString();
-            textBoxYear.Text = car.year.ToString();
-            if (car.climatisation)
+            textBoxModel.Text = car.Model;
+            textBoxBrand.Text = car.Brand;
+            textBoxPrice.Text = car.Price.ToString();
+            textBoxYear.Text = car.Year.ToString();
+            if (car.Climatisation)
                 comboBoxClima.SelectedIndex = 0;
             else
                 comboBoxClima.SelectedIndex = 1;
-            textBoxColor.Text = car.color;
-            textBoxPojemnosc.Text = car.engine.ToString();
-            textBoxNumber.Text = car.registration;
-            if (Rental.isCarAvailaible(car))
+            textBoxColor.Text = car.Color;
+            textBoxPojemnosc.Text = car.Engine.ToString();
+            textBoxNumber.Text = car.Registration;
+            if (Rental.IsCarAvailaible(car))
                 textBoxAvailaible.Text = "tak";
             else
                 textBoxAvailaible.Text = "nie";
-            if (car.fuel == Fuels.Petrol)
+            if (car.Fuel == Fuels.Petrol)
                 comboBoxFuel.SelectedIndex = 0;
-            if (car.fuel == Fuels.Diesel)
+            if (car.Fuel == Fuels.Diesel)
                 comboBoxFuel.SelectedIndex = 1;
-            if (car.fuel == Fuels.Lpg)
+            if (car.Fuel == Fuels.Lpg)
                 comboBoxFuel.SelectedIndex = 2;
 
         }
-        private Dictionary<string, string> getCarData()
+        private Dictionary<string, string> GetCarData()
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("model", textBoxModel.Text);
@@ -123,16 +123,16 @@ namespace Wypozyczalnia_samochodow
         }
         private void buttonEnd_Click(object sender, EventArgs e)
         {
-            clearMessage();
+            ClearMessage();
             if (!newCar && edition)
             {
                 resetViewAfterEdition();
-                setCarData();
+                SetCarData();
             }
             else if (!newCar && transaction)
             {
                 resetViewAfterTransaction();
-                setCarData();
+                SetCarData();
             }
             else
                 Close();
@@ -143,20 +143,20 @@ namespace Wypozyczalnia_samochodow
             transaction = false;
             labelUseId.Visible = false;
             textBoxUserId.Visible = false;
-            setCarData();
+            SetCarData();
         }
         private void resetViewAfterEdition()
         {
             ReadOnly = true;
             newCar = false;
-            setCarData();
+            SetCarData();
             textBoxUserId.Visible = false;
             edition = false;
         }
         private void buttonEdit_Click(object sender, EventArgs e)
         {
 
-            if (!Rental.isCarAvailaible(car))
+            if (!Rental.IsCarAvailaible(car))
             {
                 labelMessage.Text = "Nie można edytować samochodu wypożyczonego";
                 return;
@@ -172,12 +172,12 @@ namespace Wypozyczalnia_samochodow
         private void buttonOK_Click(object sender, EventArgs e)
 
         {
-            clearMessage();
+            ClearMessage();
             if (!newCar && edition)
             {
-                if (!protect()) return;
-                car.setCarData(getCarData());
-                Rental.updateCar(car);
+                if (!Protect()) return;
+                car.setCarData(GetCarData());
+                Rental.UpdateCar(car);
                 resetViewAfterEdition();
 
             }
@@ -186,7 +186,7 @@ namespace Wypozyczalnia_samochodow
                 Customer customer;
                 try
                 {
-                    customer = Rental.findCustomer(Convert.ToUInt32(textBoxUserId.Text));
+                    customer = Rental.FindCustomer(Convert.ToUInt32(textBoxUserId.Text));
                 }
                 catch (Exception ee)
                 {
@@ -199,16 +199,16 @@ namespace Wypozyczalnia_samochodow
                     return;
                 }
                 var Transaction = new Transaction(car, customer);
-                Rental.addTransaction(Transaction);
+                Rental.AddTransaction(Transaction);
 
                 resetViewAfterTransaction();
             }
             if (newCar)
             {
-                if(!protect())return;
+                if(!Protect())return;
 
-                Car car = new Car(getCarData());
-                Rental.addCar(car);
+                Car car = new Car(GetCarData());
+                Rental.AddCar(car);
                 ReadOnly = true;
                 labelMessage.Text = "Dodano";
                 label12.Visible = false;
@@ -220,7 +220,7 @@ namespace Wypozyczalnia_samochodow
 
         private void buttonLend_Click(object sender, EventArgs e)
         {
-            if (!Rental.isCarAvailaible(car))
+            if (!Rental.IsCarAvailaible(car))
                 return;
             buttonEdit.Visible = false;
             buttonLend.Visible = false;
@@ -245,17 +245,17 @@ namespace Wypozyczalnia_samochodow
             return a;
 
         }
-        private void clearMessage()
+        private void ClearMessage()
         {
             labelMessage.Text = "";
         }
 
         private void textBoxBrand_Enter(object sender, EventArgs e)
         {
-            clearMessage();
+            ClearMessage();
         }
 
-        private bool protect_string(string textToCheck, string message, bool numbersPossible=false)
+        private bool Protect_string(string textToCheck, string message, bool numbersPossible=false)
         {
             string text = @"^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
             if(numbersPossible)
@@ -268,7 +268,7 @@ namespace Wypozyczalnia_samochodow
             }
             return true;
         }
-        private bool protectDecimal(string textToCheck,string message)
+        private bool ProtectDecimal(string textToCheck,string message)
         {
             decimal temp;
             if (decimal.TryParse(textToCheck,out temp)&&temp>=0)
@@ -278,7 +278,7 @@ namespace Wypozyczalnia_samochodow
              MessageBox.Show(message, "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
              return false;
         }
-        private bool protectYear()
+        private bool ProtectYear()
         {
             string text = textBoxYear.Text;
             if(text.Length==4&&text[0]>='1'&&text[0]<='2'&& text[1] >= '0' && text[1] <= '9'&&text[2] >= '0' && text[2] <= '9'&&text[3] >= '0' && text[3] <= '9')
@@ -286,17 +286,17 @@ namespace Wypozyczalnia_samochodow
             MessageBox.Show("Nieprawidłowy rok produkcji", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
-        private bool protect()
+        private bool Protect()
         {
-            return protect_string(textBoxBrand.Text, "Nieprawidłowa marka", true) &&
-                protect_string(textBoxModel.Text, "Nieprawidłowy model", true) &&
-                protect_string(textBoxColor.Text, "Nieprawidłowy kolor", true) &&
-                protectDecimal(textBoxPrice.Text, "Niepraidłowa cena") &&
-                protectDecimal(textBoxPojemnosc.Text, "Nieprawidłowa pojemność silnika") &&
-                protectYear()&&
+            return Protect_string(textBoxBrand.Text, "Nieprawidłowa marka", true) &&
+                Protect_string(textBoxModel.Text, "Nieprawidłowy model", true) &&
+                Protect_string(textBoxColor.Text, "Nieprawidłowy kolor", true) &&
+                ProtectDecimal(textBoxPrice.Text, "Niepraidłowa cena") &&
+                ProtectDecimal(textBoxPojemnosc.Text, "Nieprawidłowa pojemność silnika") &&
+                ProtectYear()&&
                 CheckIfNotEmpty();
         }
-        private void registryNumberValidation(object sender, EventArgs e)
+        private void RegistryNumberValidation(object sender, EventArgs e)
         {
            
             if (ReadOnly)
@@ -322,30 +322,30 @@ namespace Wypozyczalnia_samochodow
 
         private void buttonReturn_Click(object sender, EventArgs e)
         {
-            if (Rental.isCarAvailaible(car))
+            if (Rental.IsCarAvailaible(car))
             {
                 labelMessage.Text="Auto nie jest wypożyczone";
 
             }
             else
             {
-                var tr = Rental.findTransaction(car);
-                tr.finish();
-                Rental.updateTransaction(tr);
-                labelMessage.Text = "Do zapłaty "+tr.price;
+                var tr = Rental.FindTransaction(car);
+                tr.Finish();
+                Rental.UpdateTransaction(tr);
+                labelMessage.Text = "Do zapłaty "+tr.Price;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!Rental.isCarAvailaible(car))
+            if (!Rental.IsCarAvailaible(car))
             {
                 labelMessage.Text = "Nie można usunąć samochodu wypożyczonego";
                 return;
             }
 
-            car.availability = false;
-            Rental.updateCar(car);
+            car.Availability = false;
+            Rental.UpdateCar(car);
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
             buttonReturn.Visible = false;

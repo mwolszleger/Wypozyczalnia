@@ -16,9 +16,9 @@ namespace Wypozyczalnia_samochodow
         private static List<Employee> employees = new List<Employee>();
         private static MySqlConnection conn;
 
-        public static Employee LoggedEmplyee;
+        public static Employee LoggedEmplyee { get; set; }
   
-        public static bool tryToLogIn(string login, string pass)
+        public static bool TryToLogIn(string login, string pass)
         {
             bool success = true;
             try
@@ -34,12 +34,12 @@ namespace Wypozyczalnia_samochodow
 
             return success;
         }
-        public static List<Car> findCars(string brand, string model)
+        public static List<Car> FindCars(string brand, string model)
         {
             var list = new List<Car>();
             foreach (var it in cars)
             {
-                if (it.availability && it.model.ToUpper().Contains(model.ToUpper()) && it.brand.ToUpper().Contains(brand.ToUpper()))
+                if (it.Availability && it.Model.ToUpper().Contains(model.ToUpper()) && it.Brand.ToUpper().Contains(brand.ToUpper()))
                 {
                     list.Add(it);
                 }
@@ -109,44 +109,44 @@ namespace Wypozyczalnia_samochodow
             uint id = 0;
             foreach (var it in cars)
             {
-                if (it.id > id)
-                    id = it.id;
+                if (it.Id > id)
+                    id = it.Id;
             }
             return ++id;
         }
-        public static void addCar(Car c)
+        public static void AddCar(Car c)
         {
             cars.Add(c);
-            DBConnectionMySql.addCar(c);
+            DBConnectionMySql.AddCar(c);
         }
-        public static void updateCar(Car c)
+        public static void UpdateCar(Car c)
         {
 
-            DBConnectionMySql.updateCar(c);
+            DBConnectionMySql.UpdateCar(c);
         }
-        public static void clearEverything()
+        public static void ClearEverything()
         {
             cars.Clear();
             transactions.Clear();
         }
-        public static bool isCarAvailaible(Car c)
+        public static bool IsCarAvailaible(Car c)
         {
             for (int i = transactions.Count - 1; i >= 0; i--)
             {
-                if (transactions[i].car == c)
+                if (transactions[i].Car == c)
                 {
-                    return transactions[i].finished;
+                    return transactions[i].Finished;
                 }
             }
             return true;
         }
 
-        public static List<Customer> findCustomer(string name, string last_name)
+        public static List<Customer> FindCustomer(string name, string last_name)
         {
             var list = new List<Customer>();
             foreach (var it in customers)
             {
-                if (it.name.ToUpper().Contains(name.ToUpper()) && it.last_name.ToUpper().Contains(last_name.ToUpper()))
+                if (it.Name.ToUpper().Contains(name.ToUpper()) && it.Last_name.ToUpper().Contains(last_name.ToUpper()))
                 {
                     list.Add(it);
                 }
@@ -159,17 +159,17 @@ namespace Wypozyczalnia_samochodow
             uint id = 0;
             foreach (var it in customers)
             {
-                if (it.id > id)
-                    id = it.id;
+                if (it.Id > id)
+                    id = it.Id;
             }
             return ++id;
         }
-        public static void addCustomer(Customer cs)
+        public static void AddCustomer(Customer cs)
         {
             customers.Add(cs);
             DBConnectionMySql.addCustomer(cs);
         }
-        public static void updateCustomer(Customer cs)
+        public static void UpdateCustomer(Customer cs)
         {
             DBConnectionMySql.updateCustomer(cs);
         }
@@ -178,46 +178,46 @@ namespace Wypozyczalnia_samochodow
             uint id = 0;
             foreach (var it in transactions)
             {
-                if (it.id > id)
-                    id = it.id;
+                if (it.Id > id)
+                    id = it.Id;
             }
             return ++id;
         }
-        public static Car findCar(uint id)
+        public static Car FindCar(uint id)
         {
             foreach (var it in cars)
             {
-                if (it.id == id)
+                if (it.Id == id)
                     return it;
             }
             return null;
         }
-        public static Customer findCustomer(uint id)
+        public static Customer FindCustomer(uint id)
         {
             foreach (var it in customers)
             {
-                if (it.id == id)
+                if (it.Id == id)
                     return it;
             }
             return null;
         }
-        public static Car findCar(string number)
+        public static Car FindCar(string number)
         {
             foreach (var it in cars)
             {
-                if (it.registration.ToLower() == number.ToLower())
+                if (it.Registration.ToLower() == number.ToLower())
                     return it;
             }
             return null;
         }
 
-        public static Transaction findTransaction(Car car)
+        public static Transaction FindTransaction(Car car)
         {
             for (int i = transactions.Count - 1; i >= 0; i--)
             {
-                if (transactions[i].car == car)
+                if (transactions[i].Car == car)
                 {
-                    if (!transactions[i].finished)
+                    if (!transactions[i].Finished)
                         return transactions[i];
                     else
                         return null;
@@ -225,21 +225,21 @@ namespace Wypozyczalnia_samochodow
             }
             return null;
         }
-        public static Employee findEmployee(string login)
+        public static Employee FindEmployee(string login)
         {
             foreach (var it in employees)
             {
-                if (it.login == login)
+                if (it.Login == login)
                     return it;
             }
             return null;
         }
-        public static void addTransaction(Transaction t)
+        public static void AddTransaction(Transaction t)
         {
             transactions.Add(t);
             DBConnectionMySql.addTransaction(t);
         }
-        public static void updateTransaction(Transaction t)
+        public static void UpdateTransaction(Transaction t)
         {
 
             DBConnectionMySql.updateTransaction(t);

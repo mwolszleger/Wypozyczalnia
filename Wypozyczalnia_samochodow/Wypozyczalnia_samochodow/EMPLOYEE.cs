@@ -9,19 +9,19 @@ namespace Wypozyczalnia_samochodow
     public class Employee
     {
 
-        public string login { get; private set; }
-        public string name { get; private set; }
-        public string lastName { get; private set; }
+        public string Login { get; private set; }
+        public string Name { get; private set; }
+        public string LastName { get; private set; }
         public Employee(string login, string name, string lastName)
         {
-            this.login = login;
-            this.name = name;
-            this.lastName = lastName;
+            this.Login = login;
+            this.Name = name;
+            this.LastName = lastName;
            
         }
         public override string ToString()
         {
-            return name + " " + lastName;
+            return Name + " " + LastName;
         }
     }
     

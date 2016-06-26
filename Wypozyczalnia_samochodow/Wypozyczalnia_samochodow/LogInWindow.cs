@@ -17,25 +17,25 @@ namespace Wypozyczalnia_samochodow
         {
             InitializeComponent();
         }
-        private void newUser(object sender, EventArgs e)
+        private void NewUser(object sender, EventArgs e)
         {
             Show();       
             
         }
         private void buttonLog_Click(object sender, EventArgs e)
         {
-            bool d = Rental.tryToLogIn(textBoxLogin.Text, textBoxPassword.Text);
+            bool d = Rental.TryToLogIn(textBoxLogin.Text, textBoxPassword.Text);
             
             if (d)
             {
                 f = new MainWindow(textBoxLogin.Text);
-                f.FormClosed += newUser;
+                f.FormClosed += NewUser;
                 f.Show();
                 Hide();
             }
-            clear();
+            Clear();
         }
-        private void clear()
+        private void Clear()
         {
             textBoxLogin.Text = "";
             textBoxPassword.Text = "";
