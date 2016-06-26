@@ -93,6 +93,7 @@ namespace Wypozyczalnia_samochodow
             {
                 DBConnectionMySql.OpenConnection(conn);
                 DBConnectionMySql.ExecuteQuerries(conn);
+
             }
             catch (MySqlException myexc)
             {
@@ -244,7 +245,15 @@ namespace Wypozyczalnia_samochodow
 
             DBConnectionMySql.updateTransaction(t);
         }
-
+        public static bool ExistsRegistryNumber(string number)
+        {
+            foreach (var it in cars)
+            {
+                if (it.Registration == number&&it.Availability)
+                    return true;                
+            }
+            return false;
+        }
     }
 
 }

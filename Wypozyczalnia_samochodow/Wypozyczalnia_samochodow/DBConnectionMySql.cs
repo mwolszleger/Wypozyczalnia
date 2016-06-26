@@ -227,15 +227,13 @@ namespace Wypozyczalnia_samochodow
                 }
 
                 file.Close();
+                File.Delete("file.txt");
             }
             catch (Exception e)
             {
                 throw e;
             }
-            finally
-            {
-                File.Delete("file.txt");
-            }
+            
         }
 
         private static string CreateSelectQuerry(IEnumerable<String> Columns, string TableName)
@@ -285,7 +283,7 @@ namespace Wypozyczalnia_samochodow
         public static void addCustomer(Customer c)
         {
             var attributes = new Dictionary<string, string>();
-            attributes.Add(CustomersIdColumnName, c.Name);
+            attributes.Add(CustomersIdColumnName, c.Id.ToString());
             attributes.Add(NameColumnName, c.Name);
             attributes.Add(LastNameColumnName, c.Last_name);
             attributes.Add(StreetColumnName, c.Street);

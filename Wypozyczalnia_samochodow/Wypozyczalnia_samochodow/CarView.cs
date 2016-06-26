@@ -112,11 +112,11 @@ namespace Wypozyczalnia_samochodow
             if (comboBoxClima.SelectedIndex == 1)
                 d.Add("climatisation", "false");
             d.Add("engine", textBoxPojemnosc.Text);
-            if (comboBoxClima.SelectedIndex == 0)
+            if (comboBoxFuel.SelectedIndex == 0)
                 d.Add("fuel", "petrol");
-            if (comboBoxClima.SelectedIndex == 1)
+            if (comboBoxFuel.SelectedIndex == 1)
                 d.Add("fuel", "diesel");
-            if (comboBoxClima.SelectedIndex == 2)
+            if (comboBoxFuel.SelectedIndex == 2)
                 d.Add("fuel", "lpg");
             //d.Add("availability","true");
             return d;
@@ -143,6 +143,7 @@ namespace Wypozyczalnia_samochodow
             transaction = false;
             labelUseId.Visible = false;
             textBoxUserId.Visible = false;
+            button1.Visible = true;
             SetCarData();
         }
         private void resetViewAfterEdition()
@@ -165,6 +166,7 @@ namespace Wypozyczalnia_samochodow
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
             buttonOK.Visible = true;
+            button1.Visible = false;
             buttonReturn.Visible = false;
             edition = true;
         }
@@ -261,7 +263,7 @@ namespace Wypozyczalnia_samochodow
             if(numbersPossible)
                 text = @"^[0-9a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
             string input = textToCheck;
-            if (!Regex.IsMatch(input, text))
+            if (textToCheck.Length>30||!Regex.IsMatch(input, text))
             {
                 MessageBox.Show(message, "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -278,13 +280,29 @@ namespace Wypozyczalnia_samochodow
              MessageBox.Show(message, "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
              return false;
         }
-        private bool ProtectYear()
+        private bool ProtectYear(string text)
         {
-            string text = textBoxYear.Text;
+            
             if(text.Length==4&&text[0]>='1'&&text[0]<='2'&& text[1] >= '0' && text[1] <= '9'&&text[2] >= '0' && text[2] <= '9'&&text[3] >= '0' && text[3] <= '9')
                 return true;
             MessageBox.Show("Nieprawidłowy rok produkcji", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
+        }
+        private bool ProtectRegistration(string number)
+        {
+
+            if (Rental.ExistsRegistryNumber(number))
+            {
+                MessageBox.Show("Numer rejestracyjny już istnieje w bazie", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(number.Length>30)
+            {
+                MessageBox.Show("Nieprawidłowy numer rejestracyjny", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
         private bool Protect()
         {
@@ -293,7 +311,8 @@ namespace Wypozyczalnia_samochodow
                 Protect_string(textBoxColor.Text, "Nieprawidłowy kolor", true) &&
                 ProtectDecimal(textBoxPrice.Text, "Niepraidłowa cena") &&
                 ProtectDecimal(textBoxPojemnosc.Text, "Nieprawidłowa pojemność silnika") &&
-                ProtectYear()&&
+                ProtectYear(textBoxYear.Text)&&
+                ProtectRegistration(textBoxNumber.Text)&&
                 CheckIfNotEmpty();
         }
         private void RegistryNumberValidation(object sender, EventArgs e)
