@@ -62,6 +62,7 @@ namespace Wypozyczalnia_samochodow
                 {
                     Rental.customers.Add(it);
                 }
+                
                 var emp = DBConnectionMySql.SelectAllEmployees(conn);
                 foreach (var it in emp)
                 {
@@ -129,6 +130,8 @@ namespace Wypozyczalnia_samochodow
         {
             cars.Clear();
             transactions.Clear();
+            customers.Clear();
+            employees.Clear();
         }
         public static bool IsCarAvailaible(Car c)
         {
