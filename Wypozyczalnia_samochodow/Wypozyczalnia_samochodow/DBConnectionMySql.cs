@@ -15,8 +15,8 @@ namespace Wypozyczalnia_samochodow
     {
         public static string Server { get; set; }
         
-        public static uint Port { get; set; }
-        public static string FileName { get; set; }
+        private static uint Port { get; set; }
+        private static string FileName { get; set; }
         static DBConnectionMySql()
         {
             Server = "127.0.0.1";
