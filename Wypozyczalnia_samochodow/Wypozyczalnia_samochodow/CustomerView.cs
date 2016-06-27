@@ -29,9 +29,9 @@ namespace Wypozyczalnia_samochodow
             {
                 _newCustomer = value;
                 readOnly = !value;
-                button.Visible = !value;
-                button2.Visible = !value;
-                label9.Visible = !value;
+                button_rent.Visible = !value;
+                button_edit.Visible = !value;
+                label_id.Visible = !value;
                 textBox_ID.Visible = !value;
             }
         }
@@ -69,7 +69,7 @@ namespace Wypozyczalnia_samochodow
             textBox_ID.Text = customer.Id.ToString();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button_close_Click(object sender, EventArgs e)
         {
             ClearMessage();
             if (!newCustomer && edition)
@@ -131,15 +131,15 @@ namespace Wypozyczalnia_samochodow
         private void ResetViewAfterEdition()
         {
             readOnly = true;
-            button.Visible = true;
-            button2.Visible = true;
+            button_rent.Visible = true;
+            button_edit.Visible = true;
             edition = false;
         }
 
         private void ResetViewAfterTransaction()
         {
-            button.Visible = true;
-            button2.Visible = true;
+            button_rent.Visible = true;
+            button_edit.Visible = true;
             transaction = false;
         }
 
@@ -211,14 +211,14 @@ namespace Wypozyczalnia_samochodow
             }
 
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void button_edit_Click(object sender, EventArgs e)
         {
             edition = true;
             readOnly = false;
-            button.Visible = false;
-            button2.Visible = false;
+            button_rent.Visible = false;
+            button_edit.Visible = false;
             textBox_ID.Visible = false;
-            label9.Visible = false;
+            label_id.Visible = false;
         }
 
         private bool protect_phone_number()
@@ -305,12 +305,12 @@ namespace Wypozyczalnia_samochodow
             return true;
 
         }
-        private void button_Click(object sender, EventArgs e)
+        private void button_rent_Click(object sender, EventArgs e)
         {
-            button2.Visible = false;
-            button.Visible = false;
+            button_edit.Visible = false;
+            button_rent.Visible = false;
             transaction = true;
-            label10.Visible = true;
+            label_nr.Visible = true;
             textBox_nr.Visible = true;
         }
 

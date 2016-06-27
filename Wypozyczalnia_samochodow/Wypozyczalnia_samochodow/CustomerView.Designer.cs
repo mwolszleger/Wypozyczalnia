@@ -28,50 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_name = new System.Windows.Forms.Label();
+            this.label_lastname = new System.Windows.Forms.Label();
             this.textName = new System.Windows.Forms.TextBox();
             this.textLastName = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_close = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.button_edit = new System.Windows.Forms.Button();
+            this.button_rent = new System.Windows.Forms.Button();
+            this.label_citycode = new System.Windows.Forms.Label();
+            this.label_place = new System.Windows.Forms.Label();
+            this.label_flatnr = new System.Windows.Forms.Label();
+            this.label_housenr = new System.Windows.Forms.Label();
+            this.label_street = new System.Windows.Forms.Label();
             this.textHouseNumber = new System.Windows.Forms.TextBox();
             this.textStreet = new System.Windows.Forms.TextBox();
             this.textPlace = new System.Windows.Forms.TextBox();
             this.textFlatNumber = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label_phonenr = new System.Windows.Forms.Label();
             this.textPhoneNumber = new System.Windows.Forms.TextBox();
             this.textCodeCity = new System.Windows.Forms.TextBox();
             this.label_text = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label_id = new System.Windows.Forms.Label();
             this.textBox_ID = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label_nr = new System.Windows.Forms.Label();
             this.textBox_nr = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // label_name
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Imię:";
+            this.label_name.AutoSize = true;
+            this.label_name.Location = new System.Drawing.Point(12, 33);
+            this.label_name.Name = "label_name";
+            this.label_name.Size = new System.Drawing.Size(29, 13);
+            this.label_name.TabIndex = 1;
+            this.label_name.Text = "Imię:";
             // 
-            // label2
+            // label_lastname
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(184, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nazwisko:";
+            this.label_lastname.AutoSize = true;
+            this.label_lastname.Location = new System.Drawing.Point(184, 33);
+            this.label_lastname.Name = "label_lastname";
+            this.label_lastname.Size = new System.Drawing.Size(56, 13);
+            this.label_lastname.TabIndex = 2;
+            this.label_lastname.Text = "Nazwisko:";
             // 
             // textName
             // 
@@ -87,15 +87,15 @@
             this.textLastName.Size = new System.Drawing.Size(107, 20);
             this.textLastName.TabIndex = 10;
             // 
-            // button4
+            // button_close
             // 
-            this.button4.Location = new System.Drawing.Point(380, 126);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 24);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "Zamknij";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button_close.Location = new System.Drawing.Point(380, 126);
+            this.button_close.Name = "button_close";
+            this.button_close.Size = new System.Drawing.Size(89, 24);
+            this.button_close.TabIndex = 23;
+            this.button_close.Text = "Zamknij";
+            this.button_close.UseVisualStyleBackColor = true;
+            this.button_close.Click += new System.EventHandler(this.button_close_Click);
             // 
             // buttonOK
             // 
@@ -107,70 +107,70 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // button2
+            // button_edit
             // 
-            this.button2.Location = new System.Drawing.Point(380, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 24);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Edytuj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_edit.Location = new System.Drawing.Point(380, 61);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(89, 24);
+            this.button_edit.TabIndex = 21;
+            this.button_edit.Text = "Edytuj";
+            this.button_edit.UseVisualStyleBackColor = true;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
             // 
-            // button
+            // button_rent
             // 
-            this.button.Location = new System.Drawing.Point(380, 26);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(89, 24);
-            this.button.TabIndex = 20;
-            this.button.Text = "Wypożycz";
-            this.button.UseVisualStyleBackColor = true;
-            this.button.Click += new System.EventHandler(this.button_Click);
+            this.button_rent.Location = new System.Drawing.Point(380, 26);
+            this.button_rent.Name = "button_rent";
+            this.button_rent.Size = new System.Drawing.Size(89, 24);
+            this.button_rent.TabIndex = 20;
+            this.button_rent.Text = "Wypożycz";
+            this.button_rent.UseVisualStyleBackColor = true;
+            this.button_rent.Click += new System.EventHandler(this.button_rent_Click);
             // 
-            // label3
+            // label_citycode
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 132);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Kod:";
+            this.label_citycode.AutoSize = true;
+            this.label_citycode.Location = new System.Drawing.Point(12, 132);
+            this.label_citycode.Name = "label_citycode";
+            this.label_citycode.Size = new System.Drawing.Size(29, 13);
+            this.label_citycode.TabIndex = 24;
+            this.label_citycode.Text = "Kod:";
             // 
-            // label4
+            // label_place
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(184, 100);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Miejscowość:";
+            this.label_place.AutoSize = true;
+            this.label_place.Location = new System.Drawing.Point(184, 100);
+            this.label_place.Name = "label_place";
+            this.label_place.Size = new System.Drawing.Size(71, 13);
+            this.label_place.TabIndex = 25;
+            this.label_place.Text = "Miejscowość:";
             // 
-            // label5
+            // label_flatnr
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 100);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Nr mieszkania:";
+            this.label_flatnr.AutoSize = true;
+            this.label_flatnr.Location = new System.Drawing.Point(12, 100);
+            this.label_flatnr.Name = "label_flatnr";
+            this.label_flatnr.Size = new System.Drawing.Size(76, 13);
+            this.label_flatnr.TabIndex = 26;
+            this.label_flatnr.Text = "Nr mieszkania:";
             // 
-            // label6
+            // label_housenr
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(184, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Nr domu:";
+            this.label_housenr.AutoSize = true;
+            this.label_housenr.Location = new System.Drawing.Point(184, 67);
+            this.label_housenr.Name = "label_housenr";
+            this.label_housenr.Size = new System.Drawing.Size(50, 13);
+            this.label_housenr.TabIndex = 27;
+            this.label_housenr.Text = "Nr domu:";
             // 
-            // label7
+            // label_street
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 67);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "Ulica:";
+            this.label_street.AutoSize = true;
+            this.label_street.Location = new System.Drawing.Point(12, 67);
+            this.label_street.Name = "label_street";
+            this.label_street.Size = new System.Drawing.Size(34, 13);
+            this.label_street.TabIndex = 28;
+            this.label_street.Text = "Ulica:";
             // 
             // textHouseNumber
             // 
@@ -200,14 +200,14 @@
             this.textFlatNumber.Size = new System.Drawing.Size(65, 20);
             this.textFlatNumber.TabIndex = 32;
             // 
-            // label8
+            // label_phonenr
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(184, 132);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 13);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Nr telefonu:";
+            this.label_phonenr.AutoSize = true;
+            this.label_phonenr.Location = new System.Drawing.Point(184, 132);
+            this.label_phonenr.Name = "label_phonenr";
+            this.label_phonenr.Size = new System.Drawing.Size(62, 13);
+            this.label_phonenr.TabIndex = 33;
+            this.label_phonenr.Text = "Nr telefonu:";
             // 
             // textPhoneNumber
             // 
@@ -231,14 +231,14 @@
             this.label_text.Size = new System.Drawing.Size(0, 13);
             this.label_text.TabIndex = 36;
             // 
-            // label9
+            // label_id
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 163);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(18, 13);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "ID";
+            this.label_id.AutoSize = true;
+            this.label_id.Location = new System.Drawing.Point(12, 163);
+            this.label_id.Name = "label_id";
+            this.label_id.Size = new System.Drawing.Size(18, 13);
+            this.label_id.TabIndex = 37;
+            this.label_id.Text = "ID";
             // 
             // textBox_ID
             // 
@@ -248,15 +248,15 @@
             this.textBox_ID.Size = new System.Drawing.Size(114, 20);
             this.textBox_ID.TabIndex = 38;
             // 
-            // label10
+            // label_nr
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(184, 163);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 13);
-            this.label10.TabIndex = 39;
-            this.label10.Text = "Numer rejestracyjny:";
-            this.label10.Visible = false;
+            this.label_nr.AutoSize = true;
+            this.label_nr.Location = new System.Drawing.Point(184, 163);
+            this.label_nr.Name = "label_nr";
+            this.label_nr.Size = new System.Drawing.Size(102, 13);
+            this.label_nr.TabIndex = 39;
+            this.label_nr.Text = "Numer rejestracyjny:";
+            this.label_nr.Visible = false;
             // 
             // textBox_nr
             // 
@@ -272,30 +272,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 253);
             this.Controls.Add(this.textBox_nr);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label_nr);
             this.Controls.Add(this.textBox_ID);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label_id);
             this.Controls.Add(this.label_text);
             this.Controls.Add(this.textCodeCity);
             this.Controls.Add(this.textPhoneNumber);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label_phonenr);
             this.Controls.Add(this.textFlatNumber);
             this.Controls.Add(this.textPlace);
             this.Controls.Add(this.textStreet);
             this.Controls.Add(this.textHouseNumber);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label_street);
+            this.Controls.Add(this.label_housenr);
+            this.Controls.Add(this.label_flatnr);
+            this.Controls.Add(this.label_place);
+            this.Controls.Add(this.label_citycode);
+            this.Controls.Add(this.button_close);
             this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button);
+            this.Controls.Add(this.button_edit);
+            this.Controls.Add(this.button_rent);
             this.Controls.Add(this.textLastName);
             this.Controls.Add(this.textName);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_lastname);
+            this.Controls.Add(this.label_name);
             this.MaximumSize = new System.Drawing.Size(497, 291);
             this.MinimumSize = new System.Drawing.Size(497, 291);
             this.Name = "CustomerView";
@@ -307,30 +307,30 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_name;
+        private System.Windows.Forms.Label label_lastname;
         private System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.TextBox textLastName;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button_edit;
+        private System.Windows.Forms.Button button_rent;
+        private System.Windows.Forms.Label label_citycode;
+        private System.Windows.Forms.Label label_place;
+        private System.Windows.Forms.Label label_flatnr;
+        private System.Windows.Forms.Label label_housenr;
+        private System.Windows.Forms.Label label_street;
         private System.Windows.Forms.TextBox textHouseNumber;
         private System.Windows.Forms.TextBox textStreet;
         private System.Windows.Forms.TextBox textPlace;
         private System.Windows.Forms.TextBox textFlatNumber;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label_phonenr;
         private System.Windows.Forms.TextBox textPhoneNumber;
         private System.Windows.Forms.TextBox textCodeCity;
         private System.Windows.Forms.Label label_text;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label_id;
         private System.Windows.Forms.TextBox textBox_ID;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label_nr;
         private System.Windows.Forms.TextBox textBox_nr;
     }
 }
