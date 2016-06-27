@@ -266,7 +266,7 @@
             this.textBox_nr.TabIndex = 40;
             this.textBox_nr.Visible = false;
             // 
-            // Form4
+            // CustomerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -298,8 +298,8 @@
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(497, 291);
             this.MinimumSize = new System.Drawing.Size(497, 291);
-            this.Name = "Form4";
-            this.Text = "Form4";
+            this.Name = "CustomerView";
+            this.Text = "Wypożyczalnia samochodów";
             this.ResumeLayout(false);
             this.PerformLayout();
 
