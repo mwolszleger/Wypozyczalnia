@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxNameBrnd = new System.Windows.Forms.TextBox();
+            this.labelBrand = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxLastNameModel = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.listBox = new System.Windows.Forms.ListBox();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxNameBrnd
             // 
-            this.textBox1.Location = new System.Drawing.Point(49, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxNameBrnd.Location = new System.Drawing.Point(49, 35);
+            this.textBoxNameBrnd.Name = "textBoxNameBrnd";
+            this.textBoxNameBrnd.Size = new System.Drawing.Size(118, 20);
+            this.textBoxNameBrnd.TabIndex = 0;
             // 
-            // label1
+            // labelBrand
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Marka:";
+            this.labelBrand.AutoSize = true;
+            this.labelBrand.Location = new System.Drawing.Point(3, 38);
+            this.labelBrand.Name = "labelBrand";
+            this.labelBrand.Size = new System.Drawing.Size(40, 13);
+            this.labelBrand.TabIndex = 1;
+            this.labelBrand.Text = "Marka:";
             // 
             // label2
             // 
@@ -66,98 +66,98 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Model:";
             // 
-            // textBox2
+            // textBoxLastNameModel
             // 
-            this.textBox2.Location = new System.Drawing.Point(234, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(118, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBoxLastNameModel.Location = new System.Drawing.Point(234, 35);
+            this.textBoxLastNameModel.Name = "textBoxLastNameModel";
+            this.textBoxLastNameModel.Size = new System.Drawing.Size(118, 20);
+            this.textBoxLastNameModel.TabIndex = 3;
             // 
-            // button1
+            // buttonSearch
             // 
-            this.button1.Location = new System.Drawing.Point(555, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 28);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Szukaj";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSearch.Location = new System.Drawing.Point(555, 27);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(72, 28);
+            this.buttonSearch.TabIndex = 4;
+            this.buttonSearch.Text = "Szukaj";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonAdd
             // 
-            this.button2.Location = new System.Drawing.Point(555, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 29);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Dodaj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(555, 61);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(72, 29);
+            this.buttonAdd.TabIndex = 5;
+            this.buttonAdd.Text = "Dodaj";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // buttonClear
             // 
-            this.button3.Location = new System.Drawing.Point(555, 96);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 28);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Czyść";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonClear.Location = new System.Drawing.Point(555, 96);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(72, 28);
+            this.buttonClear.TabIndex = 6;
+            this.buttonClear.Text = "Czyść";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // buttonClose
             // 
-            this.button4.Location = new System.Drawing.Point(555, 130);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(72, 28);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Wyjdź";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonClose.Location = new System.Drawing.Point(555, 130);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(72, 28);
+            this.buttonClose.TabIndex = 7;
+            this.buttonClose.Text = "Wyjdź";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.button4_Click);
             // 
-            // listBox1
+            // listBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(17, 81);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(509, 238);
-            this.listBox1.TabIndex = 8;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
+            this.listBox.FormattingEnabled = true;
+            this.listBox.Location = new System.Drawing.Point(17, 81);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(509, 238);
+            this.listBox.TabIndex = 8;
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
-            // label3
+            // labelName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Imię:";
-            this.label3.Visible = false;
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(14, 38);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(29, 13);
+            this.labelName.TabIndex = 9;
+            this.labelName.Text = "Imię:";
+            this.labelName.Visible = false;
             // 
-            // label4
+            // labelLastName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(172, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Nazwisko:";
-            this.label4.Visible = false;
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(172, 38);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(56, 13);
+            this.labelLastName.TabIndex = 10;
+            this.labelLastName.Text = "Nazwisko:";
+            this.labelLastName.Visible = false;
             // 
             // WyszukiwarkaSam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.labelLastName);
+            this.Controls.Add(this.labelName);
+            this.Controls.Add(this.listBox);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxLastNameModel);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.labelBrand);
+            this.Controls.Add(this.textBoxNameBrnd);
             this.MaximumSize = new System.Drawing.Size(641, 341);
             this.MinimumSize = new System.Drawing.Size(641, 341);
             this.Name = "WyszukiwarkaSam";
@@ -169,16 +169,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxNameBrnd;
+        private System.Windows.Forms.Label labelBrand;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxLastNameModel;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelLastName;
     }
 }

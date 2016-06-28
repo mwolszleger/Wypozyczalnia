@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonCars = new System.Windows.Forms.Button();
+            this.buttonCustomers = new System.Windows.Forms.Button();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.search = new Wypozyczalnia_samochodow.WyszukiwarkaSam();
             this.SuspendLayout();
             // 
@@ -45,43 +45,43 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nazwa użytkownika";
             // 
-            // button1
+            // buttonCars
             // 
-            this.button1.Location = new System.Drawing.Point(284, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Samochody";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCars.Location = new System.Drawing.Point(284, 75);
+            this.buttonCars.Name = "buttonCars";
+            this.buttonCars.Size = new System.Drawing.Size(124, 34);
+            this.buttonCars.TabIndex = 1;
+            this.buttonCars.Text = "Samochody";
+            this.buttonCars.UseVisualStyleBackColor = true;
+            this.buttonCars.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonCustomers
             // 
-            this.button2.Location = new System.Drawing.Point(284, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 34);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Klienci";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCustomers.Location = new System.Drawing.Point(284, 135);
+            this.buttonCustomers.Name = "buttonCustomers";
+            this.buttonCustomers.Size = new System.Drawing.Size(124, 34);
+            this.buttonCustomers.TabIndex = 2;
+            this.buttonCustomers.Text = "Klienci";
+            this.buttonCustomers.UseVisualStyleBackColor = true;
+            this.buttonCustomers.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button4
+            // buttonLogOut
             // 
-            this.button4.Location = new System.Drawing.Point(284, 195);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(124, 34);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Wyloguj";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonLogOut.Location = new System.Drawing.Point(284, 195);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(124, 34);
+            this.buttonLogOut.TabIndex = 4;
+            this.buttonLogOut.Text = "Wyloguj";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.button4_Click);
             // 
-            // wyszukiwarkaSam1
+            // search
             // 
             this.search.AutoScroll = true;
             this.search.Location = new System.Drawing.Point(22, 12);
             this.search.MaximumSize = new System.Drawing.Size(641, 341);
             this.search.MinimumSize = new System.Drawing.Size(641, 341);
-            this.search.Name = "wyszukiwarkaSam1";
+            this.search.Name = "search";
             this.search.SearchingCars = false;
             this.search.Size = new System.Drawing.Size(641, 341);
             this.search.TabIndex = 6;
@@ -92,11 +92,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 367);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonLogOut);
+            this.Controls.Add(this.buttonCustomers);
+            this.Controls.Add(this.buttonCars);
             this.Controls.Add(this.label1);
-            Controls.Add(this.search);
+            this.Controls.Add(this.search);
             this.MaximumSize = new System.Drawing.Size(704, 406);
             this.MinimumSize = new System.Drawing.Size(704, 406);
             this.Name = "MainWindow";
@@ -110,9 +110,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonCars;
+        private System.Windows.Forms.Button buttonCustomers;
+        private System.Windows.Forms.Button buttonLogOut;
         private WyszukiwarkaSam search;
     }
 }

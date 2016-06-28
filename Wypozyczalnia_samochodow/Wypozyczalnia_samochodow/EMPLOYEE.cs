@@ -17,12 +17,12 @@ namespace Wypozyczalnia_samochodow
             this.Login = login;
             this.Name = name;
             this.LastName = lastName;
-           
+
         }
         public override string ToString()
         {
             return Name + " " + LastName;
         }
     }
-    
+
 }

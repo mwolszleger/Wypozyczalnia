@@ -15,9 +15,9 @@ namespace Wypozyczalnia_samochodow
         public MainWindow(string login)
         {
             InitializeComponent();
-            menuItems = new Control[] { button1, button2, button4, label1 };
+            menuItems = new Control[] { buttonCars, buttonCustomers, buttonLogOut, label1 };
             search.Closing += BackToMenu;
-          
+
             Rental.ClearEverything();
             try
             {
@@ -26,12 +26,12 @@ namespace Wypozyczalnia_samochodow
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                
+
             }
             try
             {
-                Rental.LoadFromDataBase();         
-                
+                Rental.LoadFromDataBase();
+
             }
             catch (Exception e)
             {
@@ -49,13 +49,22 @@ namespace Wypozyczalnia_samochodow
             Close();
         }
         private Control[] menuItems;
-       
+
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             search.CloseWindows();
-            Rental.SaveToBase();
-            
+            try
+            {
+                Rental.SaveToBase();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+
+            }
+
+
         }
         private void SetMenuVisibility(bool val)
         {

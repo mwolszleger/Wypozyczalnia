@@ -27,31 +27,31 @@ namespace Wypozyczalnia_samochodow
         public Customer(Dictionary<string, string> d)
         {
 
-           SetCustomerData(d);
+            SetCustomerData(d);
             this.Id = Rental.NewCustomerId();
         }
-        
+
         public void SetCustomerData(Dictionary<string, string> d)
         {
-            
+
             Name = d["name"];
             Last_name = d["last_name"];
             Street = d["street"];
-            House_number =(d["house_number"]);
+            House_number = (d["house_number"]);
             if (Flat_number != 0)
             {
                 Flat_number = Convert.ToInt32(d["flat_number"]);
             }
-            Code_town =d["code_town"];
+            Code_town = d["code_town"];
             Place = d["place"];
-            Phone_number =d["phone_number"];
+            Phone_number = d["phone_number"];
 
         }
         public override string ToString()
         {
-            return Name+" "+Last_name;
+            return Name + " " + Last_name;
         }
-        
-    
+
+
     }
 }

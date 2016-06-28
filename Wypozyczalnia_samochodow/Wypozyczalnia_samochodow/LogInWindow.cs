@@ -19,13 +19,13 @@ namespace Wypozyczalnia_samochodow
         }
         private void NewUser(object sender, EventArgs e)
         {
-            Show();       
-            
+            Show();
+
         }
         private void buttonLog_Click(object sender, EventArgs e)
         {
             bool d = Rental.TryToLogIn(textBoxLogin.Text, textBoxPassword.Text);
-            
+
             if (d)
             {
                 f = new MainWindow(textBoxLogin.Text);

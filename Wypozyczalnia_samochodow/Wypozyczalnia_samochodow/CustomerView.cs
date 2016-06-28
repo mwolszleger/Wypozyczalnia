@@ -151,7 +151,7 @@ namespace Wypozyczalnia_samochodow
             {
                 if (protect_code_city() && protect_phone_number() && Protect_name() && Protect_last_name() && Protect_place() && Protect_flat_number())
                 {
-                  
+
                     if (!CheckIfNotEmpty())
                     {
                         label_text.Text = "Nie podano wszystkich danych";

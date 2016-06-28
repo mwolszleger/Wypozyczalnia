@@ -14,14 +14,13 @@ namespace Wypozyczalnia_samochodow
     static class DBConnectionMySql
     {
         public static string Server { get; set; }
-        
+
         private static uint Port { get; set; }
         private static string FileName { get; set; }
         static DBConnectionMySql()
         {
             Server = "127.0.0.1";
-           // User = "root";
-           // Passwd = "";
+          
             Port = 3306;
 
         }
@@ -233,7 +232,7 @@ namespace Wypozyczalnia_samochodow
             {
                 throw e;
             }
-            
+
         }
 
         private static string CreateSelectQuerry(IEnumerable<String> Columns, string TableName)
@@ -363,8 +362,8 @@ namespace Wypozyczalnia_samochodow
                 attributes.Add("beginning", dr[3].ToString());
                 attributes.Add("end", dr[4].ToString());
                 attributes.Add("employee_beginning", dr[5].ToString());
-               attributes.Add("employee_end", dr[6].ToString());
-                
+                attributes.Add("employee_end", dr[6].ToString());
+
                 attributes.Add("price", dr[7].ToString().Replace('.', CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0]));
 
                 transactions.Add(new Transaction(attributes));
@@ -378,9 +377,9 @@ namespace Wypozyczalnia_samochodow
             var attributes = new Dictionary<string, string>();
             attributes.Add(EmployeeEndTableName, t.Employee_end.Login);
             attributes.Add(EndDateColumnName, t.End.ToString("yyyy-MM-dd"));
-    
+
             attributes.Add(EmployeePriceColumnName, t.Price.ToString().Replace(CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator[0], '.'));
-            AddQuerry(CreateUpdateQuerry(attributes, TransactionsTableName,t.Id));
+            AddQuerry(CreateUpdateQuerry(attributes, TransactionsTableName, t.Id));
         }
     }
 }

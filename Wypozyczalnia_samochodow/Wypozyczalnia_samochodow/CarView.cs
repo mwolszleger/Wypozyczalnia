@@ -33,7 +33,7 @@ namespace Wypozyczalnia_samochodow
                 buttonEdit.Visible = !value;
                 textBoxNumber.ReadOnly = !value;
                 buttonReturn.Visible = !value;
-                button1.Visible = !value;
+                buttonRemove.Visible = !value;
             }
         }
         public bool ReadOnly
@@ -143,7 +143,7 @@ namespace Wypozyczalnia_samochodow
             transaction = false;
             labelUseId.Visible = false;
             textBoxUserId.Visible = false;
-            button1.Visible = true;
+            buttonRemove.Visible = true;
             SetCarData();
         }
         private void resetViewAfterEdition()
@@ -166,7 +166,7 @@ namespace Wypozyczalnia_samochodow
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
             buttonOK.Visible = true;
-            button1.Visible = false;
+            buttonRemove.Visible = false;
             buttonReturn.Visible = false;
             edition = true;
         }
@@ -207,7 +207,7 @@ namespace Wypozyczalnia_samochodow
             }
             if (newCar)
             {
-                if(!Protect())return;
+                if (!Protect()) return;
 
                 Car car = new Car(GetCarData());
                 Rental.AddCar(car);
@@ -228,18 +228,18 @@ namespace Wypozyczalnia_samochodow
             buttonLend.Visible = false;
             labelUseId.Visible = true;
             buttonOK.Visible = true;
-            button1.Visible = false;
+            buttonRemove.Visible = false;
             buttonReturn.Visible = false;
             textBoxUserId.Visible = true;
             transaction = true;
-            
+
         }
 
 
         private bool CheckIfNotEmpty()
         {
             bool a = textBoxBrand.Text != "" && textBoxYear.Text != "" && textBoxModel.Text != "" && textBoxPojemnosc.Text != "" && textBoxNumber.Text != "" && textBoxPrice.Text != "" && textBoxColor.Text != "" && comboBoxClima.SelectedIndex >= 0 && comboBoxFuel.SelectedIndex >= 0;
-            if(!a)
+            if (!a)
             {
                 MessageBox.Show("Nie podano wszytskich danych", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -257,33 +257,33 @@ namespace Wypozyczalnia_samochodow
             ClearMessage();
         }
 
-        private bool Protect_string(string textToCheck, string message, bool numbersPossible=false)
+        private bool Protect_string(string textToCheck, string message, bool numbersPossible = false)
         {
             string text = @"^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
-            if(numbersPossible)
+            if (numbersPossible)
                 text = @"^[0-9a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\s\-]+$";
             string input = textToCheck;
-            if (textToCheck.Length>30||!Regex.IsMatch(input, text))
+            if (textToCheck.Length > 30 || !Regex.IsMatch(input, text))
             {
                 MessageBox.Show(message, "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
         }
-        private bool ProtectDecimal(string textToCheck,string message)
+        private bool ProtectDecimal(string textToCheck, string message)
         {
             decimal temp;
-            if (decimal.TryParse(textToCheck,out temp)&&temp>=0)
+            if (decimal.TryParse(textToCheck, out temp) && temp >= 0)
             {
                 return true;
             }
-             MessageBox.Show(message, "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             return false;
+            MessageBox.Show(message, "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
         }
         private bool ProtectYear(string text)
         {
-            
-            if(text.Length==4&&text[0]>='1'&&text[0]<='2'&& text[1] >= '0' && text[1] <= '9'&&text[2] >= '0' && text[2] <= '9'&&text[3] >= '0' && text[3] <= '9')
+
+            if (text.Length == 4 && text[0] >= '1' && text[0] <= '2' && text[1] >= '0' && text[1] <= '9' && text[2] >= '0' && text[2] <= '9' && text[3] >= '0' && text[3] <= '9')
                 return true;
             MessageBox.Show("Nieprawidłowy rok produkcji", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
@@ -291,13 +291,13 @@ namespace Wypozyczalnia_samochodow
         private bool ProtectRegistration(string number)
         {
 
-            if (Rental.ExistsRegistryNumber(number))
+            if (Rental.ExistsRegistryNumber(number) && newCar)
             {
                 MessageBox.Show("Numer rejestracyjny już istnieje w bazie", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if(number.Length>30)
+            if (number.Length > 30)
             {
                 MessageBox.Show("Nieprawidłowy numer rejestracyjny", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -311,13 +311,13 @@ namespace Wypozyczalnia_samochodow
                 Protect_string(textBoxColor.Text, "Nieprawidłowy kolor", true) &&
                 ProtectDecimal(textBoxPrice.Text, "Niepraidłowa cena") &&
                 ProtectDecimal(textBoxPojemnosc.Text, "Nieprawidłowa pojemność silnika") &&
-                ProtectYear(textBoxYear.Text)&&
-                ProtectRegistration(textBoxNumber.Text)&&
+                ProtectYear(textBoxYear.Text) &&
+                ProtectRegistration(textBoxNumber.Text) &&
                 CheckIfNotEmpty();
         }
         private void RegistryNumberValidation(object sender, EventArgs e)
         {
-           
+
             if (ReadOnly)
                 return;
             for (int i = 0; i < ((TextBox)sender).Text.Length; i++)
@@ -330,10 +330,10 @@ namespace Wypozyczalnia_samochodow
                     continue;
                 else
                 {
-                    ((TextBox)sender).Text = ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--, 1);                    
+                    ((TextBox)sender).Text = ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(i--, 1);
                 }
 
-                
+
             }
             //ustawia kursor na koncu
            ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
@@ -343,7 +343,7 @@ namespace Wypozyczalnia_samochodow
         {
             if (Rental.IsCarAvailaible(car))
             {
-                labelMessage.Text="Auto nie jest wypożyczone";
+                labelMessage.Text = "Auto nie jest wypożyczone";
 
             }
             else
@@ -351,7 +351,7 @@ namespace Wypozyczalnia_samochodow
                 var tr = Rental.FindTransaction(car);
                 tr.Finish();
                 Rental.UpdateTransaction(tr);
-                labelMessage.Text = "Do zapłaty "+tr.Price;
+                labelMessage.Text = "Do zapłaty " + tr.Price;
             }
         }
 
@@ -368,9 +368,9 @@ namespace Wypozyczalnia_samochodow
             buttonLend.Visible = false;
             buttonEdit.Visible = false;
             buttonReturn.Visible = false;
-            button1.Visible = false;
+            buttonRemove.Visible = false;
         }
 
-        
+
     }
-    }
+}

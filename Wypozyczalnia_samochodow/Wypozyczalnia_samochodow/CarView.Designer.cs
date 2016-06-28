@@ -56,7 +56,7 @@
             this.comboBoxFuel = new System.Windows.Forms.ComboBox();
             this.comboBoxClima = new System.Windows.Forms.ComboBox();
             this.buttonReturn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -137,7 +137,6 @@
             this.textBoxBrand.Name = "textBoxBrand";
             this.textBoxBrand.Size = new System.Drawing.Size(92, 20);
             this.textBoxBrand.TabIndex = 8;
-            //this.textBoxBrand.TextChanged += new System.EventHandler(this.stringValidation);
             this.textBoxBrand.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxModel
@@ -146,7 +145,6 @@
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(129, 20);
             this.textBoxModel.TabIndex = 9;
-            //this.textBoxModel.TextChanged += new System.EventHandler(this.stringValidation);
             this.textBoxModel.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxYear
@@ -155,7 +153,6 @@
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(56, 20);
             this.textBoxYear.TabIndex = 10;
-           // this.textBoxYear.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxYear.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxPojemnosc
@@ -164,7 +161,6 @@
             this.textBoxPojemnosc.Name = "textBoxPojemnosc";
             this.textBoxPojemnosc.Size = new System.Drawing.Size(70, 20);
             this.textBoxPojemnosc.TabIndex = 12;
-            //this.textBoxPojemnosc.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxPojemnosc.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxColor
@@ -173,7 +169,6 @@
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.Size = new System.Drawing.Size(134, 20);
             this.textBoxColor.TabIndex = 13;
-            //this.textBoxColor.TextChanged += new System.EventHandler(this.stringValidation);
             this.textBoxColor.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // textBoxPrice
@@ -182,7 +177,6 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(92, 20);
             this.textBoxPrice.TabIndex = 15;
-           // this.textBoxPrice.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxPrice.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // buttonLend
@@ -240,8 +234,6 @@
             this.textBoxUserId.Size = new System.Drawing.Size(89, 20);
             this.textBoxUserId.TabIndex = 22;
             this.textBoxUserId.Visible = false;
-           // this.textBoxUserId.TabIndexChanged += new System.EventHandler(this.numberValidation);
-          // this.textBoxUserId.TextChanged += new System.EventHandler(this.numberValidation);
             this.textBoxUserId.Enter += new System.EventHandler(this.textBoxBrand_Enter);
             // 
             // labelUseId
@@ -323,22 +315,22 @@
             this.buttonReturn.UseVisualStyleBackColor = true;
             this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
-            // button1
+            // buttonRemove
             // 
-            this.button1.Location = new System.Drawing.Point(380, 155);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 24);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRemove.Location = new System.Drawing.Point(380, 155);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(89, 24);
+            this.buttonRemove.TabIndex = 30;
+            this.buttonRemove.Text = "Usuń";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.button1_Click);
             // 
             // CarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 252);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonReturn);
             this.Controls.Add(this.comboBoxClima);
             this.Controls.Add(this.comboBoxFuel);
@@ -371,7 +363,6 @@
             this.MinimumSize = new System.Drawing.Size(497, 291);
             this.Name = "CarView";
             this.Text = "Wypożyczalnia samochodów";
-            //this.Load += new System.EventHandler(this.CarView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,6 +398,6 @@
         private System.Windows.Forms.ComboBox comboBoxFuel;
         private System.Windows.Forms.ComboBox comboBoxClima;
         private System.Windows.Forms.Button buttonReturn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRemove;
     }
 }

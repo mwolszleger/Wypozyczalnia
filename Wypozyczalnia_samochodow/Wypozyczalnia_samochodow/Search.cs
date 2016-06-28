@@ -15,22 +15,22 @@ namespace Wypozyczalnia_samochodow
         public WyszukiwarkaSam()
         {
             InitializeComponent();
-            
+
         }
- 
+
         public event EventHandler Closing;
-        private List<Car> foundCars=new List<Car>();
-        private List<Customer> foundCustomers=new List<Customer>();
+        private List<Car> foundCars = new List<Car>();
+        private List<Customer> foundCustomers = new List<Customer>();
         private bool _searchingCars;
         public bool SearchingCars
         {
             set
             {
                 _searchingCars = value;
-                label1.Visible = value;
+                labelBrand.Visible = value;
                 label2.Visible = value;
-                label3.Visible = !value;
-                label4.Visible = !value;
+                labelName.Visible = !value;
+                labelLastName.Visible = !value;
             }
 
             get
@@ -38,7 +38,7 @@ namespace Wypozyczalnia_samochodow
                 return _searchingCars;
             }
         }
-       
+
         protected virtual void OnClosing(EventArgs e)
         {
             EventHandler handler = Closing;
@@ -47,7 +47,7 @@ namespace Wypozyczalnia_samochodow
                 handler(this, e);
             }
         }
-       
+
         private void button4_Click(object sender, EventArgs e)
         {
             OnClosing(new EventArgs());
@@ -56,9 +56,9 @@ namespace Wypozyczalnia_samochodow
         }
         private void Clear()
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            listBox1.Items.Clear();
+            textBoxNameBrnd.Text = "";
+            textBoxLastNameModel.Text = "";
+            listBox.Items.Clear();
             foundCars.Clear();
             foundCustomers.Clear();
         }
@@ -84,12 +84,12 @@ namespace Wypozyczalnia_samochodow
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex < 0||(SearchingCars&&!foundCars[listBox1.SelectedIndex].Availability))
+            if (listBox.SelectedIndex < 0 || (SearchingCars && !foundCars[listBox.SelectedIndex].Availability))
                 return;
             if (SearchingCars == true)
             {
-                
-                var temp = new CarView(foundCars[listBox1.SelectedIndex]);
+
+                var temp = new CarView(foundCars[listBox.SelectedIndex]);
                 temp.newCar = false;
                 temp.Show();
                 temp.FormClosing += ClosedCarWindow;
@@ -97,7 +97,7 @@ namespace Wypozyczalnia_samochodow
             }
             else
             {
-                var temp = new CustomerView(foundCustomers[listBox1.SelectedIndex]);
+                var temp = new CustomerView(foundCustomers[listBox.SelectedIndex]);
                 temp.newCustomer = false;
                 temp.Show();
                 temp.FormClosing += ClosedCustomerWindows;
@@ -123,22 +123,22 @@ namespace Wypozyczalnia_samochodow
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (SearchingCars==true)
+            if (SearchingCars == true)
             {
-                listBox1.Items.Clear();
-                foundCars = Rental.FindCars(textBox1.Text, textBox2.Text);
+                listBox.Items.Clear();
+                foundCars = Rental.FindCars(textBoxNameBrnd.Text, textBoxLastNameModel.Text);
                 foreach (var it in foundCars)
                 {
-                    listBox1.Items.Add(it.ToString());
+                    listBox.Items.Add(it.ToString());
                 }
             }
             else
             {
-                listBox1.Items.Clear();
-                foundCustomers = Rental.FindCustomer(textBox1.Text, textBox2.Text);
+                listBox.Items.Clear();
+                foundCustomers = Rental.FindCustomer(textBoxNameBrnd.Text, textBoxLastNameModel.Text);
                 foreach (var it in foundCustomers)
                 {
-                    listBox1.Items.Add(it.ToString());
+                    listBox.Items.Add(it.ToString());
                 }
             }
         }

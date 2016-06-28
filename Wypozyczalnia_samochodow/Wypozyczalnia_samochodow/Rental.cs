@@ -17,7 +17,7 @@ namespace Wypozyczalnia_samochodow
         private static MySqlConnection conn;
 
         public static Employee LoggedEmplyee { get; set; }
-  
+
         public static bool TryToLogIn(string login, string pass)
         {
             bool success = true;
@@ -62,7 +62,7 @@ namespace Wypozyczalnia_samochodow
                 {
                     Rental.customers.Add(it);
                 }
-                
+
                 var emp = DBConnectionMySql.SelectAllEmployees(conn);
                 foreach (var it in emp)
                 {
@@ -73,7 +73,7 @@ namespace Wypozyczalnia_samochodow
                 foreach (var it in tr)
                 {
                     Rental.transactions.Add(it);
-                    
+
 
                 }
 
@@ -89,7 +89,7 @@ namespace Wypozyczalnia_samochodow
         }
         public static void SaveToBase()
         {
-            
+
             try
             {
                 DBConnectionMySql.OpenConnection(conn);
@@ -252,8 +252,8 @@ namespace Wypozyczalnia_samochodow
         {
             foreach (var it in cars)
             {
-                if (it.Registration == number&&it.Availability)
-                    return true;                
+                if (it.Registration == number && it.Availability)
+                    return true;
             }
             return false;
         }
