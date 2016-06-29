@@ -1,2 +1,7 @@
-grant usage on *.* to 'nowak'@'localhost' identified by '';
-grant select, insert,update on wypozyczalnia.* to 'nowak'@'localhost';
+CREATE USER 'kowalski'@'localhost';
+SET PASSWORD FOR kowalski@'localhost' = PASSWORD('');
+grant select, insert, update on cars to kowalski@'localhost';
+grant select, insert, update on customers to kowalski@'localhost';
+grant select, insert, update on transactions to kowalski@'localhost';
+grant select on employees to kowalski@'localhost';
+insert into employees values ("kowalski", "Jan","Kowalski")
